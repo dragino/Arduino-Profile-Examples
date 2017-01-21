@@ -6,7 +6,25 @@
 
   Please use write_client_id to set different ID to clients before using this sketch. otherwise, there will 
   be conflict in the server side. 
-    
+
+  How it works:
+  This concurrent client sketch is working together with the concurrent gateway sketch. Before using this sketch, please use the write_client_id sketch to write a client ID in the EEPROM. 
+  Client ID is the unique id for each client in the LoRa network. write_gateway_id to gateway is not necessary, if not write, gateway id will be 0XFF. 
+    When the client boot, it will keep listening for the broadcast message from LoRa Gateway. 
+   When the gateway sketch boot, it will broadcast a message to set up a LoRa Network. If it gets broadcast message, client will send a join request message to gateway, 
+    when the join request message arrive to gateway, the gateway will send back a join-ack message with client id and add this client to the LoRa Network. 
+   If the client gets its join-ack message for its join request, it will enter the mode to listen the data-request message from gateway. In this mode, 
+    if client get a data-request message for this client it will send back a data message to the gateway. 
+   After client in data_request listening mode, if it has not receive any message from gateway in a timeout, it will go back to the network set up mode to listen the broadcast message. 
+   Gateway will refresh the LoRa network periodically for adding new client or remove unreachable client. 
+  This example using the polling method between LoRa node and Gateway, it will minimize the LoRa packets transfer on the air and avoid congestion. It is suitable for a not real time LoRa work. 
+
+  Performance test in a room with 100 nodes and 1 gateway shows: 
+  a) Gateway require about 1.5 minutes to set up this 100 nodes Network 
+  b) Gateway takes about 2 minutes to do polling for these 100 nodes. 
+
+  User can adjust the timing in the sketch from case by case.
+
   modified 24 Dec 2016
   by Dragino Tech <support@dragino.com>
   Dragino Technology Co., Limited
