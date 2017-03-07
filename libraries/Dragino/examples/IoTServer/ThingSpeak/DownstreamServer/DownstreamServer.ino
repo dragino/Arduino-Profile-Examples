@@ -2,13 +2,15 @@
   Get Data from IoT Server ThingSpeak (https://thingspeak.com/):
   Support Devices: LG01 
   
-  Example sketch showing how to get data from IoT Server 
+  Example sketch showing how to get data from ThinkSpeak IoT Server 
   Then send the value to a LoRa Node
   
   It is designed to work with the other sketch DownstreamClient. 
 
-  modified 24 11 2016
-  by Edwin Chen <support@dragino.com>
+  note: The talkback command reference: https://www.mathworks.com/help/thingspeak/talkback-app.html?requestedDomain=www.mathworks.com#execute_talkback_command 
+
+  modified 2017-Mar-7
+  by Dragino <support@dragino.com>
   Dragino Technology Co., Limited
 */
 
@@ -30,9 +32,10 @@ RH_RF95 rf95;
 #define BAUDRATE 115200
 
 String thingSpeakAPI = "api.thingspeak.com";
-String talkBackAPIKey = "VJ183E4EG4GYWL4Y";
-String talkBackID = "12095";
+String talkBackAPIKey = "VJ183xxxxG4GYWL4Y";
+String talkBackID = "1xxx5";
 const int checkTalkBackInterval = 10 * 1000;    // Time interval in milliseconds to check TalkBack (number of seconds * 1000 = interval)
+String null_data = "NULL"; // null data for post command
 
 int gateway_id = 0;
 int address = 0;
@@ -70,7 +73,7 @@ void checkTalkBack()//Check if there is talkback command
     String talkBackURL =  "http://" + thingSpeakAPI + "/talkbacks/" + talkBackID + "/commands/execute?api_key=" + talkBackAPIKey;
     
     // Make a HTTP GET request to the TalkBack API:
-    client.get(talkBackURL);
+    client.post(talkBackURL,null_data);
     charIn = 0;
     talkBackCommand = 0;
     
