@@ -4,7 +4,7 @@ menu.cpu=Processor
 
 ##############################################################
 
-leoyun.name=Arduino Leonardo - Dragino Yún
+leoyun.name=Dragino Yún + Leonardo
 leoyun.upload.via_ssh=true
 
 leoyun.vid.0=0x2341
@@ -40,7 +40,7 @@ leoyun.build.extra_flags={build.usb_flags}
 
 ##############################################################
 
-unoyun.name=Arduino Uno - Dragino Yún
+unoyun.name=Dragino Yún + UNO or LG01/OLG01
 unoyun.upload.via_ssh=true
 
 unoyun.vid.0=0x2341
@@ -73,7 +73,7 @@ unoyun.build.variant=arduino:standard
 
 ##############################################################
 
-mega2560Yun.name=Arduino Mega 2560 - Dragino Yún
+mega2560Yun.name=Dragino Yún + Mega 2560
 mega2560Yun.upload.via_ssh=true
 
 mega2560Yun.vid.0=0x2341
@@ -102,4 +102,41 @@ mega2560Yun.build.f_cpu=16000000L
 mega2560Yun.build.board=AVR_MEGA2560
 mega2560Yun.build.core=arduino:arduino
 mega2560Yun.build.variant=arduino:mega
+
+##############################################################
+
+LoRaMini.name=LoRa Mini or LoRa Mini Dev
+
+LoRaMini.vid.0=0x2341
+LoRaMini.pid.0=0x0043
+LoRaMini.vid.1=0x2341
+LoRaMini.pid.1=0x0001
+LoRaMini.vid.2=0x2A03
+LoRaMini.pid.2=0x0043
+LoRaMini.vid.3=0x2341
+LoRaMini.pid.3=0x0243
+
+LoRaMini.upload.tool=arduino:avrdude
+LoRaMini.upload.protocol=arduino
+LoRaMini.upload.maximum_size=32256
+LoRaMini.upload.maximum_data_size=2048
+LoRaMini.upload.speed=115200
+LoRaMini.upload.disable_flushing=true
+LoRaMini.upload.use_1200bps_touch=true
+LoRaMini.upload.wait_for_upload_port=true
+
+
+LoRaMini.bootloader.tool=arduino:avrdude
+LoRaMini.bootloader.low_fuses=0xFF
+LoRaMini.bootloader.high_fuses=0xDE
+LoRaMini.bootloader.extended_fuses=0x05
+LoRaMini.bootloader.unlock_bits=0x3F
+LoRaMini.bootloader.lock_bits=0x0F
+LoRaMini.bootloader.file=optiboot_atmega328.hex
+
+LoRaMini.build.mcu=atmega328p
+LoRaMini.build.f_cpu=16000000L
+LoRaMini.build.board=AVR_UNO
+LoRaMini.build.core=arduino:arduino
+LoRaMini.build.variant=arduino:standard
 
