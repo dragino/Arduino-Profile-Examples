@@ -32,7 +32,7 @@
 
 #include <SPI.h>
 #include <RH_RF95.h>
-#include <String.h>
+//#include <String.h>
 #include <EEPROM.h>
 #include "encrypt.h"
 
