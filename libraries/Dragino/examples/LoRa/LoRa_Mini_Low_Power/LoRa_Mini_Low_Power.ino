@@ -45,7 +45,7 @@ void setup()
   ACSR |=_BV(ACD);//OFF ACD
   ADCSRA=0;//OFF ADC
   rf95.sleep();
-  Sleep_avr();//Sleep_Mode 
+  Sleep_avr();//Sleep_Mode, in sleep mode, the current is 22uA@3.3v
 }
 
 void loop()
