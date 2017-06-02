@@ -7,7 +7,7 @@
   
   Example sketch showing how to get LoRaWAN packets from LoRaWAN node and forward it to LoRaWAN Server
 
-  It is designed to work with the other example Arduino_LMIC
+  It is designed to work with the other example Arduino_LMIC which runs on a LoRa Shield node
 
   modified 10 May 2017
   by Dragino Tech <support@dragino.com>
