@@ -73,7 +73,7 @@ void loop()
     }
     else
     {
-      Serial.println("recv failed");
+      Console.println("recv failed");
     }
   }
 }
