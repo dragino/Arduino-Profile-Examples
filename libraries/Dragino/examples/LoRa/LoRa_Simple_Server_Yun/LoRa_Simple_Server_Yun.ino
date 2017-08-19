@@ -9,6 +9,9 @@
 
   It is designed to work with the other example LoRa Simple Client
 
+  User need to use the modified RadioHead library from:
+  https://github.com/dragino/RadioHead
+
   modified 16 11 2016
   by Edwin Chen <support@dragino.com>
   Dragino Technology Co., Limited
@@ -43,7 +46,16 @@ void setup()
   rf95.setFrequency(frequency);
   // Setup Power,dBm
   rf95.setTxPower(13);
-  // Defaults BW Bw = 125 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on
+  
+  // Setup Spreading Factor (6 ~ 12)
+  rf95.setSpreadingFactor(7);
+  
+  // Setup BandWidth, option: 7800,10400,15600,20800,31200,41700,62500,125000,250000,500000
+  rf95.setSignalBandwidth(125000);
+  
+  // Setup Coding Rate:5(4/5),6(4/6),7(4/7),8(4/8) 
+  rf95.setCodingRate4(5);
+  
   Console.print("Listening on frequency: ");
   Console.println(frequency);
 }

@@ -8,6 +8,8 @@
   level messaging abilities.
 
   It is designed to work with the other example LoRa Simple Server
+  User need to use the modified RadioHead library from:
+  https://github.com/dragino/RadioHead
 
   modified 16 11 2016
   by Edwin Chen <support@dragino.com>
@@ -24,7 +26,7 @@ float frequency = 868.0;
 void setup() 
 {
   Serial.begin(9600);
-  while (!Serial) ; // Wait for serial port to be available
+  //while (!Serial) ; // Wait for serial port to be available
   Serial.println("Start LoRa Client");
   if (!rf95.init())
     Serial.println("init failed");
@@ -32,14 +34,23 @@ void setup()
   rf95.setFrequency(frequency);
   // Setup Power,dBm
   rf95.setTxPower(13);
-  // Defaults after init are 434.0MHz, 13dBm, Bw = 125 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on
+
+  // Setup Spreading Factor (6 ~ 12)
+  rf95.setSpreadingFactor(7);
+  
+  // Setup BandWidth, option: 7800,10400,15600,20800,31200,41700,62500,125000,250000,500000
+  //Lower BandWidth for longer distance.
+  rf95.setSignalBandwidth(125000);
+  
+  // Setup Coding Rate:5(4/5),6(4/6),7(4/7),8(4/8) 
+  rf95.setCodingRate4(5);
 }
 
 void loop()
 {
   Serial.println("Sending to LoRa Server");
   // Send a message to LoRa Server
-  uint8_t data[] = "Hello World!";
+  uint8_t data[] = "Hello, this is device 1";
   rf95.send(data, sizeof(data));
   
   rf95.waitPacketSent();
