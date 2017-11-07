@@ -1,0 +1,273 @@
+/*******************************************************************************
+   Copyright (c) 2015 Thomas Telkamp and Matthijs Kooijman
+
+   Permission is hereby granted, free of charge, to anyone
+   obtaining a copy of this document and accompanying files,
+   to do whatever they want with them without any restriction,
+   including, but not limited to, copying, modification and redistribution.
+   NO WARRANTY OF ANY KIND IS PROVIDED.
+  H
+   This example sends a valid LoRaWAN packet with payload "Hello,
+   world!", using frequency and encryption settings matching those of
+   the (early prototype version of) The Things Network.
+
+   Note: LoRaWAN per sub-band duty-cycle limitation is enforced (1% in g1,
+    0.1% in g2).
+
+   Change DEVADDR to a unique address!
+   See http://thethingsnetwork.org/wiki/AddressSpace
+
+   Do not forget to define the radio type correctly in config.h.
+
+
+   Required Library:
+ *    * https://github.com/matthijskooijman/arduino-lmic
+
+   Require Hardware:
+ *    * LoRa Shield + Arduino
+ *    * LoRa GPS Shield + Arduino
+ *    * LoRa Mini etc.
+ *******************************************************************************/
+ 
+  #include "lmic.h"
+  #include "hal/hal.h"
+  #include "SPI.h"
+
+// LoRaWAN NwkSKey, network session key
+// This is the default Semtech key, which is used by the prototype TTN
+// network initially.
+//ttn
+static const PROGMEM u1_t NWKSKEY[16] = { 0xAB, 0xC1, 0x99, 0xC3, 0x1E, 0x1C, 0x12, 0x1E, 0x13, 0x4B, 0x77, 0x33, 0x55, 0x13, 0x5C ,0x51 };
+// LoRaWAN AppSKey, application session key
+// This is the default Semtech key, which is used by the prototype TTN
+// network initially.
+//ttn
+static const u1_t PROGMEM APPSKEY[16] = { 0x34, 0x51, 0xF7, 0x99, 0x43, 0x18, 0x68, 0x3D, 0x54, 0x7D, 0xEE, 0x7F, 0xB7, 0x5C, 0x28, 0xAC };
+
+//
+// LoRaWAN end-device address (DevAddr)
+// See http://thethingsnetwork.org/wiki/AddressSpace
+// ttn
+static const u4_t DEVADDR = 0x04050607;
+
+
+// These callbacks are only used in over-the-air activation, so they are
+// left empty here (we cannot leave them out completely unless
+// DISABLE_JOIN is set in config.h, otherwise the linker will complain).
+void os_getArtEui (u1_t* buf) { }
+void os_getDevEui (u1_t* buf) { }
+void os_getDevKey (u1_t* buf) { }
+
+//static uint8_t mydata[] = "Hello, world!";
+static uint8_t mydata[] = "Test";
+static osjob_t initjob, sendjob,  blinkjob;
+
+// Schedule TX every this many seconds (might become longer due to duty
+// cycle limitations).
+const unsigned TX_INTERVAL = 20;
+
+// Pin mapping
+const lmic_pinmap lmic_pins = {
+  .nss = 10,
+  .rxtx = LMIC_UNUSED_PIN,
+  .rst = 9,
+  .dio = {2, 6, 7},
+};
+void do_send(osjob_t* j) {
+  // Check if there is not a current TX/RX job running
+  if (LMIC.opmode & OP_TXRXPEND) {
+    Serial.println("OP_TXRXPEND, not sending");
+  } else {
+    // Prepare upstream data transmission at the next possible time.
+    LMIC_setTxData2(1, mydata, sizeof(mydata) - 1, 0);
+    Serial.println("Packet queued");
+    Serial.println(LMIC.freq);
+   
+  }
+  // Next TX is scheduled after TX_COMPLETE event.
+}
+
+void onEvent (ev_t ev) {
+  Serial.print(os_getTime());
+  Serial.print(": ");
+  Serial.println(ev);
+  switch (ev) {
+    case EV_SCAN_TIMEOUT:
+      Serial.println("EV_SCAN_TIMEOUT");
+      break;
+    case EV_BEACON_FOUND:
+      Serial.println("EV_BEACON_FOUND");
+      break;
+    case EV_BEACON_MISSED:
+      Serial.println("EV_BEACON_MISSED");
+      break;
+    case EV_BEACON_TRACKED:
+      Serial.println("EV_BEACON_TRACKED");
+      break;
+    case EV_JOINING:
+      Serial.println("EV_JOINING");
+      break;
+    case EV_JOINED:
+      Serial.println("EV_JOINED");
+      break;
+    case EV_RFU1:
+      Serial.println("EV_RFU1");
+      break;
+    case EV_JOIN_FAILED:
+      Serial.println("EV_JOIN_FAILED");
+      break;
+    case EV_REJOIN_FAILED:
+      Serial.println("EV_REJOIN_FAILED");
+      break;
+    case EV_TXCOMPLETE:
+      Serial.println("EV_TXCOMPLETE (includes waiting for RX windows)");
+      if (LMIC.dataLen) {
+        // data received in rx slot after tx
+        Serial.print("Data Received: ");
+        Serial.write(LMIC.frame + LMIC.dataBeg, LMIC.dataLen);
+        Serial.println();
+      }
+      // Schedule next transmission
+      os_setTimedCallback(&sendjob, os_getTime() + sec2osticks(TX_INTERVAL), do_send);
+      break;
+    case EV_LOST_TSYNC:
+      Serial.println("EV_LOST_TSYNC");
+      break;
+    case EV_RESET:
+      Serial.println("EV_RESET");
+      break;
+    case EV_RXCOMPLETE:
+      // data received in ping slot
+      Serial.println("EV_RXCOMPLETE");
+      break;
+    case EV_LINK_DEAD:
+      Serial.println("EV_LINK_DEAD");
+      break;
+    case EV_LINK_ALIVE:
+      Serial.println("EV_LINK_ALIVE");
+      break;
+    default:
+      Serial.println("Unknown event");
+      break;
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+  // Serial.begin(9600);
+  while (!Serial);
+  Serial.println("Starting");
+  Serial.println("YangYH test...");
+#ifdef VCC_ENABLE
+  // For Pinoccio Scout boards
+  pinMode(VCC_ENABLE, OUTPUT);
+  digitalWrite(VCC_ENABLE, HIGH);
+  delay(1000);
+#endif
+
+  // LMIC init
+  os_init();
+  // Reset the MAC state. Session and pending data transfers will be discarded.
+  LMIC_reset();
+  //LMIC_setClockError(MAX_CLOCK_ERROR * 1/100);
+  // Set static session parameters. Instead of dynamically establishing a session
+  // by joining the network, precomputed session parameters are be provided.
+#ifdef PROGMEM
+  // On AVR, these values are stored in flash and only copied to RAM
+  // once. Copy them to a temporary buffer here, LMIC_setSession will
+  // copy them into a buffer of its own again.
+  uint8_t appskey[sizeof(APPSKEY)];
+  uint8_t nwkskey[sizeof(NWKSKEY)];
+  memcpy_P(appskey, APPSKEY, sizeof(APPSKEY));
+  memcpy_P(nwkskey, NWKSKEY, sizeof(NWKSKEY));
+  LMIC_setSession (0x1, DEVADDR, nwkskey, appskey);
+#else
+  // If not running an AVR with PROGMEM, just use the arrays directly
+  LMIC_setSession (0x1, DEVADDR, NWKSKEY, APPSKEY);
+#endif
+
+  // Disable link check validation
+  LMIC_setLinkCheckMode(0);
+
+  // TTN uses SF9 for its RX2 window.
+  LMIC.dn2Dr = DR_SF9;
+
+  // Set data rate and transmit power (note: txpow seems to be ignored by the library)
+  LMIC_setDrTxpow(DR_SF7, 14);
+
+  printabpinformation();
+  // Start job
+  do_send(&sendjob);
+}
+
+void printabpinformation(void)
+{
+  unsigned char i;
+  unsigned char chartemp;
+  unsigned char messagelength;
+
+  Serial.println(F("ABP mode to join network"));
+  Serial.println(F("In ThingPark China Platform, please use following information to create this device !"));
+  Serial.println(F("DevEui: Can be any value, which length should be 8 numbers"));
+  Serial.print("DevAddr: ");
+  Serial.println(DEVADDR, HEX);
+
+  Serial.print("NwKSKey: ");
+  for (i = 0; i <= 15; i++)
+  {
+    chartemp = pgm_read_word_near(NWKSKEY + i);
+    covertandprint((chartemp >> 4) & 0xf);
+    covertandprint(chartemp & 0xf);
+  }
+
+  Serial.println("");
+  Serial.print("AppSKey: ");
+  for (i = 0; i <= 15; i++)
+  {
+    chartemp = pgm_read_word_near(APPSKEY + i);
+    //Serial.print(buftemp[i],HEX);  // 使用这个语句，不打印0字符
+    covertandprint((chartemp >> 4) & 0xf);
+    covertandprint(chartemp & 0xf);
+  }
+  Serial.println("");
+
+  Serial.println("In this SW will send following information to network(uplink), you can see them in ThingPark Platform Wireless Logger window");
+  messagelength = strlen(mydata);
+  for (i = 0; i <= messagelength - 1; i++)
+  {
+    Serial.print(char(mydata[i]));
+  }
+  Serial.println("");
+  Serial.println(""); // add one new line
+}
+
+void covertandprint(unsigned char value)
+{
+  switch (value)
+  {
+    case 0  : Serial.print("0"); break;
+    case 1  : Serial.print("1"); break;
+    case 2  : Serial.print("2"); break;
+    case 3  : Serial.print("3"); break;
+    case 4  : Serial.print("4"); break;
+    case 5  : Serial.print("5"); break;
+    case 6  : Serial.print("6"); break;
+    case 7  : Serial.print("7"); break;
+    case 8  : Serial.print("8"); break;
+    case 9  : Serial.print("9"); break;
+    case 10  : Serial.print("A"); break;
+    case 11  : Serial.print("B"); break;
+    case 12  : Serial.print("C"); break;
+    case 13  : Serial.print("D"); break;
+    case 14  : Serial.print("E"); break;
+    case 15 :  Serial.print("F"); break;
+    default :
+      Serial.print("?");   break;
+  }
+}
+
+
+void loop() {
+  os_runloop_once();
+}
+ 
