@@ -3,7 +3,7 @@
   Support Devices: LoRa Shield + Arduino 
   
   Example sketch showing how to read Temperature and Humidity from DHT11 sensor,  
-  Then send the value to LoRa Server, the LoRa Server will send the value to the 
+  Then send the value to LoRa Gateway, the LoRa Gateway will send the value to the 
   IoT server
 
   It is designed to work with the other sketch dht11_server. 
@@ -22,8 +22,10 @@ RH_RF95 rf95;
 #define dht_dpin A0 // Use A0 pin as Data pin for DHT11. 
 byte bGlobalErr;
 char dht_dat[5]; // Store Sensor Data
+char node_id[3] = {1,1,1}; //LoRa End Node ID
 String stringOne;
 float frequency = 868.0;
+unsigned int count = 1;
 
 void setup()
 {
@@ -36,7 +38,15 @@ void setup()
     // Setup Power,dBm
     rf95.setTxPower(13);
     
-    Serial.println("Humidity and temperature\n\n"); 
+    Serial.println("LoRa End Node Example --"); 
+    Serial.println("    DHT11 Temperature and Humidity Sensor\n");
+    Serial.print("LoRa End Node ID: ");
+
+    for(int i = 0;i < 3; i++)
+    {
+        Serial.print(node_id[i],HEX);
+    }
+    Serial.println();
 }
 
 void InitDHT()
@@ -128,26 +138,34 @@ uint16_t CRC16(uint8_t *pBuffer,uint32_t length)
 
 void loop()
 {
+    Serial.print("###########    ");
+    Serial.print("COUNT=");
+    Serial.print(count);
+    Serial.println("    ###########");
+    count++;
     ReadDHT();
     char data[50] = {0} ;
+    int dataLength = 7; // Payload Length
     // Use data[0], data[1],data[2] as Node ID
-    data[0] = 1 ;
-    data[1] = 1 ;
-    data[2] = 1 ;
-    data[3] = dht_dat[0];//Get Humidity
-    data[4] = dht_dat[2];//Get Temperature
+    data[0] = node_id[0] ;
+    data[1] = node_id[1] ;
+    data[2] = node_id[2] ;
+    data[3] = dht_dat[0];//Get Humidity Integer Part
+    data[4] = dht_dat[1];//Get Humidity Decimal Part
+    data[5] = dht_dat[2];//Get Temperature Integer Part
+    data[6] = dht_dat[3];//Get Temperature Decimal Part
     switch (bGlobalErr)
     {
       case 0:
-          Serial.print("Current humdity = ");
+          Serial.print("Current humidity = ");
           Serial.print(data[3], DEC);//Show humidity
           Serial.print(".");
-          Serial.print(dht_dat[1], DEC);//Show humidity
+          Serial.print(data[4], DEC);//Show humidity
           Serial.print("%  ");
           Serial.print("temperature = ");
-          Serial.print(data[4], DEC);//Show temperature
+          Serial.print(data[5], DEC);//Show temperature
           Serial.print(".");
-          Serial.print(dht_dat[3], DEC);//Show temperature
+          Serial.print(data[6], DEC);//Show temperature
           Serial.println("C  ");
           break;
        case 1:
@@ -163,27 +181,39 @@ void loop()
           Serial.println("Error: Unrecognized code encountered.");
           break;
     }
-    int dataLength = strlen(data);//CRC length for LoRa Data
-    //Serial.println(dataLength);
-     
+    
     uint16_t crcData = CRC16((unsigned char*)data,dataLength);//get CRC DATA
-    //Serial.println(crcData);
-       
-    unsigned char sendBuf[50]={0};
+    //Serial.println(crcData,HEX);
+    
+    Serial.print("Data to be sent(without CRC): ");
+    
     int i;
-    for(i = 0;i < 8;i++)
+    for(i = 0;i < dataLength; i++)
+    {
+        Serial.print(data[i],HEX);
+        Serial.print(" ");
+    }
+    Serial.println();
+        
+    unsigned char sendBuf[50]={0};
+
+    for(i = 0;i < dataLength;i++)
     {
         sendBuf[i] = data[i] ;
     }
     
     sendBuf[dataLength] = (unsigned char)crcData; // Add CRC to LoRa Data
-    //Serial.println( sendBuf[dataLength] );
-    
     sendBuf[dataLength+1] = (unsigned char)(crcData>>8); // Add CRC to LoRa Data
-    //Serial.println( sendBuf[dataLength+1] );
 
-    rf95.send(sendBuf, strlen((char*)sendBuf));//Send LoRa Data
-    //Serial.print(strlen((char*)sendBuf));
+    Serial.print("Data to be sent(with CRC):    ");
+    for(i = 0;i < (dataLength +2); i++)
+    {
+        Serial.print(sendBuf[i],HEX);
+        Serial.print(" ");
+    }
+    Serial.println();
+
+    rf95.send(sendBuf, dataLength+2);//Send LoRa Data
      
     uint8_t buf[RH_RF95_MAX_MESSAGE_LEN];//Reply data array
     uint8_t len = sizeof(buf);//reply data length
@@ -193,11 +223,11 @@ void loop()
         // Should be a reply message for us now   
         if (rf95.recv(buf, &len))//check if reply message is correct
        {
-            if(buf[0] == 1||buf[1] == 1||buf[2] ==1) // Check if reply message has the our node ID
+            if(buf[0] == node_id[0] ||buf[1] == node_id[2] ||buf[2] == node_id[2] ) // Check if reply message has the our node ID
            {
                pinMode(4, OUTPUT);
                digitalWrite(4, HIGH);
-               Serial.print("got reply: ");//print reply
+               Serial.print("Got Reply from Gateway: ");//print reply
                Serial.println((char*)buf);
               
                delay(400);
@@ -214,10 +244,11 @@ void loop()
     }
     else
     {
-        Serial.println("No reply, is rf95_server running?");//No signal reply
+        Serial.println("No reply, is LoRa gateway running?");//No signal reply
         rf95.send(sendBuf, strlen((char*)sendBuf));//resend data
     }
     delay(30000); // Send sensor data every 30 seconds
+    Serial.println("");
 }
 
 
