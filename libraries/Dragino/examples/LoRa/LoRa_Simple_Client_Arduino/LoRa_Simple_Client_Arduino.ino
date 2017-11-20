@@ -21,6 +21,10 @@
 
 // Singleton instance of the radio driver
 RH_RF95 rf95;
+
+//The parameter are pre-set for 868Mhz used. If user want to use lower frenqucy 433Mhz.Better to set 
+//rf95.setSignalBandwidth(31250);
+//rf95.setCodingRate4(8);
 float frequency = 868.0;
 
 void setup() 
@@ -38,12 +42,32 @@ void setup()
   // Setup Spreading Factor (6 ~ 12)
   rf95.setSpreadingFactor(7);
   
-  // Setup BandWidth, option: 7800,10400,15600,20800,31200,41700,62500,125000,250000,500000
+  // Setup BandWidth, option: 7800,10400,15600,20800,31250,41700,62500,125000,250000,500000
   //Lower BandWidth for longer distance.
   rf95.setSignalBandwidth(125000);
   
   // Setup Coding Rate:5(4/5),6(4/6),7(4/7),8(4/8) 
   rf95.setCodingRate4(5);
+  
+  /*
+  //Different Combination for distance and speed examples: 
+  Example 1: Bw = 125 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on. Default medium range
+    rf95.setSignalBandwidth(125000);
+    rf95.setCodingRate4(5);
+    rf95.setSpreadingFactor(7);
+  Example 2: Bw = 500 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on. Fast+short range
+    rf95.setSignalBandwidth(500000);
+    rf95.setCodingRate4(5);
+    rf95.setSpreadingFactor(7);
+  Example 3: Bw = 31.25 kHz, Cr = 4/8, Sf = 512chips/symbol, CRC on. Slow+long range
+    rf95.setSignalBandwidth(31250);
+    rf95.setCodingRate4(8);
+    rf95.setSpreadingFactor(9);
+  Example 4: Bw = 125 kHz, Cr = 4/8, Sf = 4096chips/symbol, CRC on. Slow+long range
+    rf95.setSignalBandwidth(125000);
+    rf95.setCodingRate4(8);
+    rf95.setSpreadingFactor(12); 
+  */
 }
 
 void loop()
