@@ -4,13 +4,14 @@
   
   Example sketch showing how to get data from remote LoRa node, 
   Then send the value to IoT Server
-
   It is designed to work with the other sketch dht11_client. 
-
   modified 24 11 2016
   by Edwin Chen <support@dragino.com>
   Dragino Technology Co., Limited
 */
+// Added Humidty Data Transmit to thingspeak 
+// by John Hewins
+// modified 24 02 2018
 
 #include <SPI.h>
 #include <RH_RF95.h>
@@ -22,11 +23,12 @@ RH_RF95 rf95;
 //For product: LG01. 
 #define BAUDRATE 115200
 
-String myWriteAPIString = "B9Z0R25QNVEBKIFY";
+String myWriteAPIString = "XXXXXXXXXXXXXXXXXX";
 uint16_t crcdata = 0;
 uint16_t recCRCData = 0;
-float frequency = 868.0;
-String dataString = "";
+float frequency = 915.0;
+String dataString1 = "";
+String dataString2 = "";
 
 void uploadData(); // Upload Data to ThingSpeak.
 
@@ -128,15 +130,19 @@ void loop()
                     Console.print(".");
                     Console.println(hl);
                                        
-                    dataString ="field1=";
-                    dataString += th;
-                    dataString +=".";
-                    dataString += tl;
-                    //dataString ="field2=";
-                    //dataString += h;
+                    dataString1 ="field1=";
+                    dataString1 += th;
+                    dataString1 +=".";
+                    dataString1 += tl;
+                    
+                    dataString2 ="field2=";
+                    dataString2 += hh;
+                    dataString2 +=".";
+                    dataString2 += hl;
                     
                     uploadData(); // 
-                    dataString="";
+                    dataString1="";
+                    dataString2="";
                 }
             } 
             else 
@@ -159,8 +165,11 @@ void uploadData() {//Upload Data to ThingSpeak
   String upload_url = "https://api.thingspeak.com/update?api_key=";
   upload_url += myWriteAPIString;
   upload_url += "&";
-  upload_url += dataString;
+  upload_url += dataString1;
+  upload_url += "&";
+  upload_url += dataString2;
 
+  
   Console.println("Call Linux Command to Send Data");
   Process p;    // Create a process and call it "p", this process will execute a Linux curl command
   p.begin("curl");
@@ -181,5 +190,3 @@ void uploadData() {//Upload Data to ThingSpeak
   Console.println("####################################");
   Console.println("");
 }
-
-
