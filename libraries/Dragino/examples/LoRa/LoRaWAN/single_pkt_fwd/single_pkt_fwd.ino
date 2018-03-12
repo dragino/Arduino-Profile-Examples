@@ -17,7 +17,7 @@
 #include <LoRa.h>
 
 
-const String Sketch_Ver = "single_pkt_fwd_v002";
+const String Sketch_Ver = "single_pkt_fwd_v003";
 
 static float freq, txfreq;
 static int SF, CR, txsf;
@@ -40,7 +40,7 @@ static uint8_t message[256];
 static int send_mode = 0; /* define mode default receive mode */
 
 //Set Debug = 1 to enable Console Output;
-const int debug = 1;
+const int debug = 0;
 
 static int packetSize;
 
