@@ -15,7 +15,6 @@
 
 #include <SPI.h>
 #include <RH_RF95.h>
-#include <String.h>
 
 RH_RF95 rf95;
 
@@ -23,7 +22,6 @@ RH_RF95 rf95;
 byte bGlobalErr;
 char dht_dat[5]; // Store Sensor Data
 char node_id[3] = {1,1,1}; //LoRa End Node ID
-String stringOne;
 float frequency = 868.0;
 unsigned int count = 1;
 
