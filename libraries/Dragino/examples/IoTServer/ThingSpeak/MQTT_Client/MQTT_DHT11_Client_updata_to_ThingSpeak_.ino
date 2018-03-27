@@ -11,7 +11,7 @@ float temperature,humidity,tem,hum;
 String datastring1="";
 String datastring2="";
 char tem_1[8]={"\0"},hum_1[8]={"\0"};
-char *node_id = "<5678>"; //
+char *node_id = "<5678>";  //From LG01 via web Local Channel settings on MQTT.Please refer <> dataformat in here.
 uint8_t datasend[36];
 unsigned int count = 1;
 
