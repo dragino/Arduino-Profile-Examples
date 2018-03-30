@@ -99,9 +99,6 @@ void SendData()
   delay(5000);
 }
     
-    
-
-
 void loop()
 {
     Serial.print("###########    ");
