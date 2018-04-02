@@ -13,7 +13,7 @@ String datastring2="";
 char tem_1[8]={"\0"},hum_1[8]={"\0"};
 uint8_t datasend[72];
 unsigned int count = 1;
-#define LW_SENSOR_NAME "T2"
+#define LW_SENSOR_NAME "T2"   //Sensor_name
 #define LW_SENSOR_NAME2 "H2"
 
 void setup()
