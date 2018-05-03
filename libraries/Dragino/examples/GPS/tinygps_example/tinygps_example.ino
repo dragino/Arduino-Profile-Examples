@@ -28,7 +28,7 @@
 #include <TinyGPS.h>
 
 TinyGPS gps;
-SoftwareSerial ss(3, 4); // Arduino RX, TX , 
+SoftwareSerial ss(3, 4); // Arduino TX, RX , 
 
 static void smartdelay(unsigned long ms);
 static void print_float(float val, float invalid, int len, int prec);
