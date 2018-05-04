@@ -4,7 +4,7 @@
 #include <RH_RF95.h>
 TinyGPS gps;
 RH_RF95 rf95;
-SoftwareSerial ss(3, 4); // Arduino RX, TX to conenct to GPS module.
+SoftwareSerial ss(3, 4); // Arduino TX, RX to conenct to GPS module.
 float frequency = 868.3; 
 unsigned int count = 1;
 static void smartdelay(unsigned long ms);
