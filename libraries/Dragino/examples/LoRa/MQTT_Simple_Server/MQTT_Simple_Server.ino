@@ -86,9 +86,6 @@ void ReceiveData()
            Console.print(" ");
           }
          }
-           Console.print(" ");
-           Console.println();
-           
       // Send a reply
       uint8_t data[64] = {'\0'};
       char id[8] =  {'\0'};

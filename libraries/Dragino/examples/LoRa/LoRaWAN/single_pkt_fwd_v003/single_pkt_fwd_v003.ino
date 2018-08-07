@@ -24,7 +24,7 @@ static int SF, CR, txsf;
 static long BW, preLen;
 static long old_time = millis();
 static long new_time;
-static unsigned long newtime1; 
+
 const long sendpkt_interval = 10000;  // 10 seconds for replay.
 
 void getRadioConf();//Get LoRa Radio Configure from LG01
@@ -36,7 +36,7 @@ void writeVersion();
 
 static uint8_t packet[256];
 static uint8_t message[256];
-static uint8_t packet1[64];
+
 static int send_mode = 0; /* define mode default receive mode */
 
 //Set Debug = 1 to enable Console Output;
@@ -107,7 +107,6 @@ void loop() {
     } else {
         emitpacket();
     }
-    feeddog();
 
 }
 
@@ -481,26 +480,6 @@ void emitpacket()
   rm.run();
   
   send_mode = 0; //back to receive mode
-}
-void feeddog()
-{
-    int i = 0;
-
-    memset(packet1, 0, sizeof(packet1));
-
-    Process p;    // Create a process
-    p.begin("date");
-    p.addParameter("+%s");
-    p.run();    
-    while (p.available() > 0 && i < 32) {
-        packet1[i] = p.read();
-        i++;
-    }
-    newtime1 = atol(packet1);
-
-    File dog = FileSystem.open("/var/iot/dog", FILE_WRITE);
-    dog.println(newtime1);
-    dog.close();
 }
 
 //Function to write sketch version number into Linux.

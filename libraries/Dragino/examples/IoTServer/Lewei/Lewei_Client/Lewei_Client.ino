@@ -4,7 +4,7 @@
 
 // Singleton instance of the radio driver
 RH_RF95 rf95;
-float frequency = 868.0;  //frequency settings
+float frequency = 868.5;  //frequency settings
 dht DHT;
 #define DHT11_PIN A0
 float temperature,humidity,tem,hum;

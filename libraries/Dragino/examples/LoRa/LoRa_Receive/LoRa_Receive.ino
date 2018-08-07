@@ -14,17 +14,18 @@
 #include <LoRa.h>
 #include <Console.h>
 #include <Process.h>
+#include <FileIO.h>
 
 
 // Set center frequency
-uint32_t freq = 869525000;
+uint32_t freq = 868300000;
 int SF = 12,Denominator = 5;
 long SBW = 125E3;
 
 long old_time=millis();
 long new_time;
 long status_update_interval=30000;  //update Status every 30 seconds. 
-
+ char message[256];
 //Receiver LoRa packets
 void receivepacket() {
   // try to parse packet
@@ -35,7 +36,7 @@ void receivepacket() {
 
     // read packet
     int i = 0;
-    char message[256];
+    //char message[256];
     while (LoRa.available() && i < 256) {
       message[i]=LoRa.read();
       Console.print(message[i],HEX);
@@ -81,4 +82,13 @@ void loop() {
       Console.println("not receive overtime");
       old_time = new_time;
   }
+  mkfile();
 }
+void mkfile()
+{
+  FileSystem.begin();
+  File file_name = FileSystem.open("/tmp/iot/data3",FILE_WRITE);
+  file_name.print((char *)message);
+  file_name.close();
+}
+

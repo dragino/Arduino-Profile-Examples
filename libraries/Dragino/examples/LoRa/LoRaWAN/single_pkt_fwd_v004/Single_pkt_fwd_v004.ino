@@ -1,31 +1,20 @@
-/*
-  LoRaWAN packet forwarder example :
-  Support Devices: LG01 Single Channel LoRa Gateway
-
-  LG01 test with firmware version v4.3.2
-
-  Example sketch showing how to get LoRaWAN packets from LoRaWAN node and forward it to LoRaWAN Server
-  It is designed to work with
-  modified 27 Jan 2018
-  by Dragino Tech <support@dragino.com>
-*/
-
 #include <FileIO.h>
 #include <Console.h>
 #include <Process.h>
 #include <SPI.h>
 #include <LoRa.h>
-
-
-const String Sketch_Ver = "single_pkt_fwd_v003";
+const String Sketch_Ver = "single_pkt_fwd_v004";
 
 static float freq, txfreq;
 static int SF, CR, txsf;
 static long BW, preLen;
 static long old_time = millis();
 static long new_time;
-static unsigned long newtime1; 
+static unsigned long newtime; 
 const long sendpkt_interval = 10000;  // 10 seconds for replay.
+const long interval = 60000;          //1min for feeddog.
+unsigned long previousMillis = millis();
+
 
 void getRadioConf();//Get LoRa Radio Configure from LG01
 void setLoRaRadio();//Set LoRa Radio
@@ -33,6 +22,7 @@ void receivepacket();// receive packet
 void sendpacket(); //send join accept payload
 void emitpacket(); //send ddata down
 void writeVersion();
+void feeddog();
 
 static uint8_t packet[256];
 static uint8_t message[256];
@@ -41,20 +31,16 @@ static int send_mode = 0; /* define mode default receive mode */
 
 //Set Debug = 1 to enable Console Output;
 const int debug = 0;
-
+int iuu = 0;
 static int packetSize;
-
 static char dwdata[32] = {'\0'};  // for data down payload
 
-
-void setup() {
-    // delay(5000);
-    // Setup Bridge
+void setup(){
+      // Setup Bridge
     Bridge.begin(115200);
 
     // Setup File IO
     FileSystem.begin();
-
     if ( debug > 0 )
     {
         Console.begin();
@@ -62,7 +48,7 @@ void setup() {
         Console.print(F("Sketch Version:"));
         Console.println(Sketch_Ver);
     }
-
+  
 
     //write sketch version to Linux
     writeVersion();
@@ -91,15 +77,12 @@ void setup() {
 
     if (!LoRa.begin(freq))
         if ( debug > 0 ) Console.println(F("init LoRa failed"));
-
     setLoRaRadio();// Set LoRa Radio to Semtech Chip
-
     delay(1000);
-
+    mcu_boot();
 }
 
-void loop() {
-
+void loop(){
     if (!send_mode) {
         receivepacket();          /* received message and wait server downstream */
     } else if (send_mode == 1) {
@@ -107,10 +90,14 @@ void loop() {
     } else {
         emitpacket();
     }
-    feeddog();
+            
+    unsigned long currentMillis = millis();
+    if ((currentMillis - previousMillis ) >= interval){
+      previousMillis = currentMillis;
+        feeddog();
 
+    }   
 }
-
 
 //Get LoRa Radio Configure from LG01
 void getRadioConf() {
@@ -227,7 +214,6 @@ void getRadioConf() {
     }
 }
 
-
 void setLoRaRadio() {
     LoRa.setFrequency(freq);
     LoRa.setSpreadingFactor(SF);
@@ -237,14 +223,16 @@ void setLoRaRadio() {
     LoRa.setPreambleLength(preLen);
 }
 
+
 //Receiver LoRa packets and forward it
 void receivepacket() {
     // try to parse packet
     LoRa.setSpreadingFactor(SF);
     LoRa.receive(0);
-
-    while (1) {  //loop for receive message from lora module
-
+     //old_time = millis();
+     
+    while (new_time - old_time < sendpkt_interval) { 
+      new_time = millis();
       packetSize = LoRa.parsePacket();
 
       if (packetSize) {   // Received a packet
@@ -254,7 +242,6 @@ void receivepacket() {
               Console.print(packetSize);
               Console.println(F(" Bytes"));
           }
-
         // read packet
         int i = 0;
 
@@ -262,6 +249,7 @@ void receivepacket() {
 
         while (LoRa.available() && i < 256) {
             message[i] = LoRa.read();
+
 
 
           if ( debug > 0 )  {
@@ -327,6 +315,7 @@ void receivepacket() {
         return; /* exit the receive loop after received data from the node */
       } /* end of if packetsize than 1 */
     } /* end of recive loop */
+   
 }
 
 void sendpacket()
@@ -335,7 +324,6 @@ void sendpacket()
   int i = 0;
 
   old_time = millis();
-
   new_time = old_time;
 
   while (new_time - old_time < sendpkt_interval) { /* received window may be closed after 10 seconds */
@@ -381,7 +369,7 @@ void sendpacket()
 
     while (new_time - old_time < sendpkt_interval - 2000) {   // 8 seconds for sending packet to node
       LoRa.beginPacket();
-      LoRa.write(packet, i);
+      LoRa.write(packet,i);
       LoRa.endPacket();
       delay(1);
       new_time = millis();
@@ -396,17 +384,13 @@ void sendpacket()
       LoRa.beginPacket();
       LoRa.write(packet, i);
       LoRa.endPacket();
-
       delay(1);
-
       new_time = millis();
     }
-
     LoRa.setFrequency(freq);
     LoRa.setSpreadingFactor(SF);    /* reset SF to receive message */
 
     if (debug > 0) Console.println(F("[transmit] END"));
-
     break;
   }
 
@@ -417,7 +401,6 @@ void sendpacket()
   rm.run();
   
   send_mode = 0;
-
 }
 
 void emitpacket()
@@ -482,31 +465,38 @@ void emitpacket()
   
   send_mode = 0; //back to receive mode
 }
-void feeddog()
-{
-    int i = 0;
 
+void feeddog(){
+    int k = 0;
     memset(packet1, 0, sizeof(packet1));
 
     Process p;    // Create a process
     p.begin("date");
     p.addParameter("+%s");
     p.run();    
-    while (p.available() > 0 && i < 32) {
-        packet1[i] = p.read();
-        i++;
+    while (p.available() > 0 && k < 32) {
+        packet1[k] = p.read();
+        k++;
     }
-    newtime1 = atol(packet1);
+    newtime = atol(packet1);
 
     File dog = FileSystem.open("/var/iot/dog", FILE_WRITE);
-    dog.println(newtime1);
+    dog.println(newtime);
     dog.close();
+  
 }
 
 //Function to write sketch version number into Linux.
-void writeVersion()
-{
-  File fw_version = FileSystem.open("/var/avr/fw_version", FILE_WRITE);
+void writeVersion(){
+  File fw_version = FileSystem.open("/var/avr/fw_version", FILE_WRITE); 
   fw_version.print(Sketch_Ver);
   fw_version.close();
 }
+
+void mcu_boot(){
+    Process r;
+    r.begin("logger");
+    r.addParameter("\"mcu_boot\"");
+    r.run();
+}
+

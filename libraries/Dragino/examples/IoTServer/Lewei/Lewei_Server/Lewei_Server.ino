@@ -174,7 +174,7 @@ void read_config()
   read_CR();
   read_SBW();
 }
-
+/*
 void show_config()
 {
   Console.print(F("The frequency is "));Console.print(freq);Console.println("Hz");
@@ -182,3 +182,4 @@ void show_config()
   Console.print(F("The coderate is "));Console.println(Denominator);
   Console.print(F("The single bandwith is "));Console.print(SBW);Console.println("Hz");
 }
+*/

@@ -37,18 +37,17 @@
 // This is the default Semtech key, which is used by the prototype TTN
 // network initially.
 //ttn
-static const PROGMEM u1_t NWKSKEY[16] = { 0x11, 0xB5, 0x16, 0xC4, 0x6D, 0x2A, 0x78, 0x33, 0x02, 0x38, 0x46, 0xD4, 0x59, 0xC1, 0xEC, 0xA1 };
+static const PROGMEM u1_t NWKSKEY[16] = { 0xFD, 0xD7, 0xDB, 0xB6, 0x81, 0x49, 0xC1, 0x06, 0xD4, 0x60, 0xC9, 0x47, 0x5A, 0x8A, 0xF2, 0x40 };
 // LoRaWAN AppSKey, application session key
 // This is the default Semtech key, which is used by the prototype TTN
 // network initially.
 //ttn
-static const u1_t PROGMEM APPSKEY[16] = { 0x87, 0x30, 0xE5, 0x28, 0xAD, 0x05, 0x54, 0x2E, 0x44, 0x6D, 0xFF, 0x4E, 0xA3, 0x4A, 0x07, 0xBF };
-
+static const u1_t PROGMEM APPSKEY[16] = { 0x69, 0x5B, 0x6A, 0x23, 0x66, 0x2B, 0xA1, 0x24, 0xE9, 0x1E, 0xAB, 0x9C, 0x9F, 0x7C, 0x7D, 0xA4 };
 //
 // LoRaWAN end-device address (DevAddr)
 // See http://thethingsnetwork.org/wiki/AddressSpace
 // ttn
-static const u4_t DEVADDR = 0x260118AD;
+static const u4_t DEVADDR = 0x260117DA;
 
 
 // These callbacks are only used in over-the-air activation, so they are
@@ -63,7 +62,7 @@ static osjob_t initjob,sendjob,blinkjob;
 
 // Schedule TX every this many seconds (might become longer due to duty
 // cycle limitations).
-const unsigned TX_INTERVAL = 20;
+const unsigned TX_INTERVAL = 10;
 
 // Pin mapping
 const lmic_pinmap lmic_pins = {
