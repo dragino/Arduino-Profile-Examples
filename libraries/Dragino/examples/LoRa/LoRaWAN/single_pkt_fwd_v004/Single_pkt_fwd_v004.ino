@@ -11,10 +11,10 @@ static long BW, preLen;
 static long old_time = millis();
 static long new_time;
 static unsigned long newtime; 
-const long sendpkt_interval = 10000;  // 10 seconds for replay.
+const long sendpkt_interval = 15000;  // 15 seconds for replay.
 const long interval = 60000;          //1min for feeddog.
 unsigned long previousMillis = millis();
-
+unsigned long previousMillis_1 = millis();
 
 void getRadioConf();//Get LoRa Radio Configure from LG01
 void setLoRaRadio();//Set LoRa Radio
@@ -229,12 +229,13 @@ void receivepacket() {
     // try to parse packet
     LoRa.setSpreadingFactor(SF);
     LoRa.receive(0);
-     //old_time = millis();
-     
-    while (new_time - old_time < sendpkt_interval) { 
-      new_time = millis();
+   
+   unsigned long currentMillis_1 = millis();
+    if ((currentMillis_1 - previousMillis_1 ) >= sendpkt_interval ){
+      
+     previousMillis_1 = currentMillis_1;
       packetSize = LoRa.parsePacket();
-
+      
       if (packetSize) {   // Received a packet
           if ( debug > 0 ) {
               Console.println();
