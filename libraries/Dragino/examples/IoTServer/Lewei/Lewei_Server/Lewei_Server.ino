@@ -20,7 +20,7 @@ char fre1[9];
 
 void setup(){
      Bridge.begin(BAUDRATE);
-      while (!Console) ; // Wait for console port to be available
+     // while (!Console) ; // Wait for console port to be available
          read_config();
          
       if (!rf95.init())
