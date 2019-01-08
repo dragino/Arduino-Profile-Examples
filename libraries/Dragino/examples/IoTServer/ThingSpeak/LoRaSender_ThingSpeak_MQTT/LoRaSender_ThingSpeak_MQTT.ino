@@ -2,6 +2,9 @@
   LoRa_Sender_MQTT:
   Support Devices: LoRa Shield + Arduino 
   
+  Require Library:
+  https://github.com/sandeepmistry/arduino-LoRa 
+  
   Example sketch showing how to send or a message base on ThingSpeak(https://thingspeak.com) MQTT format. 
 
   The End node will send out a string "<End_Node_ID>field1=${TEMPERATURE_VALUE}&field2=${HUMIDITY_VALUE}" to LG01/LG02 gateway. 
