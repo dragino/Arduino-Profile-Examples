@@ -133,7 +133,7 @@ void loop()
                     dataString +=".";
                     dataString += tl;
                     //dataString ="field2=";
-                    //dataString += h;
+                    //dataString += hh;
                     
                     uploadData(); // 
                     dataString="";
