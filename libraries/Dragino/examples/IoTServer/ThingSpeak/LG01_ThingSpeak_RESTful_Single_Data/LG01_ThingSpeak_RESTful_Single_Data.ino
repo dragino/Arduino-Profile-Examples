@@ -106,7 +106,7 @@ void loop()
             Console.println();
             if(crcdata == recCRCData) //Check if CRC is correct
             { 
-                if(buf[0] == 1||buf[1] == 1||buf[2] ==1) //Check if the ID match the LoRa Node ID
+                if(buf[0] == 1 && buf[1] == 1 && buf[2] ==1) //Check if the ID match the LoRa Node ID
                 {
                     uint8_t data[] = "   Server ACK";//Reply 
                     data[0] = buf[0];

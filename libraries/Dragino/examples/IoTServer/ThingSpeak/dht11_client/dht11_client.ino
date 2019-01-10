@@ -225,7 +225,7 @@ void loop()
         // Should be a reply message for us now   
         if (rf95.recv(buf, &len))//check if reply message is correct
        {
-            if(buf[0] == node_id[0] ||buf[1] == node_id[2] ||buf[2] == node_id[2] ) // Check if reply message has the our node ID
+            if(buf[0] == node_id[0] && buf[1] == node_id[2] && buf[2] == node_id[2] ) // Check if reply message has the our node ID
            {
                pinMode(4, OUTPUT);
                digitalWrite(4, HIGH);
