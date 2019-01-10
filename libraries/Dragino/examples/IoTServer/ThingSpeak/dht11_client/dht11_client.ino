@@ -1,4 +1,7 @@
 /*
+  Require Library: 
+  https://github.com/dragino/RadioHead
+  
   Upload Data to IoT Server ThingSpeak (https://thingspeak.com/):
   Support Devices: LoRa Shield + Arduino 
   
@@ -35,6 +38,7 @@ void setup()
     rf95.setFrequency(frequency);
     // Setup Power,dBm
     rf95.setTxPower(13);
+    rf95.setSyncWord(0x34);
     
     Serial.println("LoRa End Node Example --"); 
     Serial.println("    DHT11 Temperature and Humidity Sensor\n");

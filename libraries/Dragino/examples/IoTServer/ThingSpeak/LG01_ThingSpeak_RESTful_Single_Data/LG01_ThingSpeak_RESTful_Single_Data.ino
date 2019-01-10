@@ -1,6 +1,9 @@
 /*
   Upload Data to IoT Server ThingSpeak (https://thingspeak.com/):
   Support Devices: LG01 
+
+  Require Library: 
+  https://github.com/dragino/RadioHead
   
   Example sketch showing how to get data from remote LoRa node, 
   Then send the value to IoT Server
@@ -22,7 +25,7 @@ RH_RF95 rf95;
 //For product: LG01. 
 #define BAUDRATE 115200
 
-String myWriteAPIString = "B9Z0R25QNVEBKIFY";
+String myWriteAPIString = "P07KVY59P5QEY6M6";
 uint16_t crcdata = 0;
 uint16_t recCRCData = 0;
 float frequency = 868.0;
@@ -42,6 +45,7 @@ void setup()
     rf95.setFrequency(frequency);
     // Setup Power,dBm
     rf95.setTxPower(13);
+    rf95.setSyncWord(0x34);
     
     Console.println("LoRa Gateway Example  --");
     Console.println("    Upload Single Data to ThinkSpeak");
@@ -132,9 +136,11 @@ void loop()
                     dataString += th;
                     dataString +=".";
                     dataString += tl;
-                    //dataString ="field2=";
-                    //dataString += h;
-                    
+                    dataString +="&field2=";
+                    dataString += hh;
+                    dataString +=".";
+                    dataString += hl;
+                                       
                     uploadData(); // 
                     dataString="";
                 }
