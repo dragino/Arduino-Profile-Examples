@@ -1,0 +1,946 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AESAUX	src/aes/lmic.c	/^u4_t AESAUX[16\/sizeof(u4_t)];$/;"	v
+AESAUX	src/aes/other.c	/^u4_t AESAUX[16\/sizeof(u4_t)];$/;"	v
+AESKEY	src/aes/lmic.c	/^u4_t AESKEY[11*16\/sizeof(u4_t)];$/;"	v
+AESKEY	src/aes/other.c	/^u4_t AESKEY[16\/sizeof(u4_t)];$/;"	v
+AES_Add_Round_Key	src/aes/ideetron/AES-128_V10.cpp	/^static void AES_Add_Round_Key(unsigned char *Round_Key)$/;"	f	file:
+AES_CTR	src/lmic/oslmic.h	273;"	d
+AES_Calculate_Round_Key	src/aes/ideetron/AES-128_V10.cpp	/^static void AES_Calculate_Round_Key(unsigned char Round, unsigned char *Round_Key)$/;"	f	file:
+AES_DEC	src/lmic/oslmic.h	271;"	d
+AES_ENC	src/lmic/oslmic.h	270;"	d
+AES_MIC	src/lmic/oslmic.h	272;"	d
+AES_MICNOAUX	src/lmic/oslmic.h	274;"	d
+AES_MICSUB	src/aes/lmic.c	16;"	d	file:
+AES_Mix_Collums	src/aes/ideetron/AES-128_V10.cpp	/^static void AES_Mix_Collums()$/;"	f	file:
+AES_Shift_Rows	src/aes/ideetron/AES-128_V10.cpp	/^static void AES_Shift_Rows()$/;"	f	file:
+AES_Sub_Byte	src/aes/ideetron/AES-128_V10.cpp	/^static unsigned char AES_Sub_Byte(unsigned char Byte)$/;"	f	file:
+AES_expr	src/aes/lmic.c	198;"	d	file:
+AES_expr4	src/aes/lmic.c	193;"	d	file:
+AES_key4	src/aes/lmic.c	188;"	d	file:
+AESaux	src/lmic/oslmic.h	75;"	d
+AESkey	src/lmic/oslmic.h	74;"	d
+AIRTIME_BCN	src/lmic/lorabase.h	/^enum { AIRTIME_BCN       = 144384 };  \/\/ micros$/;"	e	enum:__anon69
+AIRTIME_BCN	src/lmic/lorabase.h	/^enum { AIRTIME_BCN       = 72192 };  \/\/ micros$/;"	e	enum:__anon85
+AIRTIME_BCN_osticks	src/lmic/lmic.c	36;"	d	file:
+ASSERT	src/lmic/oslmic.h	46;"	d
+ASSERT	src/lmic/oslmic.h	48;"	d
+BAND_AUX	src/lmic/lmic.h	/^enum { BAND_MILLI=0, BAND_CENTI=1, BAND_DECI=2, BAND_AUX=3 };$/;"	e	enum:__anon28
+BAND_CENTI	src/lmic/lmic.h	/^enum { BAND_MILLI=0, BAND_CENTI=1, BAND_DECI=2, BAND_AUX=3 };$/;"	e	enum:__anon28
+BAND_DECI	src/lmic/lmic.h	/^enum { BAND_MILLI=0, BAND_CENTI=1, BAND_DECI=2, BAND_AUX=3 };$/;"	e	enum:__anon28
+BAND_MILLI	src/lmic/lmic.h	/^enum { BAND_MILLI=0, BAND_CENTI=1, BAND_DECI=2, BAND_AUX=3 };$/;"	e	enum:__anon28
+BCN_FULL	src/lmic/lmic.h	/^       BCN_FULL    = 0x02,   \/\/!< Full beacon decoded$/;"	e	enum:__anon22
+BCN_GUARD_ms	src/lmic/lorabase.h	/^enum { BCN_GUARD_ms      = 3000 };   \/\/ end of beacon period to prevent interference with beacon$/;"	e	enum:__anon47
+BCN_GUARD_osticks	src/lmic/lmic.c	34;"	d	file:
+BCN_GUARD_us	src/lmic/lorabase.h	/^enum { BCN_GUARD_us      = 3000000 };$/;"	e	enum:__anon51
+BCN_INTV_exp	src/lmic/lorabase.h	/^enum { BCN_INTV_exp      = 7 };$/;"	e	enum:__anon42
+BCN_INTV_ms	src/lmic/lorabase.h	/^enum { BCN_INTV_ms       = BCN_INTV_sec*1000L };$/;"	e	enum:__anon44
+BCN_INTV_osticks	src/lmic/lmic.c	27;"	d	file:
+BCN_INTV_sec	src/lmic/lorabase.h	/^enum { BCN_INTV_sec      = 1<<BCN_INTV_exp };$/;"	e	enum:__anon43
+BCN_INTV_us	src/lmic/lorabase.h	/^enum { BCN_INTV_us       = BCN_INTV_ms*1000L };$/;"	e	enum:__anon45
+BCN_NODDIFF	src/lmic/lmic.h	/^       BCN_NODDIFF = 0x08 }; \/\/!< No differential drift measured yet$/;"	e	enum:__anon22
+BCN_NODRIFT	src/lmic/lmic.h	/^       BCN_NODRIFT = 0x04,   \/\/!< No drift value measured yet$/;"	e	enum:__anon22
+BCN_NONE	src/lmic/lmic.h	/^enum { BCN_NONE    = 0x00,   \/\/!< No beacon received$/;"	e	enum:__anon22
+BCN_PARTIAL	src/lmic/lmic.h	/^       BCN_PARTIAL = 0x01,   \/\/!< Only first (common) part could be decoded (info,lat,lon invalid\/previous)$/;"	e	enum:__anon22
+BCN_RESERVE_ms	src/lmic/lorabase.h	/^enum { BCN_RESERVE_ms    = 2120 };   \/\/ space reserved for beacon and NWK management$/;"	e	enum:__anon46
+BCN_RESERVE_osticks	src/lmic/lmic.c	33;"	d	file:
+BCN_RESERVE_us	src/lmic/lorabase.h	/^enum { BCN_RESERVE_us    = 2120000 };$/;"	e	enum:__anon50
+BCN_SLOT_SPAN_ms	src/lmic/lorabase.h	/^enum { BCN_SLOT_SPAN_ms  =   30 };   \/\/ 2^12 reception slots a this span$/;"	e	enum:__anon48
+BCN_SLOT_SPAN_us	src/lmic/lorabase.h	/^enum { BCN_SLOT_SPAN_us  =   30000 };$/;"	e	enum:__anon52
+BCN_WINDOW_ms	src/lmic/lorabase.h	/^enum { BCN_WINDOW_ms     = BCN_INTV_ms-(int)BCN_GUARD_ms-(int)BCN_RESERVE_ms };$/;"	e	enum:__anon49
+BCN_WINDOW_osticks	src/lmic/lmic.c	35;"	d	file:
+BW125	src/lmic/lorabase.h	/^enum _bw_t { BW125=0, BW250, BW500, BWrfu };$/;"	e	enum:_bw_t
+BW250	src/lmic/lorabase.h	/^enum _bw_t { BW125=0, BW250, BW500, BWrfu };$/;"	e	enum:_bw_t
+BW500	src/lmic/lorabase.h	/^enum _bw_t { BW125=0, BW250, BW500, BWrfu };$/;"	e	enum:_bw_t
+BWrfu	src/lmic/lorabase.h	/^enum _bw_t { BW125=0, BW250, BW500, BWrfu };$/;"	e	enum:_bw_t
+CFG_sx1276_radio	src/lmic/config.h	46;"	d
+CFG_us915	src/lmic/config.h	10;"	d
+CHNL_BCN	src/lmic/lorabase.h	/^enum { CHNL_BCN          = 0 }; \/\/ used only for default init of state (rotating beacon scheme)$/;"	e	enum:__anon83
+CHNL_BCN	src/lmic/lorabase.h	/^enum { CHNL_BCN          = 5 };$/;"	e	enum:__anon66
+CHNL_DNW2	src/lmic/lorabase.h	/^enum { CHNL_DNW2         = 0 };$/;"	e	enum:__anon79
+CHNL_DNW2	src/lmic/lorabase.h	/^enum { CHNL_DNW2         = 5 };$/;"	e	enum:__anon61
+CHNL_PING	src/lmic/lorabase.h	/^enum { CHNL_PING         = 0 }; \/\/ used only for default init of state (follows beacon - rotating)$/;"	e	enum:__anon76
+CHNL_PING	src/lmic/lorabase.h	/^enum { CHNL_PING         = 5 };$/;"	e	enum:__anon58
+CONST_TABLE	src/lmic/oslmic.h	248;"	d
+CONST_TABLE	src/lmic/oslmic.h	261;"	d
+CR_4_5	src/lmic/lorabase.h	/^enum _cr_t { CR_4_5=0, CR_4_6, CR_4_7, CR_4_8 };$/;"	e	enum:_cr_t
+CR_4_6	src/lmic/lorabase.h	/^enum _cr_t { CR_4_5=0, CR_4_6, CR_4_7, CR_4_8 };$/;"	e	enum:_cr_t
+CR_4_7	src/lmic/lorabase.h	/^enum _cr_t { CR_4_5=0, CR_4_6, CR_4_7, CR_4_8 };$/;"	e	enum:_cr_t
+CR_4_8	src/lmic/lorabase.h	/^enum _cr_t { CR_4_5=0, CR_4_6, CR_4_7, CR_4_8 };$/;"	e	enum:_cr_t
+DECLARE_LMIC	src/lmic/oslmic.h	82;"	d
+DECL_ON_LMIC_EVENT	src/lmic/oslmic.h	70;"	d
+DEFINE_LMIC	src/lmic/oslmic.h	81;"	d
+DELAY_DNW1	src/lmic/lorabase.h	/^enum { DELAY_DNW1        =  1 }; \/\/ in secs down window #1$/;"	e	enum:__anon38
+DELAY_DNW2	src/lmic/lorabase.h	/^enum { DELAY_DNW2        =  DELAY_DNW1 +(int)DELAY_EXTDNW2 }; \/\/ in secs down window #1$/;"	e	enum:__anon41
+DELAY_EXTDNW2	src/lmic/lorabase.h	/^enum { DELAY_EXTDNW2     =  1 }; \/\/ in secs$/;"	e	enum:__anon39
+DELAY_EXTDNW2_osticks	src/lmic/lmic.c	32;"	d	file:
+DELAY_JACC1	src/lmic/lorabase.h	/^enum { DELAY_JACC1       =  5 }; \/\/ in secs$/;"	e	enum:__anon37
+DELAY_JACC1_osticks	src/lmic/lmic.c	30;"	d	file:
+DELAY_JACC2	src/lmic/lorabase.h	/^enum { DELAY_JACC2       =  DELAY_JACC1+(int)DELAY_EXTDNW2 }; \/\/ in secs$/;"	e	enum:__anon40
+DELAY_JACC2_osticks	src/lmic/lmic.c	31;"	d	file:
+DISABLE_INVERT_IQ_ON_RX	src/lmic/config.h	94;"	d
+DNW2_SAFETY_ZONE	src/lmic/lmic.c	38;"	d	file:
+DNW2_SAFETY_ZONE	src/lmic/lmic.c	41;"	d	file:
+DO_DEVDB	src/lmic/oslmic.h	44;"	d
+DRCHG_NOACK	src/lmic/lmic.h	/^enum { DRCHG_SET, DRCHG_NOJACC, DRCHG_NOACK, DRCHG_NOADRACK, DRCHG_NWKCMD };$/;"	e	enum:__anon20
+DRCHG_NOADRACK	src/lmic/lmic.h	/^enum { DRCHG_SET, DRCHG_NOJACC, DRCHG_NOACK, DRCHG_NOADRACK, DRCHG_NWKCMD };$/;"	e	enum:__anon20
+DRCHG_NOJACC	src/lmic/lmic.h	/^enum { DRCHG_SET, DRCHG_NOJACC, DRCHG_NOACK, DRCHG_NOADRACK, DRCHG_NWKCMD };$/;"	e	enum:__anon20
+DRCHG_NWKCMD	src/lmic/lmic.h	/^enum { DRCHG_SET, DRCHG_NOJACC, DRCHG_NOACK, DRCHG_NOADRACK, DRCHG_NWKCMD };$/;"	e	enum:__anon20
+DRCHG_SET	src/lmic/lmic.h	/^enum { DRCHG_SET, DRCHG_NOJACC, DRCHG_NOACK, DRCHG_NOADRACK, DRCHG_NWKCMD };$/;"	e	enum:__anon20
+DR_BCN	src/lmic/lorabase.h	/^enum { DR_BCN            = DR_SF10CR };$/;"	e	enum:__anon84
+DR_BCN	src/lmic/lorabase.h	/^enum { DR_BCN            = DR_SF9 };$/;"	e	enum:__anon68
+DR_DFLTMIN	src/lmic/lorabase.h	/^enum { DR_DFLTMIN = DR_SF7 };$/;"	e	enum:__anon54
+DR_DFLTMIN	src/lmic/lorabase.h	/^enum { DR_DFLTMIN = DR_SF8C };$/;"	e	enum:__anon72
+DR_DFLTMIN	src/lmic/lorabase.h	/^enum { DR_DFLTMIN = LG02_RXSF };$/;"	e	enum:__anon53
+DR_DFLTMIN	src/lmic/lorabase.h	/^enum { DR_DFLTMIN = LG02_RXSF };$/;"	e	enum:__anon71
+DR_DNW2	src/lmic/lorabase.h	/^enum { DR_DNW2           = DR_SF12 };$/;"	e	enum:__anon65
+DR_DNW2	src/lmic/lorabase.h	/^enum { DR_DNW2           = DR_SF12CR };$/;"	e	enum:__anon82
+DR_DNW2	src/lmic/lorabase.h	/^enum { DR_DNW2           = LG02_TXSF };$/;"	e	enum:__anon63
+DR_DNW2	src/lmic/lorabase.h	/^enum { DR_DNW2           = LG02_TXSF };$/;"	e	enum:__anon81
+DR_FSK	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	e	enum:_dr_eu868_t
+DR_NONE	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	e	enum:_dr_eu868_t
+DR_NONE	src/lmic/lorabase.h	/^enum _dr_us915_t { DR_SF10=0, DR_SF9, DR_SF8, DR_SF7, DR_SF8C, DR_NONE,$/;"	e	enum:_dr_us915_t
+DR_PAGE	src/lmic/lorabase.h	/^enum { DR_PAGE = DR_PAGE_EU868 };$/;"	e	enum:__anon55
+DR_PAGE	src/lmic/lorabase.h	/^enum { DR_PAGE = DR_PAGE_US915 };$/;"	e	enum:__anon73
+DR_PAGE_EU868	src/lmic/lorabase.h	/^enum { DR_PAGE_EU868 = 0x00 };$/;"	e	enum:__anon30
+DR_PAGE_US915	src/lmic/lorabase.h	/^enum { DR_PAGE_US915 = 0x10 };$/;"	e	enum:__anon31
+DR_PING	src/lmic/lorabase.h	/^enum { DR_PING           = DR_SF10CR };       \/\/ default ping DR$/;"	e	enum:__anon78
+DR_PING	src/lmic/lorabase.h	/^enum { DR_PING           = DR_SF9 };       \/\/ default ping DR$/;"	e	enum:__anon60
+DR_RANGE_MAP	src/lmic/lmic.h	264;"	d
+DR_SF10	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	e	enum:_dr_eu868_t
+DR_SF10	src/lmic/lorabase.h	/^enum _dr_us915_t { DR_SF10=0, DR_SF9, DR_SF8, DR_SF7, DR_SF8C, DR_NONE,$/;"	e	enum:_dr_us915_t
+DR_SF10CR	src/lmic/lorabase.h	/^                   DR_SF12CR=8, DR_SF11CR, DR_SF10CR, DR_SF9CR, DR_SF8CR, DR_SF7CR };$/;"	e	enum:_dr_us915_t
+DR_SF11	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	e	enum:_dr_eu868_t
+DR_SF11CR	src/lmic/lorabase.h	/^                   DR_SF12CR=8, DR_SF11CR, DR_SF10CR, DR_SF9CR, DR_SF8CR, DR_SF7CR };$/;"	e	enum:_dr_us915_t
+DR_SF12	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	e	enum:_dr_eu868_t
+DR_SF12CR	src/lmic/lorabase.h	/^                   DR_SF12CR=8, DR_SF11CR, DR_SF10CR, DR_SF9CR, DR_SF8CR, DR_SF7CR };$/;"	e	enum:_dr_us915_t
+DR_SF7	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	e	enum:_dr_eu868_t
+DR_SF7	src/lmic/lorabase.h	/^enum _dr_us915_t { DR_SF10=0, DR_SF9, DR_SF8, DR_SF7, DR_SF8C, DR_NONE,$/;"	e	enum:_dr_us915_t
+DR_SF7B	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	e	enum:_dr_eu868_t
+DR_SF7CR	src/lmic/lorabase.h	/^                   DR_SF12CR=8, DR_SF11CR, DR_SF10CR, DR_SF9CR, DR_SF8CR, DR_SF7CR };$/;"	e	enum:_dr_us915_t
+DR_SF8	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	e	enum:_dr_eu868_t
+DR_SF8	src/lmic/lorabase.h	/^enum _dr_us915_t { DR_SF10=0, DR_SF9, DR_SF8, DR_SF7, DR_SF8C, DR_NONE,$/;"	e	enum:_dr_us915_t
+DR_SF8C	src/lmic/lorabase.h	/^enum _dr_us915_t { DR_SF10=0, DR_SF9, DR_SF8, DR_SF7, DR_SF8C, DR_NONE,$/;"	e	enum:_dr_us915_t
+DR_SF8CR	src/lmic/lorabase.h	/^                   DR_SF12CR=8, DR_SF11CR, DR_SF10CR, DR_SF9CR, DR_SF8CR, DR_SF7CR };$/;"	e	enum:_dr_us915_t
+DR_SF9	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	e	enum:_dr_eu868_t
+DR_SF9	src/lmic/lorabase.h	/^enum _dr_us915_t { DR_SF10=0, DR_SF9, DR_SF8, DR_SF7, DR_SF8C, DR_NONE,$/;"	e	enum:_dr_us915_t
+DR_SF9CR	src/lmic/lorabase.h	/^                   DR_SF12CR=8, DR_SF11CR, DR_SF10CR, DR_SF9CR, DR_SF8CR, DR_SF7CR };$/;"	e	enum:_dr_us915_t
+EU868_F1	src/lmic/lorabase.h	/^enum { EU868_F1 = LG02_UPFREQ,      \/\/ g1   SF7-12$/;"	e	enum:__anon56
+EU868_F2	src/lmic/lorabase.h	/^       EU868_F2 = 868300000,      \/\/ g1   SF7-12 FSK SF7\/250$/;"	e	enum:__anon56
+EU868_F3	src/lmic/lorabase.h	/^       EU868_F3 = 868500000,      \/\/ g1   SF7-12$/;"	e	enum:__anon56
+EU868_F4	src/lmic/lorabase.h	/^       EU868_F4 = 868850000,      \/\/ g2   SF7-12$/;"	e	enum:__anon56
+EU868_F5	src/lmic/lorabase.h	/^       EU868_F5 = 869050000,      \/\/ g2   SF7-12$/;"	e	enum:__anon56
+EU868_F6	src/lmic/lorabase.h	/^       EU868_F6 = 869525000,      \/\/ g3   SF7-12$/;"	e	enum:__anon56
+EU868_FREQ_MAX	src/lmic/lorabase.h	/^       EU868_FREQ_MAX = 870000000 };$/;"	e	enum:__anon57
+EU868_FREQ_MIN	src/lmic/lorabase.h	/^enum { EU868_FREQ_MIN = 863000000,$/;"	e	enum:__anon57
+EU868_J4	src/lmic/lorabase.h	/^       EU868_J4 = 864100000,      \/\/ g2   SF7-12  used during join$/;"	e	enum:__anon56
+EU868_J5	src/lmic/lorabase.h	/^       EU868_J5 = 864300000,      \/\/ g2   SF7-12   ditto$/;"	e	enum:__anon56
+EU868_J6	src/lmic/lorabase.h	/^       EU868_J6 = 864500000,      \/\/ g2   SF7-12   ditto$/;"	e	enum:__anon56
+EV	src/lmic/oslmic.h	43;"	d
+EV_BEACON_FOUND	src/lmic/lmic.h	/^enum _ev_t { EV_SCAN_TIMEOUT=1, EV_BEACON_FOUND,$/;"	e	enum:_ev_t
+EV_BEACON_MISSED	src/lmic/lmic.h	/^             EV_BEACON_MISSED, EV_BEACON_TRACKED, EV_JOINING,$/;"	e	enum:_ev_t
+EV_BEACON_TRACKED	src/lmic/lmic.h	/^             EV_BEACON_MISSED, EV_BEACON_TRACKED, EV_JOINING,$/;"	e	enum:_ev_t
+EV_JOINED	src/lmic/lmic.h	/^             EV_JOINED, EV_RFU1, EV_JOIN_FAILED, EV_REJOIN_FAILED,$/;"	e	enum:_ev_t
+EV_JOINING	src/lmic/lmic.h	/^             EV_BEACON_MISSED, EV_BEACON_TRACKED, EV_JOINING,$/;"	e	enum:_ev_t
+EV_JOIN_FAILED	src/lmic/lmic.h	/^             EV_JOINED, EV_RFU1, EV_JOIN_FAILED, EV_REJOIN_FAILED,$/;"	e	enum:_ev_t
+EV_LINK_ALIVE	src/lmic/lmic.h	/^             EV_RXCOMPLETE, EV_LINK_DEAD, EV_LINK_ALIVE };$/;"	e	enum:_ev_t
+EV_LINK_DEAD	src/lmic/lmic.h	/^             EV_RXCOMPLETE, EV_LINK_DEAD, EV_LINK_ALIVE };$/;"	e	enum:_ev_t
+EV_LOST_TSYNC	src/lmic/lmic.h	/^             EV_TXCOMPLETE, EV_LOST_TSYNC, EV_RESET,$/;"	e	enum:_ev_t
+EV_REJOIN_FAILED	src/lmic/lmic.h	/^             EV_JOINED, EV_RFU1, EV_JOIN_FAILED, EV_REJOIN_FAILED,$/;"	e	enum:_ev_t
+EV_RESET	src/lmic/lmic.h	/^             EV_TXCOMPLETE, EV_LOST_TSYNC, EV_RESET,$/;"	e	enum:_ev_t
+EV_RFU1	src/lmic/lmic.h	/^             EV_JOINED, EV_RFU1, EV_JOIN_FAILED, EV_REJOIN_FAILED,$/;"	e	enum:_ev_t
+EV_RXCOMPLETE	src/lmic/lmic.h	/^             EV_RXCOMPLETE, EV_LINK_DEAD, EV_LINK_ALIVE };$/;"	e	enum:_ev_t
+EV_SCAN_TIMEOUT	src/lmic/lmic.h	/^enum _ev_t { EV_SCAN_TIMEOUT=1, EV_BEACON_FOUND,$/;"	e	enum:_ev_t
+EV_TXCOMPLETE	src/lmic/lmic.h	/^             EV_TXCOMPLETE, EV_LOST_TSYNC, EV_RESET,$/;"	e	enum:_ev_t
+FCT_ACK	src/lmic/lorabase.h	/^    FCT_ACK    = 0x20,$/;"	e	enum:__anon95
+FCT_ADRARQ	src/lmic/lorabase.h	/^    FCT_ADRARQ = 0x40,$/;"	e	enum:__anon95
+FCT_ADREN	src/lmic/lorabase.h	/^    FCT_ADREN  = 0x80,$/;"	e	enum:__anon95
+FCT_CLASSB	src/lmic/lorabase.h	/^    FCT_CLASSB = FCT_MORE$/;"	e	enum:__anon96
+FCT_MORE	src/lmic/lorabase.h	/^    FCT_MORE   = 0x10,   \/\/ also in DN direction: Class B indicator$/;"	e	enum:__anon95
+FCT_OPTLEN	src/lmic/lorabase.h	/^    FCT_OPTLEN = 0x0F,$/;"	e	enum:__anon95
+FREQ_BCN	src/lmic/lorabase.h	/^enum { FREQ_BCN          = EU868_F6 };$/;"	e	enum:__anon67
+FREQ_DNW2	src/lmic/lorabase.h	/^enum { FREQ_DNW2         = EU868_F6 };$/;"	e	enum:__anon64
+FREQ_DNW2	src/lmic/lorabase.h	/^enum { FREQ_DNW2         = LG02_DNWFREQ };$/;"	e	enum:__anon62
+FREQ_DNW2	src/lmic/lorabase.h	/^enum { FREQ_DNW2         = US915_500kHz_DNFBASE + CHNL_DNW2*US915_500kHz_DNFSTEP };$/;"	e	enum:__anon80
+FREQ_PING	src/lmic/lorabase.h	/^enum { FREQ_PING         = EU868_F6 };  \/\/ default ping freq$/;"	e	enum:__anon59
+FREQ_PING	src/lmic/lorabase.h	/^enum { FREQ_PING         = US915_500kHz_DNFBASE + CHNL_PING*US915_500kHz_DNFSTEP };  \/\/ default ping freq$/;"	e	enum:__anon77
+FSK	src/lmic/lorabase.h	/^enum _sf_t { FSK=0, SF7, SF8, SF9, SF10, SF11, SF12, SFrfu };$/;"	e	enum:_sf_t
+FSKRegAfcBw	src/lmic/radio.c	41;"	d	file:
+FSKRegAfcFei	src/lmic/radio.c	52;"	d	file:
+FSKRegAfcLsb	src/lmic/radio.c	56;"	d	file:
+FSKRegAfcMsb	src/lmic/radio.c	54;"	d	file:
+FSKRegBitrateLsb	src/lmic/radio.c	19;"	d	file:
+FSKRegBitrateMsb	src/lmic/radio.c	18;"	d	file:
+FSKRegBroadcastAdrs	src/lmic/radio.c	97;"	d	file:
+FSKRegFdevLsb	src/lmic/radio.c	21;"	d	file:
+FSKRegFdevMsb	src/lmic/radio.c	20;"	d	file:
+FSKRegFeiLsb	src/lmic/radio.c	60;"	d	file:
+FSKRegFeiMsb	src/lmic/radio.c	58;"	d	file:
+FSKRegFifoThresh	src/lmic/radio.c	98;"	d	file:
+FSKRegImageCal	src/lmic/radio.c	106;"	d	file:
+FSKRegIrqFlags1	src/lmic/radio.c	109;"	d	file:
+FSKRegIrqFlags2	src/lmic/radio.c	110;"	d	file:
+FSKRegLowBat	src/lmic/radio.c	108;"	d	file:
+FSKRegNodeAdrs	src/lmic/radio.c	95;"	d	file:
+FSKRegOokAvg	src/lmic/radio.c	47;"	d	file:
+FSKRegOokFix	src/lmic/radio.c	45;"	d	file:
+FSKRegOokPeak	src/lmic/radio.c	43;"	d	file:
+FSKRegOsc	src/lmic/radio.c	72;"	d	file:
+FSKRegPacketConfig1	src/lmic/radio.c	91;"	d	file:
+FSKRegPacketConfig2	src/lmic/radio.c	92;"	d	file:
+FSKRegPayloadLength	src/lmic/radio.c	94;"	d	file:
+FSKRegPreambleDetect	src/lmic/radio.c	62;"	d	file:
+FSKRegPreambleLsb	src/lmic/radio.c	77;"	d	file:
+FSKRegPreambleMsb	src/lmic/radio.c	74;"	d	file:
+FSKRegRssiCollision	src/lmic/radio.c	33;"	d	file:
+FSKRegRssiConfig	src/lmic/radio.c	31;"	d	file:
+FSKRegRssiThresh	src/lmic/radio.c	35;"	d	file:
+FSKRegRssiValue	src/lmic/radio.c	37;"	d	file:
+FSKRegRxBw	src/lmic/radio.c	39;"	d	file:
+FSKRegRxConfig	src/lmic/radio.c	29;"	d	file:
+FSKRegRxDelay	src/lmic/radio.c	70;"	d	file:
+FSKRegRxTimeout1	src/lmic/radio.c	64;"	d	file:
+FSKRegRxTimeout2	src/lmic/radio.c	66;"	d	file:
+FSKRegRxTimeout3	src/lmic/radio.c	68;"	d	file:
+FSKRegSeqConfig1	src/lmic/radio.c	99;"	d	file:
+FSKRegSeqConfig2	src/lmic/radio.c	100;"	d	file:
+FSKRegSyncConfig	src/lmic/radio.c	78;"	d	file:
+FSKRegSyncValue1	src/lmic/radio.c	80;"	d	file:
+FSKRegSyncValue2	src/lmic/radio.c	82;"	d	file:
+FSKRegSyncValue3	src/lmic/radio.c	84;"	d	file:
+FSKRegSyncValue4	src/lmic/radio.c	85;"	d	file:
+FSKRegSyncValue5	src/lmic/radio.c	87;"	d	file:
+FSKRegSyncValue6	src/lmic/radio.c	88;"	d	file:
+FSKRegSyncValue7	src/lmic/radio.c	89;"	d	file:
+FSKRegSyncValue8	src/lmic/radio.c	90;"	d	file:
+FSKRegTemp	src/lmic/radio.c	107;"	d	file:
+FSKRegTimer1Coef	src/lmic/radio.c	103;"	d	file:
+FSKRegTimer2Coef	src/lmic/radio.c	105;"	d	file:
+FSKRegTimerResol	src/lmic/radio.c	102;"	d	file:
+FUNC_ADDR	src/lmic/oslmic.h	76;"	d
+HDR_FTYPE	src/lmic/lorabase.h	/^    HDR_FTYPE   = 0xE0,$/;"	e	enum:__anon91
+HDR_FTYPE_DADN	src/lmic/lorabase.h	/^    HDR_FTYPE_DADN   = 0x60,  \/\/ data (unconfirmed) dn$/;"	e	enum:__anon93
+HDR_FTYPE_DAUP	src/lmic/lorabase.h	/^    HDR_FTYPE_DAUP   = 0x40,  \/\/ data (unconfirmed) up$/;"	e	enum:__anon93
+HDR_FTYPE_DCDN	src/lmic/lorabase.h	/^    HDR_FTYPE_DCDN   = 0xA0,  \/\/ data confirmed dn$/;"	e	enum:__anon93
+HDR_FTYPE_DCUP	src/lmic/lorabase.h	/^    HDR_FTYPE_DCUP   = 0x80,  \/\/ data confirmed up$/;"	e	enum:__anon93
+HDR_FTYPE_DNFLAG	src/lmic/lorabase.h	/^enum { HDR_FTYPE_DNFLAG = 0x20 };  \/\/ flags DN frame except for HDR_FTYPE_PROP$/;"	e	enum:__anon92
+HDR_FTYPE_JACC	src/lmic/lorabase.h	/^    HDR_FTYPE_JACC   = 0x20,$/;"	e	enum:__anon93
+HDR_FTYPE_JREQ	src/lmic/lorabase.h	/^    HDR_FTYPE_JREQ   = 0x00,$/;"	e	enum:__anon93
+HDR_FTYPE_PROP	src/lmic/lorabase.h	/^    HDR_FTYPE_PROP   = 0xE0$/;"	e	enum:__anon93
+HDR_FTYPE_REJOIN	src/lmic/lorabase.h	/^    HDR_FTYPE_REJOIN = 0xC0,  \/\/ rejoin for roaming$/;"	e	enum:__anon93
+HDR_MAJOR	src/lmic/lorabase.h	/^    HDR_MAJOR   = 0x03$/;"	e	enum:__anon91
+HDR_MAJOR_V1	src/lmic/lorabase.h	/^    HDR_MAJOR_V1 = 0x00,$/;"	e	enum:__anon94
+HDR_RFU	src/lmic/lorabase.h	/^    HDR_RFU     = 0x1C,$/;"	e	enum:__anon91
+ILLEGAL_RPS	src/lmic/lorabase.h	/^enum { ILLEGAL_RPS = 0xFF };$/;"	e	enum:__anon29
+IRQ_FSK1_MODEREADY_MASK	src/lmic/radio.c	206;"	d	file:
+IRQ_FSK1_PLLLOCK_MASK	src/lmic/radio.c	209;"	d	file:
+IRQ_FSK1_PREAMBLEDETECT_MASK	src/lmic/radio.c	212;"	d	file:
+IRQ_FSK1_RSSI_MASK	src/lmic/radio.c	210;"	d	file:
+IRQ_FSK1_RXREADY_MASK	src/lmic/radio.c	207;"	d	file:
+IRQ_FSK1_SYNCADDRESSMATCH_MASK	src/lmic/radio.c	213;"	d	file:
+IRQ_FSK1_TIMEOUT_MASK	src/lmic/radio.c	211;"	d	file:
+IRQ_FSK1_TXREADY_MASK	src/lmic/radio.c	208;"	d	file:
+IRQ_FSK2_CRCOK_MASK	src/lmic/radio.c	220;"	d	file:
+IRQ_FSK2_FIFOEMPTY_MASK	src/lmic/radio.c	215;"	d	file:
+IRQ_FSK2_FIFOFULL_MASK	src/lmic/radio.c	214;"	d	file:
+IRQ_FSK2_FIFOLEVEL_MASK	src/lmic/radio.c	216;"	d	file:
+IRQ_FSK2_FIFOOVERRUN_MASK	src/lmic/radio.c	217;"	d	file:
+IRQ_FSK2_LOWBAT_MASK	src/lmic/radio.c	221;"	d	file:
+IRQ_FSK2_PACKETSENT_MASK	src/lmic/radio.c	218;"	d	file:
+IRQ_FSK2_PAYLOADREADY_MASK	src/lmic/radio.c	219;"	d	file:
+IRQ_LORA_CDDETD_MASK	src/lmic/radio.c	204;"	d	file:
+IRQ_LORA_CDDONE_MASK	src/lmic/radio.c	202;"	d	file:
+IRQ_LORA_CRCERR_MASK	src/lmic/radio.c	199;"	d	file:
+IRQ_LORA_FHSSCH_MASK	src/lmic/radio.c	203;"	d	file:
+IRQ_LORA_HEADER_MASK	src/lmic/radio.c	200;"	d	file:
+IRQ_LORA_RXDONE_MASK	src/lmic/radio.c	198;"	d	file:
+IRQ_LORA_RXTOUT_MASK	src/lmic/radio.c	197;"	d	file:
+IRQ_LORA_TXDONE_MASK	src/lmic/radio.c	201;"	d	file:
+JOIN_GUARD_ms	src/lmic/lmic.h	/^enum { JOIN_GUARD_ms      =  9000 };  \/\/ msecs - don't start Join Req\/Acc transaction before beacon$/;"	e	enum:__anon12
+JOIN_GUARD_osticks	src/lmic/lmic.c	29;"	d	file:
+KEEP_TXPOW	src/lmic/lmic.h	/^enum { KEEP_TXPOW = -128 };$/;"	e	enum:__anon21
+LEN_ARTNONCE	src/lmic/lorabase.h	/^enum { LEN_ARTNONCE      =  3 };$/;"	e	enum:__anon35
+LEN_BCN	src/lmic/lorabase.h	/^    LEN_BCN          = 17$/;"	e	enum:__anon70
+LEN_BCN	src/lmic/lorabase.h	/^    LEN_BCN          = 19$/;"	e	enum:__anon86
+LEN_DEVNONCE	src/lmic/lorabase.h	/^enum { LEN_DEVNONCE      =  2 };$/;"	e	enum:__anon34
+LEN_JA	src/lmic/lorabase.h	/^    LEN_JA          = 17,$/;"	e	enum:__anon88
+LEN_JAEXT	src/lmic/lorabase.h	/^    LEN_JAEXT       = 17+16$/;"	e	enum:__anon88
+LEN_JR	src/lmic/lorabase.h	/^    LEN_JR          = 23$/;"	e	enum:__anon87
+LEN_NETID	src/lmic/lorabase.h	/^enum { LEN_NETID         =  3 };$/;"	e	enum:__anon36
+LG02_DNWFREQ	src/lmic/config.h	22;"	d
+LG02_DNWFREQ	src/lmic/config.h	29;"	d
+LG02_LG01	src/lmic/config.h	15;"	d
+LG02_RXSF	src/lmic/config.h	23;"	d
+LG02_RXSF	src/lmic/config.h	30;"	d
+LG02_TXSF	src/lmic/config.h	24;"	d
+LG02_TXSF	src/lmic/config.h	31;"	d
+LG02_UPFREQ	src/lmic/config.h	21;"	d
+LG02_UPFREQ	src/lmic/config.h	28;"	d
+LIMIT_CHANNELS	src/lmic/lmic.h	/^enum { LIMIT_CHANNELS = (1<<4) };   \/\/ EU868 will never have more channels$/;"	e	enum:__anon17
+LINK_CHECK_CONT	src/lmic/lmic.h	/^enum { LINK_CHECK_CONT    =  12 ,    \/\/ continue with this after reported dead link$/;"	e	enum:__anon9
+LINK_CHECK_DEAD	src/lmic/lmic.h	/^       LINK_CHECK_DEAD    =  24 ,    \/\/ after this UP frames and no response from NWK assume link is dead$/;"	e	enum:__anon9
+LINK_CHECK_INIT	src/lmic/lmic.h	/^       LINK_CHECK_INIT    = -12 ,    \/\/ UP frame count until we inc datarate$/;"	e	enum:__anon9
+LINK_CHECK_OFF	src/lmic/lmic.h	/^       LINK_CHECK_OFF     =-128 };   \/\/ link check disabled$/;"	e	enum:__anon9
+LMIC_DEBUG_LEVEL	src/lmic/config.h	39;"	d
+LMIC_FAILURE_TO	src/lmic/config.h	65;"	d
+LMIC_PRINTF_TO	src/lmic/config.h	59;"	d
+LMIC_UNUSED_PIN	src/hal/hal.h	/^const u1_t LMIC_UNUSED_PIN = 0xff;$/;"	v
+LMIC_VERSION_BUILD	src/lmic/lmic.h	28;"	d
+LMIC_VERSION_MAJOR	src/lmic/lmic.h	26;"	d
+LMIC_VERSION_MINOR	src/lmic/lmic.h	27;"	d
+LMIC_clrTxData	src/lmic/lmic.c	/^void LMIC_clrTxData (void) {$/;"	f
+LMIC_disableChannel	src/lmic/lmic.c	/^void LMIC_disableChannel (u1_t channel) {$/;"	f
+LMIC_disableSubBand	src/lmic/lmic.c	/^void  LMIC_disableSubBand (u1_t band) {$/;"	f
+LMIC_disableTracking	src/lmic/lmic.c	/^void LMIC_disableTracking (void) {$/;"	f
+LMIC_enableChannel	src/lmic/lmic.c	/^void LMIC_enableChannel (u1_t channel) {$/;"	f
+LMIC_enableSubBand	src/lmic/lmic.c	/^void  LMIC_enableSubBand (u1_t band) {$/;"	f
+LMIC_enableTracking	src/lmic/lmic.c	/^bit_t LMIC_enableTracking (u1_t tryBcnInfo) {$/;"	f
+LMIC_init	src/lmic/lmic.c	/^void LMIC_init (void) {$/;"	f
+LMIC_reset	src/lmic/lmic.c	/^void LMIC_reset (void) {$/;"	f
+LMIC_selectSubBand	src/lmic/lmic.c	/^void  LMIC_selectSubBand (u1_t band) {$/;"	f
+LMIC_sendAlive	src/lmic/lmic.c	/^void LMIC_sendAlive (void) {$/;"	f
+LMIC_setAdrMode	src/lmic/lmic.c	/^void LMIC_setAdrMode (bit_t enabled) {$/;"	f
+LMIC_setClockError	src/lmic/lmic.c	/^void LMIC_setClockError(u2_t error) {$/;"	f
+LMIC_setDrTxpow	src/lmic/lmic.c	/^void LMIC_setDrTxpow (dr_t dr, s1_t txpow) {$/;"	f
+LMIC_setLinkCheckMode	src/lmic/lmic.c	/^void LMIC_setLinkCheckMode (bit_t enabled) {$/;"	f
+LMIC_setPingable	src/lmic/lmic.c	/^void LMIC_setPingable (u1_t intvExp) {$/;"	f
+LMIC_setSession	src/lmic/lmic.c	/^void LMIC_setSession (u4_t netid, devaddr_t devaddr, xref2u1_t nwkKey, xref2u1_t artKey) {$/;"	f
+LMIC_setTxData	src/lmic/lmic.c	/^void LMIC_setTxData (void) {$/;"	f
+LMIC_setTxData2	src/lmic/lmic.c	/^int LMIC_setTxData2 (u1_t port, xref2u1_t data, u1_t dlen, u1_t confirmed) {$/;"	f
+LMIC_setupBand	src/lmic/lmic.c	/^bit_t LMIC_setupBand (u1_t bandidx, s1_t txpow, u2_t txcap) {$/;"	f
+LMIC_setupChannel	src/lmic/lmic.c	/^bit_t LMIC_setupChannel (u1_t chidx, u4_t freq, u2_t drmap, s1_t band) {$/;"	f
+LMIC_shutdown	src/lmic/lmic.c	/^void LMIC_shutdown (void) {$/;"	f
+LMIC_startJoining	src/lmic/lmic.c	/^bit_t LMIC_startJoining (void) {$/;"	f
+LMIC_stopPingable	src/lmic/lmic.c	/^void LMIC_stopPingable (void) {$/;"	f
+LMIC_tryRejoin	src/lmic/lmic.c	/^void LMIC_tryRejoin (void) {$/;"	f
+LNA_RX_GAIN	src/lmic/radio.c	255;"	d	file:
+LNA_RX_GAIN	src/lmic/radio.c	257;"	d	file:
+LORAFeiMib	src/lmic/radio.c	81;"	d	file:
+LORARegDetectOptimize	src/lmic/radio.c	93;"	d	file:
+LORARegDetectionThreshold	src/lmic/radio.c	101;"	d	file:
+LORARegFeiLsb	src/lmic/radio.c	83;"	d	file:
+LORARegFeiMsb	src/lmic/radio.c	79;"	d	file:
+LORARegFifoAddrPtr	src/lmic/radio.c	30;"	d	file:
+LORARegFifoRxBaseAddr	src/lmic/radio.c	34;"	d	file:
+LORARegFifoRxByteAddr	src/lmic/radio.c	75;"	d	file:
+LORARegFifoRxCurrentAddr	src/lmic/radio.c	36;"	d	file:
+LORARegFifoTxBaseAddr	src/lmic/radio.c	32;"	d	file:
+LORARegHopChannel	src/lmic/radio.c	57;"	d	file:
+LORARegHopPeriod	src/lmic/radio.c	73;"	d	file:
+LORARegInvertIQ	src/lmic/radio.c	96;"	d	file:
+LORARegIrqFlags	src/lmic/radio.c	40;"	d	file:
+LORARegIrqFlagsMask	src/lmic/radio.c	38;"	d	file:
+LORARegModemConfig1	src/lmic/radio.c	59;"	d	file:
+LORARegModemConfig2	src/lmic/radio.c	61;"	d	file:
+LORARegModemConfig3	src/lmic/radio.c	76;"	d	file:
+LORARegModemStat	src/lmic/radio.c	50;"	d	file:
+LORARegPayloadLength	src/lmic/radio.c	69;"	d	file:
+LORARegPayloadMaxLength	src/lmic/radio.c	71;"	d	file:
+LORARegPktRssiValue	src/lmic/radio.c	53;"	d	file:
+LORARegPktSnrValue	src/lmic/radio.c	51;"	d	file:
+LORARegPreambleLsb	src/lmic/radio.c	67;"	d	file:
+LORARegPreambleMsb	src/lmic/radio.c	65;"	d	file:
+LORARegRssiValue	src/lmic/radio.c	55;"	d	file:
+LORARegRssiWideband	src/lmic/radio.c	86;"	d	file:
+LORARegRxHeaderCntValueLsb	src/lmic/radio.c	46;"	d	file:
+LORARegRxHeaderCntValueMsb	src/lmic/radio.c	44;"	d	file:
+LORARegRxNbBytes	src/lmic/radio.c	42;"	d	file:
+LORARegRxPacketCntValueMsb	src/lmic/radio.c	48;"	d	file:
+LORARegRxpacketCntValueLsb	src/lmic/radio.c	49;"	d	file:
+LORARegSymbTimeoutLsb	src/lmic/radio.c	63;"	d	file:
+LORARegSyncWord	src/lmic/radio.c	104;"	d	file:
+LORA_MAC_PREAMBLE	src/lmic/radio.c	171;"	d	file:
+MAKERPS	src/lmic/lorabase.h	390;"	d
+MAP_DIO0_FSK_READY	src/lmic/radio.c	231;"	d	file:
+MAP_DIO0_LORA_RXDONE	src/lmic/radio.c	225;"	d	file:
+MAP_DIO0_LORA_TXDONE	src/lmic/radio.c	226;"	d	file:
+MAP_DIO1_FSK_NOP	src/lmic/radio.c	232;"	d	file:
+MAP_DIO1_LORA_NOP	src/lmic/radio.c	228;"	d	file:
+MAP_DIO1_LORA_RXTOUT	src/lmic/radio.c	227;"	d	file:
+MAP_DIO2_FSK_TIMEOUT	src/lmic/radio.c	234;"	d	file:
+MAP_DIO2_FSK_TXNOP	src/lmic/radio.c	233;"	d	file:
+MAP_DIO2_LORA_NOP	src/lmic/radio.c	229;"	d	file:
+MAX_BANDS	src/lmic/lmic.h	/^enum { MAX_BANDS    =  4 };$/;"	e	enum:__anon16
+MAX_CHANNELS	src/lmic/lmic.h	/^enum { MAX_CHANNELS = 16 };      \/\/!< Max supported channels$/;"	e	enum:__anon15
+MAX_CLOCK_ERROR	src/lmic/lmic.h	/^        MAX_CLOCK_ERROR = 65536,$/;"	e	enum:__anon27
+MAX_FRAME_LEN	src/lmic/lmic.h	/^enum { MAX_FRAME_LEN      =  64 };   \/\/!< Library cap on max frame length$/;"	e	enum:__anon5
+MAX_LEN_FRAME	src/lmic/lorabase.h	/^enum { MAX_LEN_FRAME     = 64 };$/;"	e	enum:__anon33
+MAX_LEN_PAYLOAD	src/lmic/lorabase.h	/^enum { MAX_LEN_PAYLOAD = MAX_LEN_FRAME-(int)OFF_DAT_OPTS-4 };$/;"	e	enum:__anon90
+MAX_MISSED_BCNS	src/lmic/lmic.h	/^enum { MAX_MISSED_BCNS    =  20 };   \/\/ threshold for triggering rejoin requests$/;"	e	enum:__anon7
+MAX_RXSYMS	src/lmic/lmic.h	/^enum { MAX_RXSYMS         = 100 };   \/\/ stop tracking beacon beyond this$/;"	e	enum:__anon8
+MAX_TXPOW_125kHz	src/lmic/lmic.h	/^enum { MAX_TXPOW_125kHz = 30 };$/;"	e	enum:__anon19
+MAX_XCHANNELS	src/lmic/lmic.h	/^enum { MAX_XCHANNELS = 2 };      \/\/ extra channels in RAM, channels 0-71 are immutable$/;"	e	enum:__anon18
+MCMD_BCNI_ANS	src/lmic/lorabase.h	/^    MCMD_BCNI_ANS = 0x12, \/\/ next beacon start  : u2: delay(in TUNIT millis), u1:channel$/;"	e	enum:__anon99
+MCMD_BCNI_REQ	src/lmic/lorabase.h	/^    MCMD_BCNI_REQ = 0x12, \/\/ -  next beacon start  : -$/;"	e	enum:__anon98
+MCMD_BCNI_TUNIT	src/lmic/lorabase.h	/^    MCMD_BCNI_TUNIT = 30  \/\/ time unit of delay value in millis$/;"	e	enum:__anon100
+MCMD_DCAP_ANS	src/lmic/lorabase.h	/^    MCMD_DCAP_ANS = 0x04, \/\/ -  duty cycle answer  : -$/;"	e	enum:__anon98
+MCMD_DCAP_REQ	src/lmic/lorabase.h	/^    MCMD_DCAP_REQ = 0x04, \/\/ duty cycle cap     : u1:255 dead [7-4]:RFU, [3-0]:cap 2^-k$/;"	e	enum:__anon99
+MCMD_DEVS_ANS	src/lmic/lorabase.h	/^    MCMD_DEVS_ANS = 0x06, \/\/ -  device status ans  : u1:battery 0,1-254,255=?, u1:7-6:RFU,5-0:margin(-32..31)$/;"	e	enum:__anon98
+MCMD_DEVS_BATT_MAX	src/lmic/lorabase.h	/^    MCMD_DEVS_BATT_MAX    = 0xFE, \/\/ max battery value$/;"	e	enum:__anon105
+MCMD_DEVS_BATT_MIN	src/lmic/lorabase.h	/^    MCMD_DEVS_BATT_MIN    = 0x01, \/\/ min battery value$/;"	e	enum:__anon105
+MCMD_DEVS_BATT_NOINFO	src/lmic/lorabase.h	/^    MCMD_DEVS_BATT_NOINFO = 0xFF, \/\/ unknown battery level$/;"	e	enum:__anon105
+MCMD_DEVS_EXT_POWER	src/lmic/lorabase.h	/^    MCMD_DEVS_EXT_POWER   = 0x00, \/\/ external power supply$/;"	e	enum:__anon105
+MCMD_DEVS_REQ	src/lmic/lorabase.h	/^    MCMD_DEVS_REQ = 0x06, \/\/ device status req  : -$/;"	e	enum:__anon99
+MCMD_DN2P_ANS	src/lmic/lorabase.h	/^    MCMD_DN2P_ANS = 0x05, \/\/ -  2nd DN slot status : u1:7-2:RFU  1\/0:datarate\/channel ack$/;"	e	enum:__anon98
+MCMD_DN2P_ANS_CHACK	src/lmic/lorabase.h	/^    MCMD_DN2P_ANS_CHACK  = 0x01, \/\/ 0=unknown channel enabled$/;"	e	enum:__anon102
+MCMD_DN2P_ANS_DRACK	src/lmic/lorabase.h	/^    MCMD_DN2P_ANS_DRACK  = 0x02, \/\/ 0=unknown data rate$/;"	e	enum:__anon102
+MCMD_DN2P_ANS_RFU	src/lmic/lorabase.h	/^    MCMD_DN2P_ANS_RFU    = 0xFC, \/\/ RFU bits$/;"	e	enum:__anon102
+MCMD_DN2P_SET	src/lmic/lorabase.h	/^    MCMD_DN2P_SET = 0x05, \/\/ 2nd DN window param: u1:7-4:RFU\/3-0:datarate, u3:freq$/;"	e	enum:__anon99
+MCMD_LADR_11dBm	src/lmic/lorabase.h	/^    MCMD_LADR_11dBm     = 2,$/;"	e	enum:__anon107
+MCMD_LADR_14dBm	src/lmic/lorabase.h	/^    MCMD_LADR_14dBm     = 1,$/;"	e	enum:__anon107
+MCMD_LADR_20dBm	src/lmic/lorabase.h	/^    MCMD_LADR_20dBm     = 0,$/;"	e	enum:__anon107
+MCMD_LADR_2dBm	src/lmic/lorabase.h	/^    MCMD_LADR_2dBm      = 5,$/;"	e	enum:__anon107
+MCMD_LADR_5dBm	src/lmic/lorabase.h	/^    MCMD_LADR_5dBm      = 4,$/;"	e	enum:__anon107
+MCMD_LADR_8dBm	src/lmic/lorabase.h	/^    MCMD_LADR_8dBm      = 3,$/;"	e	enum:__anon107
+MCMD_LADR_ANS	src/lmic/lorabase.h	/^    MCMD_LADR_ANS = 0x03, \/\/ -  link ADR answer    : u1:7-3:RFU, 3\/2\/1: pow\/DR\/Ch ACK$/;"	e	enum:__anon98
+MCMD_LADR_ANS_CHACK	src/lmic/lorabase.h	/^    MCMD_LADR_ANS_CHACK  = 0x01, \/\/ 0=unknown channel enabled$/;"	e	enum:__anon101
+MCMD_LADR_ANS_DRACK	src/lmic/lorabase.h	/^    MCMD_LADR_ANS_DRACK  = 0x02, \/\/ 0=unknown data rate$/;"	e	enum:__anon101
+MCMD_LADR_ANS_POWACK	src/lmic/lorabase.h	/^    MCMD_LADR_ANS_POWACK = 0x04, \/\/ 0=not supported power level$/;"	e	enum:__anon101
+MCMD_LADR_ANS_RFU	src/lmic/lorabase.h	/^    MCMD_LADR_ANS_RFU    = 0xF8, \/\/ RFU bits$/;"	e	enum:__anon101
+MCMD_LADR_CHPAGE_1	src/lmic/lorabase.h	/^    MCMD_LADR_CHPAGE_1    = 0x10$/;"	e	enum:__anon106
+MCMD_LADR_CHPAGE_MASK	src/lmic/lorabase.h	/^    MCMD_LADR_CHPAGE_MASK = 0xF0,$/;"	e	enum:__anon106
+MCMD_LADR_CHP_125OFF	src/lmic/lorabase.h	/^    MCMD_LADR_CHP_125OFF  = 0x70,  \/\/  ditto$/;"	e	enum:__anon106
+MCMD_LADR_CHP_125ON	src/lmic/lorabase.h	/^    MCMD_LADR_CHP_125ON   = 0x60,  \/\/ special channel page enable, bits applied to 64..71$/;"	e	enum:__anon106
+MCMD_LADR_DR_MASK	src/lmic/lorabase.h	/^    MCMD_LADR_DR_MASK    = 0xF0,$/;"	e	enum:__anon107
+MCMD_LADR_DR_SHIFT	src/lmic/lorabase.h	/^    MCMD_LADR_DR_SHIFT   = 4,$/;"	e	enum:__anon107
+MCMD_LADR_FSK	src/lmic/lorabase.h	/^    MCMD_LADR_FSK       = DR_FSK <<4,$/;"	e	enum:__anon107
+MCMD_LADR_N3RFU_MASK	src/lmic/lorabase.h	/^    MCMD_LADR_N3RFU_MASK  = 0x80,$/;"	e	enum:__anon106
+MCMD_LADR_POW_MASK	src/lmic/lorabase.h	/^    MCMD_LADR_POW_MASK   = 0x0F,$/;"	e	enum:__anon107
+MCMD_LADR_POW_SHIFT	src/lmic/lorabase.h	/^    MCMD_LADR_POW_SHIFT  = 0,$/;"	e	enum:__anon107
+MCMD_LADR_REPEAT_1	src/lmic/lorabase.h	/^    MCMD_LADR_REPEAT_1    = 0x01,$/;"	e	enum:__anon106
+MCMD_LADR_REPEAT_MASK	src/lmic/lorabase.h	/^    MCMD_LADR_REPEAT_MASK = 0x0F,$/;"	e	enum:__anon106
+MCMD_LADR_REQ	src/lmic/lorabase.h	/^    MCMD_LADR_REQ = 0x03, \/\/ link ADR request   : u1:DR\/TXPow, u2:chmask, u1:chpage\/repeat$/;"	e	enum:__anon99
+MCMD_LADR_SF10	src/lmic/lorabase.h	/^    MCMD_LADR_SF10      = DR_SF10<<4,$/;"	e	enum:__anon107
+MCMD_LADR_SF11	src/lmic/lorabase.h	/^    MCMD_LADR_SF11      = DR_SF11<<4,$/;"	e	enum:__anon107
+MCMD_LADR_SF12	src/lmic/lorabase.h	/^    MCMD_LADR_SF12      = DR_SF12<<4,$/;"	e	enum:__anon107
+MCMD_LADR_SF7	src/lmic/lorabase.h	/^    MCMD_LADR_SF7       = DR_SF7 <<4,$/;"	e	enum:__anon107
+MCMD_LADR_SF7B	src/lmic/lorabase.h	/^    MCMD_LADR_SF7B      = DR_SF7B<<4,$/;"	e	enum:__anon107
+MCMD_LADR_SF8	src/lmic/lorabase.h	/^    MCMD_LADR_SF8       = DR_SF8 <<4,$/;"	e	enum:__anon107
+MCMD_LADR_SF9	src/lmic/lorabase.h	/^    MCMD_LADR_SF9       = DR_SF9 <<4,$/;"	e	enum:__anon107
+MCMD_LCHK_ANS	src/lmic/lorabase.h	/^    MCMD_LCHK_ANS = 0x02, \/\/ link check answer  : u1:margin 0-254,255=unknown margin \/ u1:gwcnt$/;"	e	enum:__anon99
+MCMD_LCHK_REQ	src/lmic/lorabase.h	/^    MCMD_LCHK_REQ = 0x02, \/\/ -  link check request : -$/;"	e	enum:__anon98
+MCMD_PING_ANS	src/lmic/lorabase.h	/^    MCMD_PING_ANS = 0x11, \/\/ -  ack ping freq      : u1: 7-1:RFU, 0:freq ok$/;"	e	enum:__anon98
+MCMD_PING_ANS_FQACK	src/lmic/lorabase.h	/^    MCMD_PING_ANS_FQACK = 0x01$/;"	e	enum:__anon104
+MCMD_PING_ANS_RFU	src/lmic/lorabase.h	/^    MCMD_PING_ANS_RFU   = 0xFE,$/;"	e	enum:__anon104
+MCMD_PING_IND	src/lmic/lorabase.h	/^    MCMD_PING_IND = 0x10, \/\/ -  pingability indic  : u1: 7=RFU, 6-4:interval, 3-0:datarate$/;"	e	enum:__anon98
+MCMD_PING_SET	src/lmic/lorabase.h	/^    MCMD_PING_SET = 0x11, \/\/ set ping freq      : u3: freq$/;"	e	enum:__anon99
+MCMD_SNCH_ANS	src/lmic/lorabase.h	/^    MCMD_SNCH_ANS = 0x07, \/\/ -  set new channel    : u1: 7-2=RFU, 1\/0:DR\/freq ACK$/;"	e	enum:__anon98
+MCMD_SNCH_ANS_DRACK	src/lmic/lorabase.h	/^    MCMD_SNCH_ANS_DRACK  = 0x02, \/\/ 0=unknown data rate$/;"	e	enum:__anon103
+MCMD_SNCH_ANS_FQACK	src/lmic/lorabase.h	/^    MCMD_SNCH_ANS_FQACK  = 0x01, \/\/ 0=rejected channel frequency$/;"	e	enum:__anon103
+MCMD_SNCH_ANS_RFU	src/lmic/lorabase.h	/^    MCMD_SNCH_ANS_RFU    = 0xFC, \/\/ RFU bits$/;"	e	enum:__anon103
+MCMD_SNCH_REQ	src/lmic/lorabase.h	/^    MCMD_SNCH_REQ = 0x07, \/\/ set new channel    : u1:chidx, u3:freq, u1:DRrange$/;"	e	enum:__anon99
+MINRX_SYMS	src/lmic/lmic.c	20;"	d	file:
+NETID_MASK	src/lmic/lmic.h	/^enum { NETID_NONE=(int)~0U, NETID_MASK=(int)0xFFFFFF };$/;"	e	enum:__anon24
+NETID_NONE	src/lmic/lmic.h	/^enum { NETID_NONE=(int)~0U, NETID_MASK=(int)0xFFFFFF };$/;"	e	enum:__anon24
+NUM_DEFAULT_CHANNELS	src/lmic/lmic.c	/^enum { NUM_DEFAULT_CHANNELS=3 };$/;"	e	enum:__anon3	file:
+NUM_DEFAULT_CHANNELS	src/lmic/lmic.c	/^enum { NUM_DEFAULT_CHANNELS=3 };$/;"	e	enum:__anon4	file:
+NUM_DIO	src/hal/hal.h	/^static const int NUM_DIO = 3;$/;"	v
+NWKID_BITS	src/lmic/lorabase.h	/^    NWKID_BITS = 7$/;"	e	enum:__anon97
+NWKID_MASK	src/lmic/lorabase.h	/^    NWKID_MASK = (int)0xFE000000,$/;"	e	enum:__anon97
+OFF_BCN_CRC1	src/lmic/lorabase.h	/^    OFF_BCN_CRC1     = 7,$/;"	e	enum:__anon70
+OFF_BCN_CRC1	src/lmic/lorabase.h	/^    OFF_BCN_CRC1     = 7,$/;"	e	enum:__anon86
+OFF_BCN_CRC2	src/lmic/lorabase.h	/^    OFF_BCN_CRC2     = 15,$/;"	e	enum:__anon70
+OFF_BCN_CRC2	src/lmic/lorabase.h	/^    OFF_BCN_CRC2     = 17,$/;"	e	enum:__anon86
+OFF_BCN_INFO	src/lmic/lorabase.h	/^    OFF_BCN_INFO     = 8,$/;"	e	enum:__anon70
+OFF_BCN_INFO	src/lmic/lorabase.h	/^    OFF_BCN_INFO     = 9,$/;"	e	enum:__anon86
+OFF_BCN_LAT	src/lmic/lorabase.h	/^    OFF_BCN_LAT      = 10,$/;"	e	enum:__anon86
+OFF_BCN_LAT	src/lmic/lorabase.h	/^    OFF_BCN_LAT      = 9,$/;"	e	enum:__anon70
+OFF_BCN_LON	src/lmic/lorabase.h	/^    OFF_BCN_LON      = 12,$/;"	e	enum:__anon70
+OFF_BCN_LON	src/lmic/lorabase.h	/^    OFF_BCN_LON      = 13,$/;"	e	enum:__anon86
+OFF_BCN_NETID	src/lmic/lorabase.h	/^    OFF_BCN_NETID    = 0,$/;"	e	enum:__anon70
+OFF_BCN_NETID	src/lmic/lorabase.h	/^    OFF_BCN_NETID    = 0,$/;"	e	enum:__anon86
+OFF_BCN_RFU1	src/lmic/lorabase.h	/^    OFF_BCN_RFU1     = 16,$/;"	e	enum:__anon86
+OFF_BCN_TIME	src/lmic/lorabase.h	/^    OFF_BCN_TIME     = 3,$/;"	e	enum:__anon70
+OFF_BCN_TIME	src/lmic/lorabase.h	/^    OFF_BCN_TIME     = 3,$/;"	e	enum:__anon86
+OFF_CFLIST	src/lmic/lorabase.h	/^    OFF_CFLIST      = 13,$/;"	e	enum:__anon88
+OFF_DAT_ADDR	src/lmic/lorabase.h	/^    OFF_DAT_ADDR     = 1,$/;"	e	enum:__anon89
+OFF_DAT_FCT	src/lmic/lorabase.h	/^    OFF_DAT_FCT      = 5,$/;"	e	enum:__anon89
+OFF_DAT_HDR	src/lmic/lorabase.h	/^    OFF_DAT_HDR      = 0,$/;"	e	enum:__anon89
+OFF_DAT_OPTS	src/lmic/lorabase.h	/^    OFF_DAT_OPTS     = 8,$/;"	e	enum:__anon89
+OFF_DAT_SEQNO	src/lmic/lorabase.h	/^    OFF_DAT_SEQNO    = 6,$/;"	e	enum:__anon89
+OFF_JA_ARTNONCE	src/lmic/lorabase.h	/^    OFF_JA_ARTNONCE = 1,$/;"	e	enum:__anon88
+OFF_JA_DEVADDR	src/lmic/lorabase.h	/^    OFF_JA_DEVADDR  = 7,$/;"	e	enum:__anon88
+OFF_JA_DLSET	src/lmic/lorabase.h	/^    OFF_JA_DLSET    = 11,$/;"	e	enum:__anon88
+OFF_JA_HDR	src/lmic/lorabase.h	/^    OFF_JA_HDR      = 0,$/;"	e	enum:__anon88
+OFF_JA_NETID	src/lmic/lorabase.h	/^    OFF_JA_NETID    = 4,$/;"	e	enum:__anon88
+OFF_JA_RFU	src/lmic/lorabase.h	/^    OFF_JA_RFU      = 11,$/;"	e	enum:__anon88
+OFF_JA_RXDLY	src/lmic/lorabase.h	/^    OFF_JA_RXDLY    = 12,$/;"	e	enum:__anon88
+OFF_JR_ARTEUI	src/lmic/lorabase.h	/^    OFF_JR_ARTEUI   = 1,$/;"	e	enum:__anon87
+OFF_JR_DEVEUI	src/lmic/lorabase.h	/^    OFF_JR_DEVEUI   = 9,$/;"	e	enum:__anon87
+OFF_JR_DEVNONCE	src/lmic/lorabase.h	/^    OFF_JR_DEVNONCE = 17,$/;"	e	enum:__anon87
+OFF_JR_HDR	src/lmic/lorabase.h	/^    OFF_JR_HDR      = 0,$/;"	e	enum:__anon87
+OFF_JR_MIC	src/lmic/lorabase.h	/^    OFF_JR_MIC      = 19,$/;"	e	enum:__anon87
+ON_LMIC_EVENT	src/lmic/oslmic.h	69;"	d
+OPMODE_CAD	src/lmic/radio.c	193;"	d	file:
+OPMODE_FSRX	src/lmic/radio.c	190;"	d	file:
+OPMODE_FSTX	src/lmic/radio.c	188;"	d	file:
+OPMODE_LORA	src/lmic/radio.c	184;"	d	file:
+OPMODE_MASK	src/lmic/radio.c	185;"	d	file:
+OPMODE_RX	src/lmic/radio.c	191;"	d	file:
+OPMODE_RX_SINGLE	src/lmic/radio.c	192;"	d	file:
+OPMODE_SLEEP	src/lmic/radio.c	186;"	d	file:
+OPMODE_STANDBY	src/lmic/radio.c	187;"	d	file:
+OPMODE_TX	src/lmic/radio.c	189;"	d	file:
+OP_JOINING	src/lmic/lmic.h	/^       OP_JOINING  = 0x0004, \/\/ device joining in progress (blocks other activities)$/;"	e	enum:__anon25
+OP_LINKDEAD	src/lmic/lmic.h	/^       OP_LINKDEAD = 0x1000, \/\/ link was reported as dead$/;"	e	enum:__anon25
+OP_NEXTCHNL	src/lmic/lmic.h	/^       OP_NEXTCHNL = 0x0800, \/\/ find a new channel$/;"	e	enum:__anon25
+OP_NONE	src/lmic/lmic.h	/^enum { OP_NONE     = 0x0000,$/;"	e	enum:__anon25
+OP_PINGABLE	src/lmic/lmic.h	/^       OP_PINGABLE = 0x0400, \/\/ we're pingable$/;"	e	enum:__anon25
+OP_PINGINI	src/lmic/lmic.h	/^       OP_PINGINI  = 0x0200, \/\/ pingable is initialized and scheduling active$/;"	e	enum:__anon25
+OP_POLL	src/lmic/lmic.h	/^       OP_POLL     = 0x0010, \/\/ send empty UP frame to ACK confirmed DN\/fetch more DN data$/;"	e	enum:__anon25
+OP_REJOIN	src/lmic/lmic.h	/^       OP_REJOIN   = 0x0020, \/\/ occasionally send JOIN REQUEST$/;"	e	enum:__anon25
+OP_RNDTX	src/lmic/lmic.h	/^       OP_RNDTX    = 0x0100, \/\/ prevent TX lining up after a beacon$/;"	e	enum:__anon25
+OP_SCAN	src/lmic/lmic.h	/^       OP_SCAN     = 0x0001, \/\/ radio scan to find a beacon$/;"	e	enum:__anon25
+OP_SHUTDOWN	src/lmic/lmic.h	/^       OP_SHUTDOWN = 0x0040, \/\/ prevent MAC from doing anything$/;"	e	enum:__anon25
+OP_TESTMODE	src/lmic/lmic.h	/^       OP_TESTMODE = 0x2000, \/\/ developer test mode$/;"	e	enum:__anon25
+OP_TRACK	src/lmic/lmic.h	/^       OP_TRACK    = 0x0002, \/\/ track my networks beacon (netid)$/;"	e	enum:__anon25
+OP_TXDATA	src/lmic/lmic.h	/^       OP_TXDATA   = 0x0008, \/\/ TX user data (buffered in pendTxData)$/;"	e	enum:__anon25
+OP_TXRXPEND	src/lmic/lmic.h	/^       OP_TXRXPEND = 0x0080, \/\/ TX\/RX transaction pending$/;"	e	enum:__anon25
+OS	src/lmic/oslmic.c	/^} OS;$/;"	v	typeref:struct:__anon1	file:
+OSTICKS_PER_SEC	src/lmic/config.h	52;"	d
+OSTICKS_PER_SEC	src/lmic/oslmic.h	101;"	d
+PAMBL_FSK	src/lmic/lmic.c	23;"	d	file:
+PAMBL_SYMS	src/lmic/lmic.c	22;"	d	file:
+PRERX_FSK	src/lmic/lmic.c	24;"	d	file:
+RADIO_RST	src/lmic/lmic.h	/^enum { RADIO_RST=0, RADIO_TX=1, RADIO_RX=2, RADIO_RXON=3 };$/;"	e	enum:__anon23
+RADIO_RX	src/lmic/lmic.h	/^enum { RADIO_RST=0, RADIO_TX=1, RADIO_RX=2, RADIO_RXON=3 };$/;"	e	enum:__anon23
+RADIO_RXON	src/lmic/lmic.h	/^enum { RADIO_RST=0, RADIO_TX=1, RADIO_RX=2, RADIO_RXON=3 };$/;"	e	enum:__anon23
+RADIO_TX	src/lmic/lmic.h	/^enum { RADIO_RST=0, RADIO_TX=1, RADIO_RX=2, RADIO_RXON=3 };$/;"	e	enum:__anon23
+RESOLVE_TABLE	src/lmic/oslmic.h	212;"	d
+RETRY_PERIOD_secs	src/lmic/lmic.h	/^enum { RETRY_PERIOD_secs  =     3 };  \/\/ secs - random period for retrying a confirmed send$/;"	e	enum:__anon14
+RF_IMAGECAL_AUTOIMAGECAL_MASK	src/lmic/radio.c	238;"	d	file:
+RF_IMAGECAL_AUTOIMAGECAL_OFF	src/lmic/radio.c	240;"	d	file:
+RF_IMAGECAL_AUTOIMAGECAL_ON	src/lmic/radio.c	239;"	d	file:
+RF_IMAGECAL_IMAGECAL_DONE	src/lmic/radio.c	246;"	d	file:
+RF_IMAGECAL_IMAGECAL_MASK	src/lmic/radio.c	242;"	d	file:
+RF_IMAGECAL_IMAGECAL_RUNNING	src/lmic/radio.c	245;"	d	file:
+RF_IMAGECAL_IMAGECAL_START	src/lmic/radio.c	243;"	d	file:
+RSSI_OFF	src/lmic/lorabase.h	/^enum { RSSI_OFF=64, SNR_SCALEUP=4 };$/;"	e	enum:__anon108
+RXLEN_FSK	src/lmic/lmic.c	25;"	d	file:
+RXLORA_RXMODE_RSSI_REG_MODEM_CONFIG1	src/lmic/radio.c	173;"	d	file:
+RXLORA_RXMODE_RSSI_REG_MODEM_CONFIG2	src/lmic/radio.c	175;"	d	file:
+RXLORA_RXMODE_RSSI_REG_MODEM_CONFIG2	src/lmic/radio.c	177;"	d	file:
+RXMODE_RSSI	src/lmic/radio.c	/^enum { RXMODE_SINGLE, RXMODE_SCAN, RXMODE_RSSI };$/;"	e	enum:__anon2	file:
+RXMODE_SCAN	src/lmic/radio.c	/^enum { RXMODE_SINGLE, RXMODE_SCAN, RXMODE_RSSI };$/;"	e	enum:__anon2	file:
+RXMODE_SINGLE	src/lmic/radio.c	/^enum { RXMODE_SINGLE, RXMODE_SCAN, RXMODE_RSSI };$/;"	e	enum:__anon2	file:
+RX_RAMPUP	src/lmic/oslmic.h	94;"	d
+RegDioMapping1	src/lmic/radio.c	111;"	d	file:
+RegDioMapping2	src/lmic/radio.c	112;"	d	file:
+RegFifo	src/lmic/radio.c	16;"	d	file:
+RegFrfLsb	src/lmic/radio.c	24;"	d	file:
+RegFrfMid	src/lmic/radio.c	23;"	d	file:
+RegFrfMsb	src/lmic/radio.c	22;"	d	file:
+RegLna	src/lmic/radio.c	28;"	d	file:
+RegOcp	src/lmic/radio.c	27;"	d	file:
+RegOpMode	src/lmic/radio.c	17;"	d	file:
+RegPaConfig	src/lmic/radio.c	25;"	d	file:
+RegPaDac	src/lmic/radio.c	120;"	d	file:
+RegPaRamp	src/lmic/radio.c	26;"	d	file:
+RegVersion	src/lmic/radio.c	113;"	d	file:
+SF10	src/lmic/lorabase.h	/^enum _sf_t { FSK=0, SF7, SF8, SF9, SF10, SF11, SF12, SFrfu };$/;"	e	enum:_sf_t
+SF11	src/lmic/lorabase.h	/^enum _sf_t { FSK=0, SF7, SF8, SF9, SF10, SF11, SF12, SFrfu };$/;"	e	enum:_sf_t
+SF12	src/lmic/lorabase.h	/^enum _sf_t { FSK=0, SF7, SF8, SF9, SF10, SF11, SF12, SFrfu };$/;"	e	enum:_sf_t
+SF7	src/lmic/lorabase.h	/^enum _sf_t { FSK=0, SF7, SF8, SF9, SF10, SF11, SF12, SFrfu };$/;"	e	enum:_sf_t
+SF8	src/lmic/lorabase.h	/^enum _sf_t { FSK=0, SF7, SF8, SF9, SF10, SF11, SF12, SFrfu };$/;"	e	enum:_sf_t
+SF9	src/lmic/lorabase.h	/^enum _sf_t { FSK=0, SF7, SF8, SF9, SF10, SF11, SF12, SFrfu };$/;"	e	enum:_sf_t
+SFrfu	src/lmic/lorabase.h	/^enum _sf_t { FSK=0, SF7, SF8, SF9, SF10, SF11, SF12, SFrfu };$/;"	e	enum:_sf_t
+SIZEOFEXPR	src/lmic/oslmic.h	67;"	d
+SNR_SCALEUP	src/lmic/lorabase.h	/^enum { RSSI_OFF=64, SNR_SCALEUP=4 };$/;"	e	enum:__anon108
+STD_PREAMBLE_LEN	src/lmic/lorabase.h	/^enum { STD_PREAMBLE_LEN  =  8 };$/;"	e	enum:__anon32
+SX1272_MC1_BW_125	src/lmic/radio.c	136;"	d	file:
+SX1272_MC1_BW_250	src/lmic/radio.c	137;"	d	file:
+SX1272_MC1_BW_500	src/lmic/radio.c	138;"	d	file:
+SX1272_MC1_CR_4_5	src/lmic/radio.c	140;"	d	file:
+SX1272_MC1_CR_4_6	src/lmic/radio.c	141;"	d	file:
+SX1272_MC1_CR_4_7	src/lmic/radio.c	142;"	d	file:
+SX1272_MC1_CR_4_8	src/lmic/radio.c	143;"	d	file:
+SX1272_MC1_IMPLICIT_HEADER_MODE_ON	src/lmic/radio.c	144;"	d	file:
+SX1272_MC1_LOW_DATA_RATE_OPTIMIZE	src/lmic/radio.c	146;"	d	file:
+SX1272_MC1_RX_PAYLOAD_CRCON	src/lmic/radio.c	145;"	d	file:
+SX1272_MC2_FSK	src/lmic/radio.c	128;"	d	file:
+SX1272_MC2_SF10	src/lmic/radio.c	132;"	d	file:
+SX1272_MC2_SF11	src/lmic/radio.c	133;"	d	file:
+SX1272_MC2_SF12	src/lmic/radio.c	134;"	d	file:
+SX1272_MC2_SF7	src/lmic/radio.c	129;"	d	file:
+SX1272_MC2_SF8	src/lmic/radio.c	130;"	d	file:
+SX1272_MC2_SF9	src/lmic/radio.c	131;"	d	file:
+SX1272_PAC_PA_SELECT_PA_BOOST	src/lmic/radio.c	148;"	d	file:
+SX1272_PAC_PA_SELECT_RFIO_PIN	src/lmic/radio.c	149;"	d	file:
+SX1276_MC1_BW_125	src/lmic/radio.c	153;"	d	file:
+SX1276_MC1_BW_250	src/lmic/radio.c	154;"	d	file:
+SX1276_MC1_BW_500	src/lmic/radio.c	155;"	d	file:
+SX1276_MC1_CR_4_5	src/lmic/radio.c	156;"	d	file:
+SX1276_MC1_CR_4_6	src/lmic/radio.c	157;"	d	file:
+SX1276_MC1_CR_4_7	src/lmic/radio.c	158;"	d	file:
+SX1276_MC1_CR_4_8	src/lmic/radio.c	159;"	d	file:
+SX1276_MC1_IMPLICIT_HEADER_MODE_ON	src/lmic/radio.c	161;"	d	file:
+SX1276_MC2_RX_PAYLOAD_CRCON	src/lmic/radio.c	164;"	d	file:
+SX1276_MC3_AGCAUTO	src/lmic/radio.c	168;"	d	file:
+SX1276_MC3_LOW_DATA_RATE_OPTIMIZE	src/lmic/radio.c	167;"	d	file:
+State	src/aes/ideetron/AES-128_V10.cpp	/^static unsigned char State[4][4];$/;"	v	file:
+TABLE_GETTER	src/lmic/oslmic.h	229;"	d
+TABLE_GET_OSTIME	src/lmic/oslmic.h	221;"	d
+TABLE_GET_S1	src/lmic/oslmic.h	216;"	d
+TABLE_GET_S2	src/lmic/oslmic.h	218;"	d
+TABLE_GET_S4	src/lmic/oslmic.h	220;"	d
+TABLE_GET_U1	src/lmic/oslmic.h	215;"	d
+TABLE_GET_U1_TWODIM	src/lmic/oslmic.h	222;"	d
+TABLE_GET_U2	src/lmic/oslmic.h	217;"	d
+TABLE_GET_U4	src/lmic/oslmic.h	219;"	d
+TIME_RESYNC	src/lmic/lmic.h	/^enum { TIME_RESYNC        = 6*128 }; \/\/ secs$/;"	e	enum:__anon10
+TXCONF_ATTEMPTS	src/lmic/lmic.h	/^enum { TXCONF_ATTEMPTS    =   8 };   \/\/!< Transmit attempts for confirmed frames$/;"	e	enum:__anon6
+TXRX_ACK	src/lmic/lmic.h	/^enum { TXRX_ACK    = 0x80,   \/\/ confirmed UP frame was acked$/;"	e	enum:__anon26
+TXRX_BCNEXT_secs	src/lmic/lmic.h	/^enum { TXRX_BCNEXT_secs   =     2 };  \/\/ secs - earliest start after beacon time$/;"	e	enum:__anon13
+TXRX_DNW1	src/lmic/lmic.h	/^       TXRX_DNW1   = 0x01,   \/\/ received in 1st DN slot$/;"	e	enum:__anon26
+TXRX_DNW2	src/lmic/lmic.h	/^       TXRX_DNW2   = 0x02,   \/\/ received in 2dn DN slot$/;"	e	enum:__anon26
+TXRX_GUARD_ms	src/lmic/lmic.h	/^enum { TXRX_GUARD_ms      =  6000 };  \/\/ msecs - don't start TX-RX transaction before beacon$/;"	e	enum:__anon11
+TXRX_GUARD_osticks	src/lmic/lmic.c	28;"	d	file:
+TXRX_NACK	src/lmic/lmic.h	/^       TXRX_NACK   = 0x40,   \/\/ confirmed UP frame was not acked$/;"	e	enum:__anon26
+TXRX_NOPORT	src/lmic/lmic.h	/^       TXRX_NOPORT = 0x20,   \/\/ set if a frame with a port was RXed, clr if no frame\/no port$/;"	e	enum:__anon26
+TXRX_PING	src/lmic/lmic.h	/^       TXRX_PING   = 0x04 }; \/\/ received in a scheduled RX slot$/;"	e	enum:__anon26
+TXRX_PORT	src/lmic/lmic.h	/^       TXRX_PORT   = 0x10,   \/\/ set if a frame with a port was RXed, LMIC.frame[LMIC.dataBeg-1] => port$/;"	e	enum:__anon26
+TX_RAMPUP	src/lmic/oslmic.h	97;"	d
+TYPEDEF_xref2band_t	src/lmic/oslmic.h	64;"	d
+TYPEDEF_xref2chnldef_t	src/lmic/oslmic.h	63;"	d
+TYPEDEF_xref2osjob_t	src/lmic/oslmic.h	65;"	d
+TYPEDEF_xref2rps_t	src/lmic/oslmic.h	61;"	d
+TYPEDEF_xref2rxsched_t	src/lmic/oslmic.h	62;"	d
+US915_125kHz_UPFBASE	src/lmic/lorabase.h	/^enum { US915_125kHz_UPFBASE = LG02_UPFREQ,$/;"	e	enum:__anon74
+US915_125kHz_UPFSTEP	src/lmic/lorabase.h	/^       US915_125kHz_UPFSTEP =    0,$/;"	e	enum:__anon74
+US915_500kHz_DNFBASE	src/lmic/lorabase.h	/^       US915_500kHz_DNFBASE = LG02_DNWFREQ,$/;"	e	enum:__anon74
+US915_500kHz_DNFSTEP	src/lmic/lorabase.h	/^       US915_500kHz_DNFSTEP =    0$/;"	e	enum:__anon74
+US915_500kHz_UPFBASE	src/lmic/lorabase.h	/^       US915_500kHz_UPFBASE = LG02_UPFREQ,$/;"	e	enum:__anon74
+US915_500kHz_UPFSTEP	src/lmic/lorabase.h	/^       US915_500kHz_UPFSTEP =   0,$/;"	e	enum:__anon74
+US915_FREQ_MAX	src/lmic/lorabase.h	/^       US915_FREQ_MAX = 928000000 };$/;"	e	enum:__anon75
+US915_FREQ_MIN	src/lmic/lorabase.h	/^enum { US915_FREQ_MIN = 902000000,$/;"	e	enum:__anon75
+USE_IDEETRON_AES	src/lmic/config.h	110;"	d
+US_PER_OSTICK	src/lmic/config.h	51;"	d
+US_PER_OSTICK_EXPONENT	src/lmic/config.h	50;"	d
+_bw_t	src/lmic/lorabase.h	/^enum _bw_t { BW125=0, BW250, BW500, BWrfu };$/;"	g
+_cr_t	src/lmic/lorabase.h	/^enum _cr_t { CR_4_5=0, CR_4_6, CR_4_7, CR_4_8 };$/;"	g
+_dr_eu868_t	src/lmic/lorabase.h	/^enum _dr_eu868_t { DR_SF12=0, DR_SF11, DR_SF10, DR_SF9, DR_SF8, DR_SF7, DR_SF7B, DR_FSK, DR_NONE };$/;"	g
+_dr_us915_t	src/lmic/lorabase.h	/^enum _dr_us915_t { DR_SF10=0, DR_SF9, DR_SF8, DR_SF7, DR_SF8C, DR_NONE,$/;"	g
+_ev_t	src/lmic/lmic.h	/^enum _ev_t { EV_SCAN_TIMEOUT=1, EV_BEACON_FOUND,$/;"	g
+_hal_hal_h_	src/hal/hal.h	11;"	d
+_hal_hpp_	src/lmic/hal.h	13;"	d
+_lmic_config_h_	src/lmic/config.h	2;"	d
+_lmic_h_	src/lmic/lmic.h	16;"	d
+_lorabase_h_	src/lmic/lorabase.h	13;"	d
+_nextTx	src/lmic/lmic.c	/^static void _nextTx (void) {$/;"	f	file:
+_oslmic_h_	src/lmic/oslmic.h	14;"	d
+_sf_t	src/lmic/lorabase.h	/^enum _sf_t { FSK=0, SF7, SF8, SF9, SF10, SF11, SF12, SFrfu };$/;"	g
+adrAckReq	src/lmic/lmic.h	/^    s1_t        adrAckReq;    \/\/ counter until we reset data rate (0=off)$/;"	m	struct:lmic_t
+adrChanged	src/lmic/lmic.h	/^    u1_t        adrChanged;$/;"	m	struct:lmic_t
+adrEnabled	src/lmic/lmic.h	/^    u1_t        adrEnabled;$/;"	m	struct:lmic_t
+adrTxPow	src/lmic/lmic.h	/^    s1_t        adrTxPow;     \/\/ ADR adjusted TX power$/;"	m	struct:lmic_t
+aes_appendMic	src/lmic/lmic.c	/^static void aes_appendMic (xref2cu1_t key, u4_t devaddr, u4_t seqno, int dndir, xref2u1_t pdu, int len) {$/;"	f	file:
+aes_appendMic0	src/lmic/lmic.c	/^static void aes_appendMic0 (xref2u1_t pdu, int len) {$/;"	f	file:
+aes_cipher	src/lmic/lmic.c	/^static void aes_cipher (xref2cu1_t key, u4_t devaddr, u4_t seqno, int dndir, xref2u1_t payload, int len) {$/;"	f	file:
+aes_encrypt	src/lmic/lmic.c	/^static void aes_encrypt (xref2u1_t pdu, int len) {$/;"	f	file:
+aes_sessKeys	src/lmic/lmic.c	/^static void aes_sessKeys (u2_t devnonce, xref2cu1_t artnonce, xref2u1_t nwkkey, xref2u1_t artkey) {$/;"	f	file:
+aes_verifyMic	src/lmic/lmic.c	/^static int aes_verifyMic (xref2cu1_t key, u4_t devaddr, u4_t seqno, int dndir, xref2u1_t pdu, int len) {$/;"	f	file:
+aes_verifyMic0	src/lmic/lmic.c	/^static int aes_verifyMic0 (xref2u1_t pdu, int len) {$/;"	f	file:
+aesroundkeys	src/aes/lmic.c	/^static void aesroundkeys () {$/;"	f	file:
+artKey	src/lmic/lmic.h	/^    u1_t        artKey[16];   \/\/ application router session key$/;"	m	struct:lmic_t
+assertDR	src/lmic/lorabase.h	/^inline dr_t  assertDR (dr_t dr) { return TABLE_GET_U1(_DR2RPS_CRC, dr+1)==ILLEGAL_RPS ? DR_DFLTMIN : dr; }   \/\/ force into a valid DR$/;"	f
+avail	src/lmic/lmic.h	/^    ostime_t avail;     \/\/ channel is blocked until this time$/;"	m	struct:band_t
+band_t	src/lmic/lmic.h	/^struct band_t {$/;"	s
+band_t	src/lmic/oslmic.h	/^typedef      struct band_t band_t;$/;"	t	typeref:struct:band_t
+bands	src/lmic/lmic.h	/^    band_t      bands[MAX_BANDS];$/;"	m	struct:lmic_t
+bcnChnl	src/lmic/lmic.h	/^    u1_t        bcnChnl;$/;"	m	struct:lmic_t
+bcnRxsyms	src/lmic/lmic.h	/^    u1_t        bcnRxsyms;    \/\/$/;"	m	struct:lmic_t
+bcnRxtime	src/lmic/lmic.h	/^    ostime_t    bcnRxtime;$/;"	m	struct:lmic_t
+bcninfo	src/lmic/lmic.h	/^    bcninfo_t   bcninfo;      \/\/ Last received beacon info$/;"	m	struct:lmic_t
+bcninfoTries	src/lmic/lmic.h	/^    u1_t        bcninfoTries; \/\/ how often to try (scan mode only)$/;"	m	struct:lmic_t
+bcninfo_t	src/lmic/lmic.h	/^struct bcninfo_t {$/;"	s
+bcninfo_t	src/lmic/oslmic.h	/^typedef   struct bcninfo_t bcninfo_t;$/;"	t	typeref:struct:bcninfo_t
+bit_t	src/lmic/oslmic.h	/^typedef uint8_t            bit_t;$/;"	t
+buildDataFrame	src/lmic/lmic.c	/^static void buildDataFrame (void) {$/;"	f	file:
+buildJoinRequest	src/lmic/lmic.c	/^static void buildJoinRequest (u1_t ftype) {$/;"	f	file:
+bw_t	src/lmic/lorabase.h	/^typedef u1_t bw_t;$/;"	t
+calcAirTime	src/lmic/lmic.c	/^ostime_t calcAirTime (rps_t rps, u1_t plen) {$/;"	f
+calcBcnRxWindowFromMillis	src/lmic/lmic.c	/^static void calcBcnRxWindowFromMillis (u1_t ms, bit_t ini) {$/;"	f	file:
+calcRxWindow	src/lmic/lmic.c	/^static ostime_t calcRxWindow (u1_t secs, dr_t dr) {$/;"	f	file:
+chRnd	src/lmic/lmic.h	/^    u2_t        chRnd;        \/\/ channel randomizer$/;"	m	struct:lmic_t
+channelDrMap	src/lmic/lmic.h	/^    u2_t        channelDrMap[MAX_CHANNELS];$/;"	m	struct:lmic_t
+channelFreq	src/lmic/lmic.h	/^    u4_t        channelFreq[MAX_CHANNELS];$/;"	m	struct:lmic_t
+channelMap	src/lmic/lmic.h	/^    u2_t        channelMap;$/;"	m	struct:lmic_t
+channelMap	src/lmic/lmic.h	/^    u2_t        channelMap[(72+MAX_XCHANNELS+15)\/16];  \/\/ enabled bits$/;"	m	struct:lmic_t
+check_sizeof_ostime_t	src/lmic/oslmic.h	/^    typedef int check_sizeof_ostime_t[(sizeof(ostime_t) == 4) ? 0 : -1];$/;"	t
+chnldef_t	src/lmic/oslmic.h	/^typedef   struct chnldef_t chnldef_t;$/;"	t	typeref:struct:chnldef_t
+clockError	src/lmic/lmic.h	/^    u2_t        clockError; \/\/ Inaccuracy in the clock. CLOCK_ERROR_MAX$/;"	m	struct:lmic_t
+configChannel	src/lmic/radio.c	/^static void configChannel () {$/;"	f	file:
+configLoraModem	src/lmic/radio.c	/^static void configLoraModem () {$/;"	f	file:
+configPower	src/lmic/radio.c	/^static void configPower () {$/;"	f	file:
+convFreq	src/lmic/lmic.c	/^static u4_t convFreq (xref2u1_t ptr) {$/;"	f	file:
+cr_t	src/lmic/lorabase.h	/^typedef u1_t cr_t;$/;"	t
+dataBeg	src/lmic/lmic.h	/^    u1_t        dataBeg;    \/\/ 0 or start of data (dataBeg-1 is port)$/;"	m	struct:lmic_t
+dataLen	src/lmic/lmic.h	/^    u1_t        dataLen;    \/\/ 0 no data or zero length data, >0 byte count of data$/;"	m	struct:lmic_t
+datarate	src/lmic/lmic.h	/^    u1_t        datarate;     \/\/ current data rate$/;"	m	struct:lmic_t
+deadline	src/lmic/oslmic.h	/^    ostime_t deadline;$/;"	m	struct:osjob_t
+decDR	src/lmic/lorabase.h	/^inline dr_t  decDR    (dr_t dr) { return TABLE_GET_U1(_DR2RPS_CRC, dr  )==ILLEGAL_RPS ? dr : (dr_t)(dr-1); } \/\/ decrease data rate$/;"	f
+decodeBeacon	src/lmic/lmic.c	/^static int decodeBeacon (void) {$/;"	f	file:
+decodeFrame	src/lmic/lmic.c	/^static bit_t decodeFrame (void) {$/;"	f	file:
+delta_time	src/hal/hal.cpp	/^static s4_t delta_time(u4_t time) {$/;"	f	file:
+devNonce	src/lmic/lmic.h	/^    u2_t        devNonce;     \/\/ last generated nonce$/;"	m	struct:lmic_t
+devaddr	src/lmic/lmic.h	/^    devaddr_t   devaddr;$/;"	m	struct:lmic_t
+devaddr_t	src/lmic/lorabase.h	/^typedef u4_t devaddr_t;$/;"	t
+devsAns	src/lmic/lmic.h	/^    bit_t       devsAns;      \/\/ device status answer pending$/;"	m	struct:lmic_t
+dio	src/hal/hal.h	/^    u1_t dio[NUM_DIO];$/;"	m	struct:lmic_pinmap
+dio_states	src/hal/hal.cpp	/^static bool dio_states[NUM_DIO] = {0};$/;"	v	file:
+dn2Ans	src/lmic/lmic.h	/^    u1_t        dn2Ans;       \/\/ 0=no answer pend, 0x80+ACKs$/;"	m	struct:lmic_t
+dn2Dr	src/lmic/lmic.h	/^    u1_t        dn2Dr;$/;"	m	struct:lmic_t
+dn2Freq	src/lmic/lmic.h	/^    u4_t        dn2Freq;$/;"	m	struct:lmic_t
+dnConf	src/lmic/lmic.h	/^    u1_t        dnConf;       \/\/ dn frame confirm pending: LORA::FCT_ACK or 0$/;"	m	struct:lmic_t
+dndr	src/lmic/lmic.h	/^    u1_t        dndr;$/;"	m	struct:lmic_t
+dndr2rps	src/lmic/lorabase.h	/^inline rps_t dndr2rps (dr_t dr) { return setNocrc(updr2rps(dr),1); }$/;"	f
+dr	src/lmic/lmic.h	/^    u1_t     dr;$/;"	m	struct:rxsched_t
+dr2hsym	src/lmic/lmic.c	370;"	d	file:
+dr_t	src/lmic/lorabase.h	/^typedef u1_t dr_t;$/;"	t
+drift	src/lmic/lmic.h	/^    s2_t        drift;        \/\/ last measured drift$/;"	m	struct:lmic_t
+dutyCapAns	src/lmic/lmic.h	/^    bit_t       dutyCapAns;   \/\/ have to ACK duty cycle settings$/;"	m	struct:lmic_t
+engineUpdate	src/lmic/lmic.c	/^static void engineUpdate (void) {$/;"	f	file:
+errcr	src/lmic/lmic.h	/^    u1_t        errcr;        \/\/ error coding rate (used for TX only)$/;"	m	struct:lmic_t
+ev_t	src/lmic/lmic.h	/^typedef enum _ev_t ev_t;$/;"	t	typeref:enum:_ev_t
+flags	src/lmic/lmic.h	/^    u1_t     flags;   \/\/!< Last beacon reception and tracking states. See BCN_* values.$/;"	m	struct:bcninfo_t
+frame	src/lmic/lmic.h	/^    u1_t        frame[MAX_LEN_FRAME];$/;"	m	struct:lmic_t
+freq	src/lmic/lmic.h	/^    u4_t        freq;$/;"	m	struct:lmic_t
+freq	src/lmic/lmic.h	/^    u4_t     freq;$/;"	m	struct:rxsched_t
+func	src/lmic/oslmic.h	/^    osjobcb_t  func;$/;"	m	struct:osjob_t
+getBw	src/lmic/lorabase.h	/^inline bw_t  getBw   (rps_t params)            { return  (bw_t)((params >> 3) & 0x3); }$/;"	f
+getCr	src/lmic/lorabase.h	/^inline cr_t  getCr   (rps_t params)            { return  (cr_t)((params >> 5) & 0x3); }$/;"	f
+getIh	src/lmic/lorabase.h	/^inline int   getIh   (rps_t params)            { return        ((params >> 8) & 0xFF); }$/;"	f
+getNocrc	src/lmic/lorabase.h	/^inline int   getNocrc(rps_t params)            { return        ((params >> 7) & 0x1); }$/;"	f
+getSensitivity	src/lmic/lmic.c	/^int getSensitivity (rps_t rps) {$/;"	f
+getSf	src/lmic/lorabase.h	/^inline sf_t  getSf   (rps_t params)            { return   (sf_t)(params &  0x7); }$/;"	f
+globalDutyAvail	src/lmic/lmic.h	/^    ostime_t    globalDutyAvail; \/\/ time device can send again$/;"	m	struct:lmic_t
+globalDutyRate	src/lmic/lmic.h	/^    u1_t        globalDutyRate;  \/\/ max rate: 1\/2^k$/;"	m	struct:lmic_t
+hal_checkTimer	src/hal/hal.cpp	/^u1_t hal_checkTimer (u4_t time) {$/;"	f
+hal_disableIRQs	src/hal/hal.cpp	/^void hal_disableIRQs () {$/;"	f
+hal_enableIRQs	src/hal/hal.cpp	/^void hal_enableIRQs () {$/;"	f
+hal_failed	src/hal/hal.cpp	/^void hal_failed (const char *file, u2_t line) {$/;"	f
+hal_init	src/hal/hal.cpp	/^void hal_init () {$/;"	f
+hal_io_check	src/hal/hal.cpp	/^static void hal_io_check() {$/;"	f	file:
+hal_io_init	src/hal/hal.cpp	/^static void hal_io_init () {$/;"	f	file:
+hal_pin_nss	src/hal/hal.cpp	/^void hal_pin_nss (u1_t val) {$/;"	f
+hal_pin_rst	src/hal/hal.cpp	/^void hal_pin_rst (u1_t val) {$/;"	f
+hal_pin_rxtx	src/hal/hal.cpp	/^void hal_pin_rxtx (u1_t val) {$/;"	f
+hal_printf_init	src/hal/hal.cpp	/^void hal_printf_init() {$/;"	f
+hal_sleep	src/hal/hal.cpp	/^void hal_sleep () {$/;"	f
+hal_spi	src/hal/hal.cpp	/^u1_t hal_spi (u1_t out) {$/;"	f
+hal_spi_init	src/hal/hal.cpp	/^static void hal_spi_init () {$/;"	f	file:
+hal_ticks	src/hal/hal.cpp	/^u4_t hal_ticks () {$/;"	f
+hal_time_init	src/hal/hal.cpp	/^static void hal_time_init () {$/;"	f	file:
+hal_waitUntil	src/hal/hal.cpp	/^void hal_waitUntil (u4_t time) {$/;"	f
+incDR	src/lmic/lorabase.h	/^inline dr_t  incDR    (dr_t dr) { return TABLE_GET_U1(_DR2RPS_CRC, dr+2)==ILLEGAL_RPS ? dr : (dr_t)(dr+1); } \/\/ increase data rate$/;"	f
+info	src/lmic/lmic.h	/^    u1_t     info;    \/\/!< Info field of last beacon (valid only if BCN_FULL set)$/;"	m	struct:bcninfo_t
+initDefaultChannels	src/lmic/lmic.c	/^static void initDefaultChannels (bit_t join) {$/;"	f	file:
+initDefaultChannels	src/lmic/lmic.c	/^static void initDefaultChannels (void) {$/;"	f	file:
+initJoinLoop	src/lmic/lmic.c	/^static void initJoinLoop (void) {$/;"	f	file:
+intvExp	src/lmic/lmic.h	/^    u1_t     intvExp;   \/\/ 0..7$/;"	m	struct:rxsched_t
+irqlevel	src/hal/hal.cpp	/^static uint8_t irqlevel = 0;$/;"	v	file:
+isFasterDR	src/lmic/lorabase.h	/^inline int isFasterDR (dr_t dr1, dr_t dr2) { return dr1 > dr2; }$/;"	f
+isSlowerDR	src/lmic/lorabase.h	/^inline int isSlowerDR (dr_t dr1, dr_t dr2) { return dr1 < dr2; }$/;"	f
+isTESTMODE	src/lmic/lmic.c	45;"	d	file:
+jreqDone	src/lmic/lmic.c	/^static void jreqDone (xref2osjob_t osjob) {$/;"	f	file:
+ladrAns	src/lmic/lmic.h	/^    bit_t       ladrAns;      \/\/ link adr adapt answer pending$/;"	m	struct:lmic_t
+lastDriftDiff	src/lmic/lmic.h	/^    s2_t        lastDriftDiff;$/;"	m	struct:lmic_t
+lastchnl	src/lmic/lmic.h	/^    u1_t     lastchnl;  \/\/ last used channel$/;"	m	struct:band_t
+lat	src/lmic/lmic.h	/^    s4_t     lat;     \/\/!< Lat field of last beacon (valid only if BCN_FULL set)$/;"	m	struct:bcninfo_t
+lmic_aes_encrypt	src/aes/ideetron/AES-128_V10.cpp	/^void lmic_aes_encrypt(unsigned char *Data, unsigned char *Key)$/;"	f
+lmic_pinmap	src/hal/hal.h	/^struct lmic_pinmap {$/;"	s
+lmic_printf	src/lmic/oslmic.h	250;"	d
+lmic_printf	src/lmic/oslmic.h	262;"	d
+lmic_t	src/lmic/lmic.h	/^struct lmic_t {$/;"	s
+lon	src/lmic/lmic.h	/^    s4_t     lon;     \/\/!< Lon field of last beacon (valid only if BCN_FULL set)$/;"	m	struct:bcninfo_t
+lowerDR	src/lmic/lorabase.h	/^inline dr_t  lowerDR  (dr_t dr, u1_t n) { while(n--){dr=decDR(dr);} return dr; } \/\/ decrease data rate by n steps$/;"	f
+makeRps	src/lmic/lorabase.h	/^inline rps_t makeRps (sf_t sf, bw_t bw, cr_t cr, int ih, int nocrc) {$/;"	f
+mapChannels	src/lmic/lmic.c	/^static u1_t mapChannels (u1_t chpage, u2_t chmap) {$/;"	f	file:
+margin	src/lmic/lmic.h	/^    u1_t        margin;$/;"	m	struct:lmic_t
+maxDriftDiff	src/lmic/lmic.h	/^    s2_t        maxDriftDiff;$/;"	m	struct:lmic_t
+maxFrameLen	src/lmic/lmic.c	216;"	d	file:
+maxFrameLen	src/lmic/lmic.c	239;"	d	file:
+micB0	src/lmic/lmic.c	/^static void micB0 (u4_t devaddr, u4_t seqno, int dndir, int len) {$/;"	f	file:
+missedBcns	src/lmic/lmic.h	/^    u1_t        missedBcns;   \/\/ unable to track last N beacons$/;"	m	struct:lmic_t
+moreData	src/lmic/lmic.h	/^    u1_t        moreData;     \/\/ NWK has more data pending$/;"	m	struct:lmic_t
+ms2osticks	src/lmic/oslmic.h	110;"	d
+ms2osticksCeil	src/lmic/oslmic.h	117;"	d
+ms2osticksRound	src/lmic/oslmic.h	118;"	d
+msbf4_read	src/aes/lmic.c	182;"	d	file:
+msbf4_write	src/aes/lmic.c	183;"	d	file:
+netid	src/lmic/lmic.h	/^    u4_t        netid;        \/\/ current network id (~0 - none)$/;"	m	struct:lmic_t
+next	src/lmic/oslmic.h	/^    struct osjob_t* next;$/;"	m	struct:osjob_t	typeref:struct:osjob_t::osjob_t
+nextJoinState	src/lmic/lmic.c	/^static ostime_t nextJoinState (void) {$/;"	f	file:
+nextTx	src/lmic/lmic.c	/^static ostime_t nextTx (ostime_t now) {$/;"	f	file:
+nextTx	src/lmic/lmic.c	859;"	d	file:
+nss	src/hal/hal.h	/^    u1_t nss;$/;"	m	struct:lmic_pinmap
+nwkKey	src/lmic/lmic.h	/^    u1_t        nwkKey[16];   \/\/ network session key$/;"	m	struct:lmic_t
+onBcnRx	src/lmic/lmic.c	/^static void onBcnRx (xref2osjob_t job) {$/;"	f	file:
+onJoinFailed	src/lmic/lmic.c	/^static void onJoinFailed (xref2osjob_t osjob) {$/;"	f	file:
+opmode	src/lmic/lmic.h	/^    u2_t        opmode;$/;"	m	struct:lmic_t
+opmode	src/lmic/radio.c	/^static void opmode (u1_t mode) {$/;"	f	file:
+opmodeFSK	src/lmic/radio.c	/^static void opmodeFSK() {$/;"	f	file:
+opmodeLora	src/lmic/radio.c	/^static void opmodeLora() {$/;"	f	file:
+os_aes	src/aes/lmic.c	/^u4_t os_aes (u1_t mode, xref2u1_t buf, u2_t len) {$/;"	f
+os_aes	src/aes/other.c	/^u4_t os_aes (u1_t mode, xref2u1_t buf, u2_t len) {$/;"	f
+os_aes_cmac	src/aes/other.c	/^static void os_aes_cmac(xref2u1_t buf, u2_t len, u1_t prepend_aux) {$/;"	f	file:
+os_aes_ctr	src/aes/other.c	/^static void os_aes_ctr (xref2u1_t buf, u2_t len) {$/;"	f	file:
+os_clearCallback	src/lmic/oslmic.c	/^void os_clearCallback (osjob_t* job) {$/;"	f
+os_clearMem	src/lmic/oslmic.h	51;"	d
+os_copyMem	src/lmic/oslmic.h	52;"	d
+os_crc16	src/lmic/lmic.c	/^u2_t os_crc16 (xref2u1_t data, uint len) {$/;"	f
+os_getBattLevel	src/lmic/lmic.c	/^u1_t os_getBattLevel (void) {$/;"	f
+os_getRndU1	src/lmic/oslmic.h	79;"	d
+os_getRndU2	src/lmic/oslmic.h	192;"	d
+os_getTime	src/lmic/oslmic.c	/^ostime_t os_getTime () {$/;"	f
+os_init	src/lmic/oslmic.c	/^void os_init () {$/;"	f
+os_radio	src/lmic/radio.c	/^void os_radio (u1_t mode) {$/;"	f
+os_rlsbf2	src/lmic/lmic.c	/^u2_t os_rlsbf2 (xref2cu1_t buf) {$/;"	f
+os_rlsbf4	src/lmic/lmic.c	/^u4_t os_rlsbf4 (xref2cu1_t buf) {$/;"	f
+os_rmsbf4	src/lmic/lmic.c	/^u4_t os_rmsbf4 (xref2cu1_t buf) {$/;"	f
+os_runloop	src/lmic/oslmic.c	/^void os_runloop () {$/;"	f
+os_runloop_once	src/lmic/oslmic.c	/^void os_runloop_once() {$/;"	f
+os_setCallback	src/lmic/oslmic.c	/^void os_setCallback (osjob_t* job, osjobcb_t cb) {$/;"	f
+os_setTimedCallback	src/lmic/oslmic.c	/^void os_setTimedCallback (osjob_t* job, ostime_t time, osjobcb_t cb) {$/;"	f
+os_wlsbf2	src/lmic/lmic.c	/^void os_wlsbf2 (xref2u1_t buf, u2_t v) {$/;"	f
+os_wlsbf4	src/lmic/lmic.c	/^void os_wlsbf4 (xref2u1_t buf, u4_t v) {$/;"	f
+os_wmsbf4	src/lmic/lmic.c	/^void os_wmsbf4 (xref2u1_t buf, u4_t v) {$/;"	f
+osjob	src/lmic/lmic.h	/^    osjob_t     osjob;$/;"	m	struct:lmic_t
+osjob_t	src/lmic/oslmic.h	/^struct osjob_t {$/;"	s
+osjob_t	src/lmic/oslmic.h	/^typedef     struct osjob_t osjob_t;$/;"	t	typeref:struct:osjob_t
+osjobcb_t	src/lmic/oslmic.h	/^typedef void (*osjobcb_t) (struct osjob_t*);$/;"	t
+osticks2ms	src/lmic/oslmic.h	112;"	d
+osticks2us	src/lmic/oslmic.h	113;"	d
+ostime_t	src/lmic/oslmic.h	/^typedef s4_t  ostime_t;$/;"	t
+pendTxConf	src/lmic/lmic.h	/^    u1_t        pendTxConf;   \/\/ confirmed data$/;"	m	struct:lmic_t
+pendTxData	src/lmic/lmic.h	/^    u1_t        pendTxData[MAX_LEN_PAYLOAD];$/;"	m	struct:lmic_t
+pendTxLen	src/lmic/lmic.h	/^    u1_t        pendTxLen;    \/\/ +0x80 = confirmed$/;"	m	struct:lmic_t
+pendTxPort	src/lmic/lmic.h	/^    u1_t        pendTxPort;$/;"	m	struct:lmic_t
+ping	src/lmic/lmic.h	/^    rxsched_t   ping;         \/\/ pingable setup$/;"	m	struct:lmic_t
+pingSetAns	src/lmic/lmic.h	/^    u1_t        pingSetAns;   \/\/ answer set cmd and ACK bits$/;"	m	struct:lmic_t
+pow2dBm	src/lmic/lmic.c	235;"	d	file:
+pow2dBm	src/lmic/lmic.c	261;"	d	file:
+processBeacon	src/lmic/lmic.c	/^static void processBeacon (xref2osjob_t osjob) {$/;"	f	file:
+processDnData	src/lmic/lmic.c	/^static bit_t processDnData (void) {$/;"	f	file:
+processJoinAccept	src/lmic/lmic.c	/^static bit_t processJoinAccept (void) {$/;"	f	file:
+processPingRx	src/lmic/lmic.c	/^static void processPingRx (xref2osjob_t osjob) {$/;"	f	file:
+processRx1DnData	src/lmic/lmic.c	/^static void processRx1DnData (xref2osjob_t osjob) {$/;"	f	file:
+processRx1Jacc	src/lmic/lmic.c	/^static void processRx1Jacc (xref2osjob_t osjob) {$/;"	f	file:
+processRx2DnData	src/lmic/lmic.c	/^static void processRx2DnData (xref2osjob_t osjob) {$/;"	f	file:
+processRx2Jacc	src/lmic/lmic.c	/^static void processRx2Jacc (xref2osjob_t osjob) {$/;"	f	file:
+radio_init	src/lmic/radio.c	/^void radio_init () {$/;"	f
+radio_irq_handler	src/lmic/radio.c	/^void radio_irq_handler (u1_t dio) {$/;"	f
+radio_rand1	src/lmic/radio.c	/^u1_t radio_rand1 () {$/;"	f
+radio_rssi	src/lmic/radio.c	/^u1_t radio_rssi () {$/;"	f
+randbuf	src/lmic/radio.c	/^static u1_t randbuf[16];$/;"	v	file:
+readBuf	src/lmic/radio.c	/^static void readBuf (u1_t addr, xref2u1_t buf, u1_t len) {$/;"	f	file:
+readReg	src/lmic/radio.c	/^static u1_t readReg (u1_t addr) {$/;"	f	file:
+rejoinCnt	src/lmic/lmic.h	/^    u1_t        rejoinCnt;    \/\/ adjustment for rejoin datarate$/;"	m	struct:lmic_t
+reportEvent	src/lmic/lmic.c	/^static void reportEvent (ev_t ev) {$/;"	f	file:
+rndDelay	src/lmic/lmic.c	/^static ostime_t rndDelay (u1_t secSpan) {$/;"	f	file:
+rps	src/lmic/lmic.h	/^    rps_t       rps;$/;"	m	struct:lmic_t
+rps_t	src/lmic/lorabase.h	/^typedef u2_t rps_t;$/;"	t
+rssi	src/lmic/lmic.h	/^    s1_t        rssi;$/;"	m	struct:lmic_t
+rssi	src/lmic/lmic.h	/^    s1_t     rssi;    \/\/!< Adjusted RSSI value of last received beacon$/;"	m	struct:bcninfo_t
+rst	src/hal/hal.h	/^    u1_t rst;$/;"	m	struct:lmic_pinmap
+runEngineUpdate	src/lmic/lmic.c	/^static void runEngineUpdate (xref2osjob_t osjob) {$/;"	f	file:
+runReset	src/lmic/lmic.c	/^static void runReset (xref2osjob_t osjob) {$/;"	f	file:
+runnablejobs	src/lmic/oslmic.c	/^    osjob_t* runnablejobs;$/;"	m	struct:__anon1	file:
+rxDelay	src/lmic/lmic.h	/^    u1_t        rxDelay;      \/\/ Rx delay after TX$/;"	m	struct:lmic_t
+rxbase	src/lmic/lmic.h	/^    ostime_t rxbase;$/;"	m	struct:rxsched_t
+rxfsk	src/lmic/radio.c	/^static void rxfsk (u1_t rxmode) {$/;"	f	file:
+rxlora	src/lmic/radio.c	/^static void rxlora (u1_t rxmode) {$/;"	f	file:
+rxschedInit	src/lmic/lmic.c	/^static void rxschedInit (xref2rxsched_t rxsched) {$/;"	f	file:
+rxschedNext	src/lmic/lmic.c	/^static bit_t rxschedNext (xref2rxsched_t rxsched, ostime_t cando) {$/;"	f	file:
+rxsched_t	src/lmic/lmic.h	/^struct rxsched_t {$/;"	s
+rxsched_t	src/lmic/oslmic.h	/^typedef   struct rxsched_t rxsched_t;$/;"	t	typeref:struct:rxsched_t
+rxsyms	src/lmic/lmic.h	/^    u2_t        rxsyms;$/;"	m	struct:lmic_t
+rxsyms	src/lmic/lmic.h	/^    u2_t     rxsyms;$/;"	m	struct:rxsched_t
+rxtime	src/lmic/lmic.h	/^    ostime_t    rxtime;$/;"	m	struct:lmic_t
+rxtime	src/lmic/lmic.h	/^    ostime_t rxtime;    \/\/ start of next spot$/;"	m	struct:rxsched_t
+rxtx	src/hal/hal.h	/^    u1_t rxtx;$/;"	m	struct:lmic_pinmap
+s1_t	src/lmic/oslmic.h	/^typedef int8_t             s1_t;$/;"	t
+s2_t	src/lmic/oslmic.h	/^typedef int16_t            s2_t;$/;"	t
+s4_t	src/lmic/oslmic.h	/^typedef int32_t            s4_t;$/;"	t
+sameSfBw	src/lmic/lorabase.h	/^inline int sameSfBw(rps_t r1, rps_t r2) { return ((r1^r2)&0x1F) == 0; }$/;"	f
+schedRx12	src/lmic/lmic.c	/^static void schedRx12 (ostime_t delay, osjobcb_t func, u1_t dr) {$/;"	f	file:
+scheduledjobs	src/lmic/oslmic.c	/^    osjob_t* scheduledjobs;$/;"	m	struct:__anon1	file:
+sec2osticks	src/lmic/oslmic.h	111;"	d
+seqnoDn	src/lmic/lmic.h	/^    u4_t        seqnoDn;      \/\/ device level down stream seqno$/;"	m	struct:lmic_t
+seqnoUp	src/lmic/lmic.h	/^    u4_t        seqnoUp;$/;"	m	struct:lmic_t
+setBcnRxParams	src/lmic/lmic.c	/^static void setBcnRxParams (void) {$/;"	f	file:
+setBw	src/lmic/lorabase.h	/^inline rps_t setBw   (rps_t params, bw_t cr)   { return (rps_t)((params & ~0x18) | (cr<<3)); }$/;"	f
+setCr	src/lmic/lorabase.h	/^inline rps_t setCr   (rps_t params, cr_t cr)   { return (rps_t)((params & ~0x60) | (cr<<5)); }$/;"	f
+setDrJoin	src/lmic/lmic.c	/^static void setDrJoin (u1_t reason, u1_t dr) {$/;"	f	file:
+setDrTxpow	src/lmic/lmic.c	/^static void setDrTxpow (u1_t reason, u1_t dr, s1_t pow) {$/;"	f	file:
+setIh	src/lmic/lorabase.h	/^inline rps_t setIh   (rps_t params, int ih)    { return (rps_t)((params & ~0xFF00) | (ih<<8)); }$/;"	f
+setNocrc	src/lmic/lorabase.h	/^inline rps_t setNocrc(rps_t params, int nocrc) { return (rps_t)((params & ~0x80) | (nocrc<<7)); }$/;"	f
+setRx1Params	src/lmic/lmic.c	700;"	d	file:
+setRx1Params	src/lmic/lmic.c	891;"	d	file:
+setSf	src/lmic/lorabase.h	/^inline rps_t setSf   (rps_t params, sf_t sf)   { return (rps_t)((params & ~0x7) | sf); }$/;"	f
+setupRx1	src/lmic/lmic.c	/^static void setupRx1 (osjobcb_t func) {$/;"	f	file:
+setupRx1DnData	src/lmic/lmic.c	/^static void setupRx1DnData (xref2osjob_t osjob) {$/;"	f	file:
+setupRx1Jacc	src/lmic/lmic.c	/^static void setupRx1Jacc (xref2osjob_t osjob) {$/;"	f	file:
+setupRx2	src/lmic/lmic.c	/^static void setupRx2 (void) {$/;"	f	file:
+setupRx2DnData	src/lmic/lmic.c	/^static void setupRx2DnData (xref2osjob_t osjob) {$/;"	f	file:
+setupRx2Jacc	src/lmic/lmic.c	/^static void setupRx2Jacc (xref2osjob_t osjob) {$/;"	f	file:
+sf_t	src/lmic/lorabase.h	/^typedef u1_t sf_t;$/;"	t
+shift_left	src/aes/other.c	/^static void shift_left(xref2u1_t buf, u1_t len) {$/;"	f	file:
+slot	src/lmic/lmic.h	/^    u1_t     slot;      \/\/ runs from 0 to 128$/;"	m	struct:rxsched_t
+snchAns	src/lmic/lmic.h	/^    u1_t        snchAns;      \/\/ answer set new channel$/;"	m	struct:lmic_t
+snr	src/lmic/lmic.h	/^    s1_t        snr;$/;"	m	struct:lmic_t
+snr	src/lmic/lmic.h	/^    s1_t     snr;     \/\/!< Scaled SNR value of last received beacon$/;"	m	struct:bcninfo_t
+startJoining	src/lmic/lmic.c	/^static void startJoining (xref2osjob_t osjob) {$/;"	f	file:
+startRxBcn	src/lmic/lmic.c	/^static void startRxBcn (xref2osjob_t osjob) {$/;"	f	file:
+startRxPing	src/lmic/lmic.c	/^static void startRxPing (xref2osjob_t osjob) {$/;"	f	file:
+startScan	src/lmic/lmic.c	/^static void startScan (void) {$/;"	f	file:
+startrx	src/lmic/radio.c	/^static void startrx (u1_t rxmode) {$/;"	f	file:
+starttx	src/lmic/radio.c	/^static void starttx () {$/;"	f	file:
+stateJustJoined	src/lmic/lmic.c	/^static void stateJustJoined (void) {$/;"	f	file:
+str_t	src/lmic/oslmic.h	/^typedef const char* str_t;$/;"	t
+swapmsbf	src/aes/lmic.c	184;"	d	file:
+table_get_ostime	src/lmic/oslmic.h	/^    inline ostime_t table_get_ostime(const ostime_t *table, size_t index) { return table[index]; }$/;"	f
+table_get_s1	src/lmic/oslmic.h	/^    inline s1_t table_get_s1(const s1_t *table, size_t index) { return table[index]; }$/;"	f
+table_get_s2	src/lmic/oslmic.h	/^    inline s2_t table_get_s2(const s2_t *table, size_t index) { return table[index]; }$/;"	f
+table_get_s4	src/lmic/oslmic.h	/^    inline s4_t table_get_s4(const s4_t *table, size_t index) { return table[index]; }$/;"	f
+table_get_u1	src/lmic/oslmic.h	/^    inline u1_t table_get_u1(const u1_t *table, size_t index) { return table[index]; }$/;"	f
+table_get_u2	src/lmic/oslmic.h	/^    inline u2_t table_get_u2(const u2_t *table, size_t index) { return table[index]; }$/;"	f
+table_get_u4	src/lmic/oslmic.h	/^    inline u4_t table_get_u4(const u4_t *table, size_t index) { return table[index]; }$/;"	f
+time	src/lmic/lmic.h	/^    u4_t     time;    \/\/!< GPS time in seconds of last beacon (received or surrogate)$/;"	m	struct:bcninfo_t
+txChnl	src/lmic/lmic.h	/^    u1_t        txChnl;          \/\/ channel for next TX$/;"	m	struct:lmic_t
+txCnt	src/lmic/lmic.h	/^    u1_t        txCnt;$/;"	m	struct:lmic_t
+txDelay	src/lmic/lmic.c	/^static void txDelay (ostime_t reftime, u1_t secSpan) {$/;"	f	file:
+txDone	src/lmic/lmic.c	/^static void txDone (ostime_t delay, osjobcb_t func) {$/;"	f	file:
+txcap	src/lmic/lmic.h	/^    u2_t     txcap;     \/\/ duty cycle limitation: 1\/txcap$/;"	m	struct:band_t
+txend	src/lmic/lmic.h	/^    ostime_t    txend;$/;"	m	struct:lmic_t
+txfsk	src/lmic/radio.c	/^static void txfsk () {$/;"	f	file:
+txlora	src/lmic/radio.c	/^static void txlora () {$/;"	f	file:
+txpow	src/lmic/lmic.h	/^    s1_t        txpow;     \/\/ dBm$/;"	m	struct:lmic_t
+txpow	src/lmic/lmic.h	/^    s1_t     txpow;     \/\/ maximum TX power$/;"	m	struct:band_t
+txrxFlags	src/lmic/lmic.h	/^    u1_t        txrxFlags;  \/\/ transaction flags (TX-RX combo)$/;"	m	struct:lmic_t
+txtime	src/lmic/lmic.h	/^    ostime_t txtime;  \/\/!< Time when the beacon was sent$/;"	m	struct:bcninfo_t
+u1	src/aes/lmic.c	186;"	d	file:
+u1_t	src/lmic/oslmic.h	/^typedef uint8_t            u1_t;$/;"	t
+u2_t	src/lmic/oslmic.h	/^typedef uint16_t           u2_t;$/;"	t
+u4_t	src/lmic/oslmic.h	/^typedef uint32_t           u4_t;$/;"	t
+uart_putchar	src/hal/hal.cpp	/^static int uart_putchar (char c, FILE *)$/;"	f	file:
+uint	src/lmic/oslmic.h	/^typedef unsigned int       uint;$/;"	t
+unlinkjob	src/lmic/oslmic.c	/^static u1_t unlinkjob (osjob_t** pnext, osjob_t* job) {$/;"	f	file:
+upRepeat	src/lmic/lmic.h	/^    u1_t        upRepeat;     \/\/ configured up repeat$/;"	m	struct:lmic_t
+updataDone	src/lmic/lmic.c	/^static void updataDone (xref2osjob_t osjob) {$/;"	f	file:
+updateTx	src/lmic/lmic.c	/^static void updateTx (ostime_t txbeg) {$/;"	f	file:
+updr2rps	src/lmic/lorabase.h	/^inline rps_t updr2rps (dr_t dr) { return (rps_t)TABLE_GET_U1(_DR2RPS_CRC, dr+1); }$/;"	f
+us2osticks	src/lmic/oslmic.h	109;"	d
+us2osticksCeil	src/lmic/oslmic.h	115;"	d
+us2osticksRound	src/lmic/oslmic.h	116;"	d
+validDR	src/lmic/lorabase.h	/^inline bit_t validDR  (dr_t dr) { return TABLE_GET_U1(_DR2RPS_CRC, dr+1)!=ILLEGAL_RPS; } \/\/ in range$/;"	f
+writeBuf	src/lmic/radio.c	/^static void writeBuf (u1_t addr, xref2u1_t buf, u1_t len) {$/;"	f	file:
+writeReg	src/lmic/radio.c	/^static void writeReg (u1_t addr, u1_t data ) {$/;"	f	file:
+xchDrMap	src/lmic/lmic.h	/^    u2_t        xchDrMap[MAX_XCHANNELS];   \/\/ extra channel datarate ranges  ---XXX: ditto$/;"	m	struct:lmic_t
+xchFreq	src/lmic/lmic.h	/^    u4_t        xchFreq[MAX_XCHANNELS];    \/\/ extra channel frequencies (if device is behind a repeater)$/;"	m	struct:lmic_t
+xref2cu1_t	src/lmic/oslmic.h	/^typedef        const u1_t* xref2cu1_t;$/;"	t
+xref2u1_t	src/lmic/oslmic.h	/^typedef              u1_t* xref2u1_t;$/;"	t
