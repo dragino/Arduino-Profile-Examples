@@ -29,9 +29,14 @@
  *
  *******************************************************************************/
 
+#include <dht.h>
 #include <lmic.h>
 #include <hal/hal.h>
 #include <SPI.h>
+
+dht DHT;
+#define DHT11_PIN A0
+const int ctl_pin=4; //define the input pin of realy
 
 // This EUI must be in little-endian format, so least-significant-byte
 // first. When copying an EUI from ttnctl output, this means to reverse
@@ -48,12 +53,14 @@ void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
 // number but a block of memory, endianness does not really apply). In
 // practice, a key taken from ttnctl can be copied as-is.
 // The key shown here is the semtech default key.
-static const u1_t PROGMEM APPKEY[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+static const u1_t PROGMEM APPKEY[16] ={ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
 
-const int ctl_pin=4; //define the input pin of realy
-static uint8_t mydata[3] = { 0x01, 0x01,0x00 };  //Data Channel,Data Type,Data
-static uint8_t opencml[4]={0x01,0x00,0x64,0xFF},closecml[4]={0x01,0x00,0x00,0xFF}; //the payload of the cayenne or ttn downlink 
+static float temperature,humidity,tem,hum;
+static uint8_t LPP_data[10] = {0x01,0x67,0x00,0x00,0x02,0x68,0x00,0x03,0x01,0x00}; //0xO1,0x02,0x03 is Data Channel,0x67,0x68,0x01 is Data Type
+static uint8_t opencml[4]={0x03,0x00,0x64,0xFF},closecml[4]={0x03,0x00,0x00,0xFF}; //the payload of the cayenne or ttn downlink 
+static unsigned int count = 1; 
+
 static osjob_t sendjob;
 
 // Schedule TX every this many seconds (might become longer due to duty
@@ -89,6 +96,7 @@ void onEvent (ev_t ev) {
             break;
         case EV_JOINED:
             Serial.println(F("EV_JOINED"));
+
             // Disable link check validation (automatically enabled
             // during join, but not supported by TTN at this time).
             LMIC_setLinkCheckMode(0);
@@ -107,7 +115,7 @@ void onEvent (ev_t ev) {
             Serial.println(F("EV_TXCOMPLETE (includes waiting for RX windows)"));
             if (LMIC.txrxFlags & TXRX_ACK)
               Serial.println(F("Received ack"));
-            if(LMIC.dataLen>0)
+           if(LMIC.dataLen>0)
             {
               int i,j=0;
               uint8_t received[4]={0x00,0x00,0x00,0x00};
@@ -128,7 +136,7 @@ void onEvent (ev_t ev) {
               Serial.println("Set pin to LOW.");
                digitalWrite(ctl_pin, LOW);
             }
-            } 
+            }
             // Schedule next transmission
             os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
             break;
@@ -154,17 +162,44 @@ void onEvent (ev_t ev) {
     }
 }
 
+void dhtTem()
+{
+       int16_t tem_LPP;
+       temperature = DHT.read11(DHT11_PIN);    //Read Tmperature data
+       tem = DHT.temperature*1.0;      
+       humidity = DHT.read11(DHT11_PIN);      //Read humidity data
+       hum = DHT.humidity* 1.0; 
+       Serial.print("###########    ");
+       Serial.print("COUNT=");
+       Serial.print(count);
+       Serial.println("    ###########");            
+       Serial.println(F("The temperature and humidity:"));
+       Serial.print("[");
+       Serial.print(tem);
+       Serial.print("℃");
+       Serial.print(",");
+       Serial.print(hum);
+       Serial.print("%");
+       Serial.print("]");
+       Serial.println("");
+       count++;
+       tem_LPP=tem * 10; 
+       LPP_data[2] = tem_LPP>>8;
+       LPP_data[3] = tem_LPP;
+       LPP_data[6] = hum * 2;
+}
+
 void ctl_pinread()
 {  
     int val;
     val=digitalRead(ctl_pin);
     if(val==1)
      {
-        mydata[2]=0x01;
+        LPP_data[9]=0x01;
      }
     else
     {
-        mydata[2]=0x00;
+        LPP_data[9]=0x00;
     }
 }
 
@@ -173,9 +208,10 @@ void do_send(osjob_t* j){
     if (LMIC.opmode & OP_TXRXPEND) {
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
-        // Prepare upstream data transmission at the next possible time.
+        dhtTem();
         ctl_pinread();
-        LMIC_setTxData2(1, mydata, sizeof(mydata), 0);
+        // Prepare upstream data transmission at the next possible time.
+        LMIC_setTxData2(1,LPP_data, sizeof(LPP_data), 0);
         Serial.println(F("Packet queued"));
     }
     // Next TX is scheduled after TX_COMPLETE event.
@@ -183,7 +219,8 @@ void do_send(osjob_t* j){
 
 void setup() {
     Serial.begin(9600);
-    Serial.println(F("Starting"));
+    while(!Serial);
+    Serial.println("Connect to TTN and Send data to mydevice cayenne(Use DHT11 Sensor):");
 
     pinMode(ctl_pin,OUTPUT);
     
@@ -204,5 +241,5 @@ void setup() {
 }
 
 void loop() {
-    os_runloop_once();
+     os_runloop_once();
 }

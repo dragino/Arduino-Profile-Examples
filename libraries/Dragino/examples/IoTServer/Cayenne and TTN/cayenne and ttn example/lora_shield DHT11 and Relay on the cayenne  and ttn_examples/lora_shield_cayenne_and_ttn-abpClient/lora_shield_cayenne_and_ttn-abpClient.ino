@@ -36,16 +36,17 @@
 
 dht DHT;
 #define DHT11_PIN A0
+const int ctl_pin=4; //define the input pin of realy
 
 // LoRaWAN NwkSKey, network session key
 // This is the default Semtech key, which is used by the early prototype TTN
 // network.
-static const PROGMEM u1_t NWKSKEY[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+static const PROGMEM u1_t NWKSKEY[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 // LoRaWAN AppSKey, application session key
 // This is the default Semtech key, which is used by the early prototype TTN
 // network.
-static const u1_t PROGMEM APPSKEY[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+static const u1_t PROGMEM APPSKEY[16] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 // LoRaWAN end-device address (DevAddr)
 static const u4_t DEVADDR = 0x00000000; // <-- Change this address for every node!
@@ -58,7 +59,8 @@ void os_getDevEui (u1_t* buf) { }
 void os_getDevKey (u1_t* buf) { }
 
 static float temperature,humidity,tem,hum;
-static uint8_t LPP_data[7] = {0x01,0x67,0x00,0x00,0x02,0x68,0x00}; //0xO1,0x02 is Data Channel,0x67,0x68 is Data Type
+static uint8_t LPP_data[10] = {0x01,0x67,0x00,0x00,0x02,0x68,0x00,0x03,0x01,0x00}; //0xO1,0x02,0x03 is Data Channel,0x67,0x68,0x01 is Data Type
+static uint8_t opencml[4]={0x03,0x00,0x64,0xFF},closecml[4]={0x03,0x00,0x00,0xFF}; //the payload of the cayenne or ttn downlink  //0xO1,0x02 is Data Channel,0x67,0x68 is Data Type
 static unsigned int count = 1; 
 
 static osjob_t sendjob;
@@ -110,10 +112,27 @@ void onEvent (ev_t ev) {
             Serial.println(F("EV_TXCOMPLETE (includes waiting for RX windows)"));
             if (LMIC.txrxFlags & TXRX_ACK)
               Serial.println(F("Received ack"));
-            if (LMIC.dataLen) {
-              Serial.println(F("Received "));
-              Serial.println(LMIC.dataLen);
-              Serial.println(F(" bytes of payload"));
+           if(LMIC.dataLen>0)
+            {
+              int i,j=0;
+              uint8_t received[4]={0x00,0x00,0x00,0x00};
+               Serial.println("Received :");
+              for(i=9;i<(9+LMIC.dataLen);i++)   //the received buf
+              {
+                Serial.print(LMIC.frame[i]);
+                received[j]=LMIC.frame[i];
+                j++;
+                Serial.print(" ");
+               }
+              Serial.println(); 
+            if ((received[0]==opencml[0])&&(received[1]==opencml[1])&&(received[2]==opencml[2])&&(received[3]==opencml[3])) {
+              Serial.println("Set pin to HIGH.");
+              digitalWrite(ctl_pin, HIGH);
+            }
+            if ((received[0]==closecml[0])&&(received[1]==closecml[1])&&(received[2]==closecml[2])&&(received[3]==closecml[3])) {
+              Serial.println("Set pin to LOW.");
+               digitalWrite(ctl_pin, LOW);
+            }
             }
             // Schedule next transmission
             os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
@@ -167,12 +186,27 @@ void dhtTem()
        LPP_data[6] = hum * 2;
 }
 
+void ctl_pinread()
+{  
+    int val;
+    val=digitalRead(ctl_pin);
+    if(val==1)
+     {
+        LPP_data[9]=0x01;
+     }
+    else
+    {
+        LPP_data[9]=0x00;
+    }
+}
+
 void do_send(osjob_t* j){
     // Check if there is not a current TX/RX job running
     if (LMIC.opmode & OP_TXRXPEND) {
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
         dhtTem();
+        ctl_pinread();
         // Prepare upstream data transmission at the next possible time.
         LMIC_setTxData2(1,LPP_data, sizeof(LPP_data), 0);
         Serial.println(F("Packet queued"));
@@ -185,6 +219,8 @@ void setup() {
     while(!Serial);
     Serial.println("Connect to TTN and Send data to mydevice cayenne(Use DHT11 Sensor):");
 
+    pinMode(ctl_pin,OUTPUT);
+    
     #ifdef VCC_ENABLE
     // For Pinoccio Scout boards
     pinMode(VCC_ENABLE, OUTPUT);
