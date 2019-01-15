@@ -122,7 +122,7 @@ void onEvent (ev_t ev) {
                Serial.println("Received :");
               for(i=9;i<(9+LMIC.dataLen);i++)   //the received buf
               {
-                Serial.print(LMIC.frame[i]);
+                Serial.print(LMIC.frame[i],HEX);
                 received[j]=LMIC.frame[i];
                 j++;
                 Serial.print(" ");
