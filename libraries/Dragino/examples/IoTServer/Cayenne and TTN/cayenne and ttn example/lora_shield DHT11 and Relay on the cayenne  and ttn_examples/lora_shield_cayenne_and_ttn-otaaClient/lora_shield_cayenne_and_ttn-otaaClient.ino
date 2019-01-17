@@ -36,28 +36,29 @@
 
 dht DHT;
 #define DHT11_PIN A0
-const int ctl_pin=4; //define the input pin of realy
+const int ctl_pin=4; //define the output pin of realy
+const int flame_pin=3;  //define the input pin of flame sensor
 
 // This EUI must be in little-endian format, so least-significant-byte
 // first. When copying an EUI from ttnctl output, this means to reverse
 // the bytes. For TTN issued EUIs the last bytes should be 0xD5, 0xB3,
 // 0x70.
-static const u1_t PROGMEM APPEUI[8]={ 0xBB, 0x66, 0x01, 0xD0, 0x7E, 0xD5, 0xB3, 0x70 };
+static const u1_t PROGMEM APPEUI[8]={ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
 
 // This should also be in little endian format, see above.
-static const u1_t PROGMEM DEVEUI[8]={ 0x3F, 0x63, 0xB9, 0x66, 0xC0, 0xF5, 0x96, 0x00 };
+static const u1_t PROGMEM DEVEUI[8]={ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
 
 // This key should be in big endian format (or, since it is not really a
 // number but a block of memory, endianness does not really apply). In
 // practice, a key taken from ttnctl can be copied as-is.
 // The key shown here is the semtech default key.
-static const u1_t PROGMEM APPKEY[16] ={ 0x41, 0x2B, 0x22, 0x8A, 0xFD, 0x92, 0x57, 0xC1, 0x64, 0x4D, 0x3B, 0xC2, 0x1E, 0x3D, 0xAE, 0x65 };
+static const u1_t PROGMEM APPKEY[16] ={ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
 
 static float temperature,humidity,tem,hum;
-static uint8_t LPP_data[10] = {0x01,0x67,0x00,0x00,0x02,0x68,0x00,0x03,0x01,0x00}; //0xO1,0x02,0x03 is Data Channel,0x67,0x68,0x01 is Data Type
+static uint8_t LPP_data[13] = {0x01,0x67,0x00,0x00,0x02,0x68,0x00,0x03,0x01,0x00,0x04,0x00,0x00}; //0xO1,0x02,0x03,0x04 is Data Channel,0x67,0x68,0x01,0x00 is Data Type
 static uint8_t opencml[4]={0x03,0x00,0x64,0xFF},closecml[4]={0x03,0x00,0x00,0xFF}; //the payload of the cayenne or ttn downlink 
 static unsigned int count = 1; 
 
@@ -189,10 +190,11 @@ void dhtTem()
        LPP_data[6] = hum * 2;
 }
 
-void ctl_pinread()
+void pinread()
 {  
-    int val;
+    int val,val1;
     val=digitalRead(ctl_pin);
+    val1=digitalRead(flame_pin);
     if(val==1)
      {
         LPP_data[9]=0x01;
@@ -200,6 +202,14 @@ void ctl_pinread()
     else
     {
         LPP_data[9]=0x00;
+    }
+    if(val1==1)
+    {
+      LPP_data[12]=0x01;
+    }
+    else
+    {
+      LPP_data[12]=0x00;
     }
 }
 
@@ -209,7 +219,7 @@ void do_send(osjob_t* j){
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
         dhtTem();
-        ctl_pinread();
+        pinread();
         // Prepare upstream data transmission at the next possible time.
         LMIC_setTxData2(1,LPP_data, sizeof(LPP_data), 0);
         Serial.println(F("Packet queued"));
@@ -223,6 +233,8 @@ void setup() {
     Serial.println("Connect to TTN and Send data to mydevice cayenne(Use DHT11 Sensor):");
 
     pinMode(ctl_pin,OUTPUT);
+    pinMode(flame_pin,INPUT);
+    attachInterrupt(1,fire,LOW);
     
     #ifdef VCC_ENABLE
     // For Pinoccio Scout boards
@@ -238,6 +250,14 @@ void setup() {
 
     // Start job (sending automatically starts OTAA too)
     do_send(&sendjob);
+}
+
+void fire()
+{
+     LPP_data[12]=0x00;
+     dhtTem();
+     LMIC_setTxData2(1,LPP_data, sizeof(LPP_data), 0);
+     Serial.println("Have fire,the temperature is send");
 }
 
 void loop() {

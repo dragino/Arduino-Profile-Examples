@@ -36,7 +36,8 @@
 
 dht DHT;
 #define DHT11_PIN A0
-const int ctl_pin=4; //define the input pin of realy
+const int ctl_pin=4; //define the output pin of realy
+const int flame_pin=3;  //define the input pin of flame sensor
 
 // LoRaWAN NwkSKey, network session key
 // This is the default Semtech key, which is used by the early prototype TTN
@@ -59,7 +60,7 @@ void os_getDevEui (u1_t* buf) { }
 void os_getDevKey (u1_t* buf) { }
 
 static float temperature,humidity,tem,hum;
-static uint8_t LPP_data[10] = {0x01,0x67,0x00,0x00,0x02,0x68,0x00,0x03,0x01,0x00}; //0xO1,0x02,0x03 is Data Channel,0x67,0x68,0x01 is Data Type
+static uint8_t LPP_data[13] = {0x01,0x67,0x00,0x00,0x02,0x68,0x00,0x03,0x01,0x00,0x04,0x00,0x00}; //0xO1,0x02,0x03,0x04 is Data Channel,0x67,0x68,0x01,0x00 is Data Type
 static uint8_t opencml[4]={0x03,0x00,0x64,0xFF},closecml[4]={0x03,0x00,0x00,0xFF}; //the payload of the cayenne or ttn downlink  //0xO1,0x02 is Data Channel,0x67,0x68 is Data Type
 static unsigned int count = 1; 
 
@@ -186,10 +187,11 @@ void dhtTem()
        LPP_data[6] = hum * 2;
 }
 
-void ctl_pinread()
+void pinread()
 {  
-    int val;
+    int val,val1;
     val=digitalRead(ctl_pin);
+    val1=digitalRead(flame_pin);
     if(val==1)
      {
         LPP_data[9]=0x01;
@@ -197,6 +199,14 @@ void ctl_pinread()
     else
     {
         LPP_data[9]=0x00;
+    }
+    if(val1==1)
+    {
+      LPP_data[12]=0x01;
+    }
+    else
+    {
+      LPP_data[12]=0x00;
     }
 }
 
@@ -206,7 +216,7 @@ void do_send(osjob_t* j){
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
         dhtTem();
-        ctl_pinread();
+        pinread();
         // Prepare upstream data transmission at the next possible time.
         LMIC_setTxData2(1,LPP_data, sizeof(LPP_data), 0);
         Serial.println(F("Packet queued"));
@@ -220,6 +230,8 @@ void setup() {
     Serial.println("Connect to TTN and Send data to mydevice cayenne(Use DHT11 Sensor):");
 
     pinMode(ctl_pin,OUTPUT);
+    pinMode(flame_pin,INPUT);
+    attachInterrupt(1,fire,LOW);
     
     #ifdef VCC_ENABLE
     // For Pinoccio Scout boards
@@ -291,6 +303,14 @@ void setup() {
 
     // Start job
     do_send(&sendjob);
+}
+
+void fire()
+{
+     LPP_data[12]=0x00;
+     dhtTem();
+     LMIC_setTxData2(1,LPP_data, sizeof(LPP_data), 0);
+     Serial.println("Have fire,the temperature is send");
 }
 
 void loop() {
