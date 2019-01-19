@@ -50,6 +50,7 @@ void setup()
         rf95.setSpreadingFactor(SF);
         rf95.setSignalBandwidth(SBW);
         rf95.setCodingRate4(Denominator);
+        rf95.setSyncWord(0x34);
        // show_config();    //LG01 configure be shown
         writeVersion();
         Console.print(F("Sketch Version:"));

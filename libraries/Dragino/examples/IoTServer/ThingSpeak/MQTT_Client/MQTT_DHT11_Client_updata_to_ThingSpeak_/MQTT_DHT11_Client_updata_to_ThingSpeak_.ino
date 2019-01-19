@@ -8,8 +8,6 @@ float frequency = 868.0;  //frequency settings
 dht DHT;
 #define DHT11_PIN A0
 float temperature,humidity,tem,hum;
-String datastring1="";
-String datastring2="";
 char tem_1[8]={"\0"},hum_1[8]={"\0"};
 char *node_id = "<12345>";  //From LG01 via web Local Channel settings on MQTT.Please refer <> dataformat in here.
 uint8_t datasend[36];
@@ -23,6 +21,7 @@ void setup()
       Serial.println(F("init failed"));
          rf95.setFrequency(frequency);
          rf95.setTxPower(13);
+         rf95.setSyncWord(0x34);
 }
 
 void dhtTem()
@@ -40,7 +39,7 @@ void dhtTem()
        Serial.print("%");
        Serial.print("]");
        Serial.println("");
-       delay(2000);
+       delay(5000);
 }
 void dhtWrite()
 {
@@ -55,9 +54,9 @@ void dhtWrite()
 
     // Serial.println(tem_1);
      strcat(data,"field1=");
-     strcat(data,hum_1);
-     strcat(data,"&field2=");
      strcat(data,tem_1);
+     strcat(data,"&field2=");
+     strcat(data,hum_1);
      strcpy((char *)datasend,data);
      
    //Serial.println((char *)datasend);
