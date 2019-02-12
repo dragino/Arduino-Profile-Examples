@@ -148,8 +148,7 @@ void GPSRead()
 {
   unsigned long age;
   gps.f_get_position(&flat, &flon, &age);
-  falt=gps.f_altitude();  //get altitude 
-  smartdelay(1000);      
+  falt=gps.f_altitude();  //get altitude     
   flon == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flon, 6;//save six decimal places 
   flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flat, 6;
   falt == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : falt, 2;//save two decimal places
@@ -184,8 +183,9 @@ void do_send(osjob_t* j){
     if (LMIC.opmode & OP_TXRXPEND) {
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
-        printdata();
+        smartdelay(1000);
         GPSRead();
+        printdata();
         // Prepare upstream data transmission at the next possible time.
         LMIC_setTxData2(1, mydata, sizeof(mydata), 0);
         Serial.println(F("Packet queued"));
@@ -211,7 +211,6 @@ void printdata(){
      Serial.println(F(""));
        count++;
 }
-smartdelay(1000);
   }
 
 void setup() {

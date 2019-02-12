@@ -17,7 +17,7 @@ void setup()
 {
       Serial.begin(9600);
       while (!Serial);
-      Serial.println(F("Start MQTT Example"));
+      Serial.println(F("Start MQTT Example of the ThingSpeak"));
       if (!LoRa.begin(868000000))   //868000000 is frequency
       { 
           Serial.println("Starting LoRa failed!");

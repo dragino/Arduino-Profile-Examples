@@ -175,8 +175,9 @@ void do_send(osjob_t* j){
     if (LMIC.opmode & OP_TXRXPEND) {
         Serial.println(F("OP_TXRXPEND, not sending"));
     } else {
-        printdata();
+        smartdelay(1000);
         GPSRead();
+        printdata();
         // Prepare upstream data transmission at the next possible time.
         LMIC_setTxData2(1, mydata, sizeof(mydata), 0);
         Serial.println(F("Packet queued"));
@@ -202,7 +203,6 @@ void printdata(){
      Serial.println(F(""));
        count++;
 }
-smartdelay(1000);
 }
 
 static void smartdelay(unsigned long ms)
