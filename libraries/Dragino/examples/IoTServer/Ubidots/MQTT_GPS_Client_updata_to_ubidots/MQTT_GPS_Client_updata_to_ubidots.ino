@@ -44,9 +44,9 @@ void GPSRead()
        Serial.println(F("    ###########"));
        Serial.println(F("The longtitude and latitude and altitude are:"));
        Serial.print(F("["));
-       Serial.print(flat,3);
+       Serial.print(flat,4);
        Serial.print(F(","));
-       Serial.print(flon,3);
+       Serial.print(flon,4);
        Serial.print(F("]"));
      Serial.println(F(""));
        count++;
@@ -61,8 +61,8 @@ void GPSWrite()
        data[i] = node_id[i];
     }
     
-    dtostrf(flon,0,3,flon_1);
-    dtostrf(flat,0,3,flat_1);
+    dtostrf(flon,0,4,flon_1);
+    dtostrf(flat,0,4,flat_1);
 
      strcat(data,"{");
      strcat(data,"\"location\":");
