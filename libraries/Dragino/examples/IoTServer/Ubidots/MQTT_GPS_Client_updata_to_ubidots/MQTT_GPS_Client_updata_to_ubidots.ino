@@ -42,11 +42,11 @@ void GPSRead()
        Serial.print(F("NO."));
        Serial.print(count);
        Serial.println(F("    ###########"));
-       Serial.println(F("The longtitude and latitude and altitude are:"));
+       Serial.println(F("The longtitude and latitude:"));
        Serial.print(F("["));
-       Serial.print(flat,4);
-       Serial.print(F(","));
        Serial.print(flon,4);
+       Serial.print(F(","));
+       Serial.print(flat,4);
        Serial.print(F("]"));
      Serial.println(F(""));
        count++;
