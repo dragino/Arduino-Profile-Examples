@@ -40,8 +40,10 @@ SoftwareSerial ss(4, 3); // Arduino RX, TX to conenct
 
 static void smartdelay(unsigned long ms);
 unsigned int count = 0;        //For times count
- 
-float flat, flon,falt;
+
+float longitude,latitude;
+float flat,flon,falt;
+float mgLon,mgLat;  // World Geodetic System ==> Mars Geodetic System
 
 static uint8_t mydata[11] ={0x03,0x88,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}; 
 
@@ -49,18 +51,18 @@ static uint8_t mydata[11] ={0x03,0x88,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x
 // first. When copying an EUI from ttnctl output, this means to reverse
 // the bytes. For TTN issued EUIs the last bytes should be 0xD5, 0xB3,
 // 0x70.
-static const u1_t PROGMEM APPEUI[8]={ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+static const u1_t PROGMEM APPEUI[8]={ 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00  };
 void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
 
 // This should also be in little endian format, see above.
-static const u1_t PROGMEM DEVEUI[8]={ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+static const u1_t PROGMEM DEVEUI[8]={ 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00  };
 void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
 
 // This key should be in big endian format (or, since it is not really a
 // number but a block of memory, endianness does not really apply). In
 // practice, a key taken from ttnctl can be copied as-is.
 // The key shown here is the semtech default key.
-static const u1_t PROGMEM APPKEY[16] ={ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+static const u1_t PROGMEM APPKEY[16] ={ 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00  };
 void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
 
 static osjob_t sendjob;
@@ -147,6 +149,45 @@ void onEvent (ev_t ev) {
     }
 }
 
+// World Geodetic System ==> Mars Geodetic System
+double transformLat(double x, double y)  
+{  
+    double ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * sqrt(abs(x));  
+    ret += (20.0 * sin(6.0 * x * M_PI) + 20.0 * sin(2.0 * x * M_PI)) * 2.0 / 3.0;  
+    ret += (20.0 * sin(y * M_PI) + 40.0 * sin(y / 3.0 * M_PI)) * 2.0 / 3.0;  
+    ret += (160.0 * sin(y / 12.0 * M_PI) + 320 * sin(y * M_PI / 30.0)) * 2.0 / 3.0;  
+    return ret;  
+}  
+  
+ double transformLon(double x, double y)  
+{  
+    double ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * sqrt(abs(x));  
+    ret += (20.0 * sin(6.0 * x * M_PI) + 20.0 * sin(2.0 * x * M_PI)) * 2.0 / 3.0;  
+    ret += (20.0 * sin(x * M_PI) + 40.0 * sin(x / 3.0 * M_PI)) * 2.0 / 3.0;  
+    ret += (150.0 * sin(x / 12.0 * M_PI) + 300.0 * sin(x / 30.0 * M_PI)) * 2.0 / 3.0;  
+    return ret;  
+}  
+    
+void WGS2GCJTransform(float wgLon, float wgLat, float &mgLon, float &mgLat)  
+{  
+    const double a = 6378245.0;  
+    const double ee = 0.00669342162296594323;  
+  
+    double dLat = transformLat(wgLon - 105.0, wgLat - 35.0);  
+    double dLon = transformLon(wgLon - 105.0, wgLat - 35.0);  
+  
+    double radLat = wgLat / 180.0 * M_PI;  
+    double magic = sin(radLat);  
+    magic = 1 - ee * magic * magic;  
+  
+    double sqrtMagic = sqrt(magic);  
+    dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * M_PI);  
+    dLon = (dLon * 180.0) / (a / sqrtMagic * cos(radLat) * M_PI);  
+  
+    mgLat = wgLat + dLat;  
+    mgLon = wgLon + dLon;  
+}
+
 void GPSRead()
 {
   unsigned long age;
@@ -155,8 +196,21 @@ void GPSRead()
   flon == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flon, 6;//save six decimal places 
   flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flat, 6;
   falt == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : falt, 2;//save two decimal places
-  int32_t lat = flat * 10000;
-  int32_t lon = flon * 10000;
+  if((flon < 72.004 || flon > 137.8347)&&(flat < 0.8293 || flat >55.8271))  //out of China
+  {
+    longitude=flon;
+    latitude=flat;
+  // Serial.println("Out of China");
+  }
+  else
+  {
+    WGS2GCJTransform(flon,flat,mgLon,mgLat);
+    longitude=mgLon;
+    latitude=mgLat;
+   //Serial.println("In China");
+  }
+  int32_t lat = latitude * 10000;
+  int32_t lon = longitude * 10000;
   int32_t alt = falt * 100;
 
   mydata[2] = lat >> 16;
@@ -168,6 +222,42 @@ void GPSRead()
   mydata[8] = alt >> 16;
   mydata[9] = alt >> 8;
   mydata[10] = alt;  
+}
+
+void printdata(){
+       Serial.print(F("###########    "));
+       Serial.print(F("NO."));
+       Serial.print(count);
+       Serial.println(F("    ###########"));
+       if(flon!=1000.000000)  //Successfully positioning
+  {  
+       Serial.println(F("The longtitude and latitude and altitude are:"));
+       Serial.print(F("["));
+       Serial.print(mgLon,4);
+       Serial.print(F(","));
+       Serial.print(mgLat,4);
+       Serial.print(F(","));
+      Serial.print(falt);
+       Serial.print(F("]"));
+     Serial.println(F(""));
+       count++;
+ }
+  else
+   {
+   Serial.println(F("Unsuccessfully positioning"));
+   }
+}
+
+static void smartdelay(unsigned long ms)
+{
+  unsigned long start = millis();
+  do 
+  {
+    while (ss.available())
+    {
+      gps.encode(ss.read());
+    }
+  } while (millis() - start < ms);
 }
 
 void do_send(osjob_t* j){
@@ -183,38 +273,6 @@ void do_send(osjob_t* j){
         Serial.println(F("Packet queued"));
     }
     // Next TX is scheduled after TX_COMPLETE event.
-}
-
-void printdata(){
-       Serial.print(F("###########    "));
-       Serial.print(F("NO."));
-       Serial.print(count);
-       Serial.println(F("    ###########"));
-       if(flon!=1000.000000)
-  {  
-       Serial.println(F("The longtitude and latitude and altitude are:"));
-       Serial.print(F("["));
-       Serial.print(flon);
-       Serial.print(F(","));
-       Serial.print(flat);
-       Serial.print(F(","));
-      Serial.print(falt);
-       Serial.print(F("]"));
-     Serial.println(F(""));
-       count++;
-}
-}
-
-static void smartdelay(unsigned long ms)
-{
-  unsigned long start = millis();
-  do 
-  {
-    while (ss.available())
-    {
-      gps.encode(ss.read());
-    }
-  } while (millis() - start < ms);
 }
 
 void setup() {
