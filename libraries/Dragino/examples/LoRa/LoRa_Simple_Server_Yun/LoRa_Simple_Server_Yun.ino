@@ -55,6 +55,8 @@ void setup()
   
   // Setup Coding Rate:5(4/5),6(4/6),7(4/7),8(4/8) 
   rf95.setCodingRate4(5);
+
+  rf95.setSyncWord(0x34);
   
   Console.print("Listening on frequency: ");
   Console.println(frequency);

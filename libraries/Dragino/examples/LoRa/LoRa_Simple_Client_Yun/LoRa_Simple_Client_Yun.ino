@@ -42,6 +42,7 @@ void setup()
   // Setup Power,dBm
   rf95.setTxPower(13);
   // Defaults BW Bw = 125 kHz, Cr = 4/5, Sf = 128chips/symbol, CRC on
+  rf95.setSyncWord(0x34);
 }
 
 void loop()
