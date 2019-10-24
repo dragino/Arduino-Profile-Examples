@@ -43,7 +43,6 @@ unsigned int count = 0;        //For times count
 
 float longitude,latitude;
 float flat,flon,falt;
-float mgLon,mgLat;  // World Geodetic System ==> Mars Geodetic System
 
 static uint8_t mydata[11] ={0x03,0x88,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}; 
 
@@ -83,30 +82,14 @@ void onEvent (ev_t ev) {
     Serial.print(os_getTime());
     Serial.print(": ");
     switch(ev) {
-        case EV_SCAN_TIMEOUT:
-            Serial.println(F("EV_SCAN_TIMEOUT"));
-            break;
-        case EV_BEACON_FOUND:
-            Serial.println(F("EV_BEACON_FOUND"));
-            break;
-        case EV_BEACON_MISSED:
-            Serial.println(F("EV_BEACON_MISSED"));
-            break;
-        case EV_BEACON_TRACKED:
-            Serial.println(F("EV_BEACON_TRACKED"));
-            break;
         case EV_JOINING:
             Serial.println(F("EV_JOINING"));
             break;
         case EV_JOINED:
             Serial.println(F("EV_JOINED"));
-
             // Disable link check validation (automatically enabled
             // during join, but not supported by TTN at this time).
             LMIC_setLinkCheckMode(0);
-            break;
-        case EV_RFU1:
-            Serial.println(F("EV_RFU1"));
             break;
         case EV_JOIN_FAILED:
             Serial.println(F("EV_JOIN_FAILED"));
@@ -127,21 +110,9 @@ void onEvent (ev_t ev) {
             // Schedule next transmission
             os_setTimedCallback(&sendjob, os_getTime()+sec2osticks(TX_INTERVAL), do_send);
             break;
-        case EV_LOST_TSYNC:
-            Serial.println(F("EV_LOST_TSYNC"));
-            break;
-        case EV_RESET:
-            Serial.println(F("EV_RESET"));
-            break;
         case EV_RXCOMPLETE:
             // data received in ping slot
             Serial.println(F("EV_RXCOMPLETE"));
-            break;
-        case EV_LINK_DEAD:
-            Serial.println(F("EV_LINK_DEAD"));
-            break;
-        case EV_LINK_ALIVE:
-            Serial.println(F("EV_LINK_ALIVE"));
             break;
          default:
             Serial.println(F("Unknown event"));
@@ -204,9 +175,7 @@ void GPSRead()
   }
   else
   {
-    WGS2GCJTransform(flon,flat,mgLon,mgLat);
-    longitude=mgLon;
-    latitude=mgLat;
+    WGS2GCJTransform(flon,flat,longitude,latitude);
    //Serial.println("In China");
   }
   int32_t lat = latitude * 10000;
@@ -233,18 +202,18 @@ void printdata(){
   {  
        Serial.println(F("The longtitude and latitude and altitude are:"));
        Serial.print(F("["));
-       Serial.print(mgLon,4);
+       Serial.print(longitude,4);
        Serial.print(F(","));
-       Serial.print(mgLat,4);
+       Serial.print(latitude,4);
        Serial.print(F(","));
-      Serial.print(falt);
+       Serial.print(falt);
        Serial.print(F("]"));
-     Serial.println(F(""));
+       Serial.println(F(""));
        count++;
  }
   else
    {
-   Serial.println(F("Unsuccessfully positioning"));
+   Serial.println(F("Fail positioning"));
    }
 }
 
@@ -280,7 +249,7 @@ void setup() {
     Serial.println(F("Starting"));
     ss.begin(9600);
     #ifdef VCC_ENABLE
-    // For Pinoccio Scout boards
+    //For Pinoccio Scout boards
     pinMode(VCC_ENABLE, OUTPUT);
     digitalWrite(VCC_ENABLE, HIGH);
     delay(1000);
