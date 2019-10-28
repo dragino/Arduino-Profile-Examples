@@ -165,17 +165,17 @@ void GPSRead()
   flon == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flon, 6;//save six decimal places 
   flat == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : flat, 6;
   falt == TinyGPS::GPS_INVALID_F_ANGLE ? 0.0 : falt, 2;//save two decimal places
-//  if((flon < 72.004 || flon > 137.8347)&&(flat < 0.8293 || flat >55.8271))  //out of China
-//  {
+  if((flon < 72.004 || flon > 137.8347)&&(flat < 0.8293 || flat >55.8271))  //out of China
+  {
     longitude=flon;
     latitude=flat;
   // Serial.println("Out of China");
-//  }
-//  else
-//  {
-//    WGS2GCJTransform(flon,flat,longitude,latitude);
+  }
+  else
+  {
+    WGS2GCJTransform(flon,flat,longitude,latitude);
 //   //Serial.println("In China");
-//  }
+  }
   int32_t lat = latitude * 10000;
   int32_t lon = longitude * 10000;
   int32_t alt = falt * 100;

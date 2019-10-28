@@ -234,7 +234,7 @@ void setup() {
 
     pinMode(ctl_pin,OUTPUT);
     pinMode(flame_pin,INPUT);
-    attachInterrupt(1,fire,LOW);
+//  attachInterrupt(1,fire,LOW);  //no connect Flame sensor should commented this code
     
     #ifdef VCC_ENABLE
     // For Pinoccio Scout boards
